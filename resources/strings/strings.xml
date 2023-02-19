@@ -1,3 +1,11 @@
 <strings>
     <string id="AppName">authentificator</string>
+    <string id="Accounts">Accounts</string>
+    <string id="Name">Name</string>
+    <string id="Type">Type</string>
+    <string id="TOTP">TOTP</string>
+    <string id="HOTP">HOTP</string>
+    <string id="Key">Key</string>
+    <string id="Timeout">Timeout (s)</string>
+    <string id="Digits">Number of digits to display</string>
 </strings>

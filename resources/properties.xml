@@ -1,0 +1,37 @@
+<resources>
+    <properties>
+        <property id="accounts" type="array" />
+    </properties>
+
+    <settings>
+        <setting propertyKey="@Properties.accounts" title="@Strings.Accounts">
+            <setting title="@Strings.Name" type="string">
+                <settingConfig id="name" type="alphaNumeric" />
+            </setting>
+            <setting title="@Strings.Type" type="number">
+                <settingConfig id="type" type="list">
+                    <listEntry value="0">@Strings.TOTP</listEntry>
+                    <listEntry value="1">@Strings.HOTP</listEntry>
+                </settingConfig>
+            </setting>
+            <setting title="@Strings.Key" type="string">
+                <settingConfig id="keystr" type="alphaNumeric" />
+            </setting>
+            <setting title="@Strings.Timeout" type="number">
+                <settingConfig id="timeout" type="numeric" />
+            </setting>
+            <setting title="@Strings.Digits" type="string">
+                <settingConfig id="digits" type="numeric" />
+            </setting>
+            <defaults>
+                <entry>
+                    <default id="name"></default>
+                    <default id="type">0</default>
+                    <default id="keystr"></default>
+                    <default id="timeout">30</default>
+                    <default id="digits">6</default>
+                </entry>
+            </defaults>
+        </setting>
+    </settings>
+</resources>
