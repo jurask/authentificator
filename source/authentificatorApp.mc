@@ -18,7 +18,13 @@ class authentificatorApp extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() as Array<Views or InputDelegates>? {
-        return [ new authentificatorView() ] as Array<Views or InputDelegates>;
+        var accounts = Application.Properties.getValue("accounts");
+        if (accounts != null){
+            if (accounts.size()){
+                return [ new AuthentificatorView(), new AuthentificatorViewDelegate() ] as Array<Views or InputDelegates>;
+            }
+        }
+        return [ new NoAccountsView() ] as Array<Views or InputDelegates>;
     }
 
 }

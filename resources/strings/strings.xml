@@ -8,4 +8,5 @@
     <string id="Key">Key</string>
     <string id="Timeout">Timeout (s)</string>
     <string id="Digits">Number of digits to display</string>
+    <string id="NoAccounts">No accounts defined</string>
 </strings>
