@@ -1,19 +1,34 @@
 import Toybox.WatchUi;
+import Toybox.Lang;
 
 class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
-    function initialize() {
+    private var _accountNum as Number;
+
+    function initialize(accountNum as Number) {
+        System.println(accountNum);
         BehaviorDelegate.initialize();
+        _accountNum = accountNum;
     }
 
     function onNextPage(){
-        System.println("next");
-        WatchUi.switchToView(new AuthentificatorView(), new AuthentificatorViewDelegate(), WatchUi.SLIDE_UP);
+        var totalAccounts = Application.getApp().numAccounts();
+        var nextAccount = _accountNum + 1;
+        if (nextAccount >= totalAccounts){
+            nextAccount = 0;
+        }
+        WatchUi.switchToView(new AuthentificatorView(nextAccount), new AuthentificatorViewDelegate(nextAccount), WatchUi.SLIDE_UP);
         return true;
     }
 
     function onPreviousPage(){
-        System.println("previous");
-        WatchUi.switchToView(new AuthentificatorView(), new AuthentificatorViewDelegate(), WatchUi.SLIDE_DOWN);
+        var totalAccounts = Application.getApp().numAccounts();
+        var nextAccount = _accountNum - 1;
+        if (nextAccount >= totalAccounts){
+            nextAccount = 0;
+        } else if (nextAccount < 0){
+            nextAccount = totalAccounts - 1;
+        }
+        WatchUi.switchToView(new AuthentificatorView(nextAccount), new AuthentificatorViewDelegate(nextAccount), WatchUi.SLIDE_DOWN);
         return true;
     }
 }
