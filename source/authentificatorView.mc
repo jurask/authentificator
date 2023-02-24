@@ -14,6 +14,8 @@ class AuthentificatorView extends WatchUi.View {
     // Load your resources here
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.MainLayout(dc));
+        var name = findDrawableById("name") as Text;
+        name.setText(_accountName);
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -28,7 +30,6 @@ class AuthentificatorView extends WatchUi.View {
         View.onUpdate(dc);
         dc.setColor(0xFFFFFF, 0x000000);
         // Draw account name
-        dc.drawText(dc.getWidth()/2, 0.7*dc.getHeight(), Graphics.FONT_SMALL, _accountName, Graphics.TEXT_JUSTIFY_CENTER);
         dc.setPenWidth(6);
         dc.drawArc(dc.getWidth()/2, dc.getHeight()/2, dc.getWidth()/2-6, Graphics.ARC_COUNTER_CLOCKWISE, 75, 10);
     }

@@ -19,8 +19,8 @@ class authentificatorApp extends Application.AppBase {
     // Return the initial view of your application here
     function getInitialView() as Array<Views or InputDelegates>? {
         if (numAccounts != 0){
-                return [ new AuthentificatorView(0), new AuthentificatorViewDelegate(0) ] as Array<Views or InputDelegates>;
-            }
+            return [ new AuthentificatorView(0), new AuthentificatorViewDelegate(0) ] as Array<Views or InputDelegates>;
+        }
         return [ new NoAccountsView() ] as Array<Views or InputDelegates>;
     }
 
