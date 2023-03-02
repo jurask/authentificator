@@ -1,5 +1,9 @@
 <layout id="MainLayout">
     <drawable id="outerCircle" />
+    <drawable id="innerCircle" class="CircleProgress">
+        <param name="start">76</param>
+        <param name="end">15</param>
+    </drawable>
     <drawable id="icon" />
     <label id="code" text="123456" font="Graphics.FONT_NUMBER_MEDIUM" x="center" y="center" justification="Graphics.TEXT_JUSTIFY_CENTER" />
     <label id="name" text="" font="Graphics.FONT_MEDIUM" x="center" y="70%" justification="Graphics.TEXT_JUSTIFY_CENTER" />
