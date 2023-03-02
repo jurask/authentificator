@@ -46,6 +46,7 @@ class AuthentificatorView extends WatchUi.View {
     // state of this View here. This includes freeing resources from
     // memory.
     function onHide() as Void {
+        WatchUi.cancelAllAnimations();
     }
 
     function animateTOTP() as Void {
@@ -53,20 +54,7 @@ class AuthentificatorView extends WatchUi.View {
         var totpValue = Math.floor(time / _timeout);
         var totpTime = _timeout - Math.floor(time % _timeout);
         var initValue = totpTime.toFloat() / _timeout * 100;
-        System.println("initValue");
-        System.println(initValue);
-        System.println("totpTime");
-        System.println(totpTime);
-        System.println("timestamp");
-        System.println(time);
-        System.println("timeout");
-        System.println(_timeout);
         var progress = findDrawableById("innerCircle");
         animate(progress, :percents, ANIM_TYPE_LINEAR, initValue, 0, totpTime, method(:animateTOTP));
     }
-
-    function onAnimDone() as Void {
-        System.println("finished");
-    }
-
 }

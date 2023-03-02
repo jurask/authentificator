@@ -16,7 +16,6 @@ class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
         if (nextAccount >= totalAccounts){
             nextAccount = 0;
         }
-        WatchUi.cancelAllAnimations();
         WatchUi.switchToView(new AuthentificatorView(nextAccount), new AuthentificatorViewDelegate(nextAccount), WatchUi.SLIDE_UP);
         return true;
     }
@@ -29,7 +28,6 @@ class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
         } else if (nextAccount < 0){
             nextAccount = totalAccounts - 1;
         }
-        WatchUi.cancelAllAnimations();
         WatchUi.switchToView(new AuthentificatorView(nextAccount), new AuthentificatorViewDelegate(nextAccount), WatchUi.SLIDE_DOWN);
         return true;
     }
