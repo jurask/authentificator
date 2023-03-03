@@ -57,4 +57,61 @@ class AuthentificatorView extends WatchUi.View {
         var progress = findDrawableById("innerCircle");
         animate(progress, :percents, ANIM_TYPE_LINEAR, initValue, 0, totpTime, method(:animateTOTP));
     }
+
+    private function decodeBase32(key as String) as ByteArray{
+        key = key.toUpper().toCharArray();
+        var out = []b;
+        var block = [];
+        for (var i = 0; i < key.size(); i++){
+            var character = key[i];
+            if (character <= 'Z'  && character >= 'A'){
+                block.add(character.toNumber() - 65);
+            } else if (character <= '7' && character >= '2'){
+                block.add(character.toNumber() - 24);
+            }
+            // add padding
+            var validBytes = 5;
+            if (i == key.size() - 1){
+                var paddedChars = 0;
+                while (block.size() != 8){
+                    block.add(0);
+                    paddedChars++;
+                }
+                switch(paddedChars){
+                    case 6:
+                        validBytes = 1;
+                        break;
+                    case 4:
+                        validBytes = 2;
+                        break;
+                    case 3:
+                        validBytes = 3;
+                        break;
+                    case 1:
+                        validBytes = 4;
+                        break;
+                }
+            }
+            if (block.size() == 8){
+                // rearrange block bits
+                var buf = 0l;
+                var decodedBits = 0;
+                var ba = []b;
+                for (var j = 0; j < 8; j++){
+                    var chr = block[7 - j];
+                    buf = buf | (chr << decodedBits);
+                    decodedBits += 5;
+                    if (decodedBits >= 8){
+                        ba.add((buf & 0xFF).toNumber());
+                        buf = buf >> 8;
+                        decodedBits -= 8;
+                    }
+                }
+                ba = ba.reverse();
+                out.addAll(ba.slice(0, validBytes));
+                block = [];
+            }
+        }
+        return out;
+    }
 }
