@@ -36,7 +36,7 @@ class AuthentificatorView extends WatchUi.View {
     // loading resources into memory.
     function onShow() as Void {
         if (_type == 0){
-            var hint = findDrawableById("leftTop");
+            var hint = findDrawableById("menu");
             hint.setVisible(false);
             animateTOTP();
         } else {

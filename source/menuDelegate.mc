@@ -3,7 +3,7 @@ import Toybox.System;
 import Toybox.WatchUi;
 
 //! Input handler to respond to main menu selections
-class MenuDelegate extends WatchUi.MenuInputDelegate {
+class MenuDelegate extends WatchUi.ActionMenuDelegate {
     private var _accountNum;
 
     //! Constructor
@@ -14,10 +14,10 @@ class MenuDelegate extends WatchUi.MenuInputDelegate {
 
     //! Handle a menu item being selected
     //! @param item Symbol identifier of the menu item that was chosen
-    public function onMenuItem(item as Symbol) as Void {
-        if (item == :next) {
+    public function onSelect(item as WatchUi.MenuItem) as Void {
+        if (item.getId() == :next) {
             modifyCounter(1);
-        } else if (item == :previous) {
+        } else if (item.getId() == :previous) {
             modifyCounter(-1);
         }
     }
