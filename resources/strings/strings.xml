@@ -9,4 +9,7 @@
     <string id="Timeout">Timeout (s)</string>
     <string id="Digits">Number of digits to display</string>
     <string id="NoAccounts">No accounts defined</string>
+    <string id="MainMenuTitle">Authentificator</string>
+    <string id="Previous">Previous code</string>
+    <string id="Next">Next code</string>
 </strings>

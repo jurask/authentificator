@@ -11,9 +11,11 @@ class AuthentificatorView extends WatchUi.View {
     private var _timeout as Number;
     private var _key as ByteArray;
     private var _digits as Number;
+    private var _accountNum as Number;
 
     function initialize(accountNum as Number) {
         View.initialize();
+        _accountNum = accountNum;
         var accounts = Application.Properties.getValue("accounts");
         _accountName = (accounts[accountNum] as Dictionary<String, Number or String>)["name"];
         _type = (accounts[accountNum] as Dictionary<String, Number or String>)["type"];
@@ -38,6 +40,9 @@ class AuthentificatorView extends WatchUi.View {
         } else {
             var progress = findDrawableById("innerCircle");
             progress.setVisible(false);
+            var accounts = Application.Properties.getValue("accounts");
+            var value = (accounts[_accountNum] as Dictionary<String, Number or String>)["timeout"];
+            updateCode(value);
         }
     }
 
@@ -60,11 +65,14 @@ class AuthentificatorView extends WatchUi.View {
         var totpTime = _timeout - Math.floor(time % _timeout);
         var initValue = totpTime.toFloat() / _timeout * 100;
         var progress = findDrawableById("innerCircle");
-        // calculate code
+        updateCode(totpValue);
+        animate(progress, :percents, ANIM_TYPE_LINEAR, initValue, 0, totpTime, method(:animateTOTP));
+    }
+
+    private function updateCode(totpValue as Number){
         var value = otpHmacSha1(_key, totpValue).format("%010d");
         var codeLabel = findDrawableById("code") as Text;
         codeLabel.setText(value.substring(10-_digits, 10));
-        animate(progress, :percents, ANIM_TYPE_LINEAR, initValue, 0, totpTime, method(:animateTOTP));
     }
 
     private function otpHmacSha1(key as ByteArray, message as Number) as Number{
