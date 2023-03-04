@@ -20,7 +20,7 @@
             <setting title="@Strings.Timeout" type="number">
                 <settingConfig id="timeout" type="numeric" />
             </setting>
-            <setting title="@Strings.Digits" type="string">
+            <setting title="@Strings.Digits" type="number">
                 <settingConfig id="digits" type="numeric" />
             </setting>
             <defaults>
