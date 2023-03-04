@@ -4,7 +4,7 @@ import Toybox.WatchUi;
 
 //! Input handler to respond to main menu selections
 class MenuDelegate extends WatchUi.ActionMenuDelegate {
-    private var _accountNum;
+    private var _accountNum as Lang.Number;
 
     //! Constructor
     public function initialize(accountNum as Number) {
@@ -29,5 +29,6 @@ class MenuDelegate extends WatchUi.ActionMenuDelegate {
         dict["timeout"] = counter + delta;
         accounts[_accountNum] = dict;
         Application.Properties.setValue("accounts", accounts);
+        WatchUi.getCurrentView()[0].onShow();
     }
 }

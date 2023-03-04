@@ -35,7 +35,7 @@ class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
         var accounts = Application.Properties.getValue("accounts");
         var type = (accounts[_accountNum] as Dictionary<String, Number or String>)["type"];
         if (type == 1){
-            WatchUi.showActionMenu(new $.Rez.Menus.MainMenu(), new $.MenuDelegate(_accountNum));
+            WatchUi.showActionMenu(new $.MainMenu(), new $.MenuDelegate(_accountNum));
             return true;
         } else {
             return false;
