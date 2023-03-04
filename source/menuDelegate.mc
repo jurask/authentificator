@@ -8,7 +8,7 @@ class MenuDelegate extends WatchUi.ActionMenuDelegate {
 
     //! Constructor
     public function initialize(accountNum as Number) {
-        MenuInputDelegate.initialize();
+        ActionMenuDelegate.initialize();
         _accountNum = accountNum;
     }
 
