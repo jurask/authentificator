@@ -5,7 +5,6 @@ class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
     private var _accountNum as Number;
 
     function initialize(accountNum as Number) {
-        System.println(accountNum);
         BehaviorDelegate.initialize();
         _accountNum = accountNum;
     }
