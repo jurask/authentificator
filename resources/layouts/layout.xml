@@ -7,4 +7,5 @@
     <drawable id="icon" />
     <label id="code" text="123456" font="Graphics.FONT_NUMBER_MEDIUM" x="center" y="center" justification="Graphics.TEXT_JUSTIFY_CENTER" />
     <label id="name" text="" font="Graphics.FONT_MEDIUM" x="center" y="70%" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <bitmap id="leftTop" personality="system_icon_light__hint_button_right_top system_loc__hint_button_right_top system_size__hint_button_right_top " />
 </layout>
