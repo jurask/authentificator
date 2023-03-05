@@ -17,12 +17,19 @@ class Glance extends WatchUi.GlanceView{
     }
 
     function onLayout(dc as Dc){
-        if (numAccounts() != 0){
-            var otp = new OtpCalc(0);
-            _account = otp.name();
-            _code = otp.code();
+        var glance = Application.Properties.getValue("glance");
+        if (glance){
+            if (numAccounts() != 0){
+                var otp = new OtpCalc(0);
+                _account = otp.name();
+                _code = otp.code();
+            } else {
+                _account = "No accounts defined";
+                _code = "";
+            }
         } else {
-            _account = "No accounts defined";
+            _account = "";
+            _code = "";
         }
     }
 

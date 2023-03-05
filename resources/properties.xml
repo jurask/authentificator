@@ -1,6 +1,7 @@
 <resources>
     <properties>
         <property id="accounts" type="array" />
+        <property id="glance" type="boolean" />
     </properties>
 
     <settings>
@@ -32,6 +33,9 @@
                     <default id="digits">6</default>
                 </entry>
             </defaults>
+        </setting>
+        <setting propertyKey="@Properties.glance" title="@Strings.Glance">
+            <settingConfig type="boolean" />
         </setting>
     </settings>
 </resources>

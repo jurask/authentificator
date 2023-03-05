@@ -10,6 +10,7 @@
     <string id="Timeout">Timeout/counter</string>
     <string id="TimeoutPrompt">TOTP: key timeout in seconds, HOTP: key counter value</string>
     <string id="Digits">Number of digits to display</string>
+    <string id="Glance">Show first key on glance view</string>
     <string id="NoAccounts">No accounts defined</string>
     <string id="Previous">Previous code</string>
     <string id="Next">Next code</string>
