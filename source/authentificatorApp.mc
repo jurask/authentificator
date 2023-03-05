@@ -24,6 +24,7 @@ class authentificatorApp extends Application.AppBase {
         return [ new NoAccountsView() ] as Array<Views or InputDelegates>;
     }
 
+    (:glance)
     function getGlanceView() as Lang.Array<WatchUi.GlanceView> or Null{
         return [new Glance()];
     }
