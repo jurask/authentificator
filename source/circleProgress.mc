@@ -32,9 +32,13 @@ class CircleProgress extends Drawable{
         length = length * percents / 100;
         var endangle = Math.round(_start + length).toLong() % 360;
         // draw
+        var radius = dc.getWidth()/2;
+        if(dc.getHeight()/2 < radius){
+            radius = dc.getHeight()/2;
+        }
         dc.setColor(system_color_dark__text.color, system_color_dark__text.background);
         dc.setPenWidth(6);
-        dc.drawArc(dc.getWidth()/2, dc.getHeight()/2, dc.getWidth()/2-6, Graphics.ARC_COUNTER_CLOCKWISE, _start, endangle);
+        dc.drawArc(dc.getWidth()/2, dc.getHeight()/2, radius-7, Graphics.ARC_COUNTER_CLOCKWISE, _start, endangle);
     }
 
     public function setVisible(visible as Boolean){

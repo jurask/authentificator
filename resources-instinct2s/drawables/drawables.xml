@@ -1,10 +1,9 @@
 <drawables>
     <bitmap id="LauncherIcon" filename="key.png" />
     <drawable-list id="outerCircle" background="Graphics.COLOR_TRANSPARENT">
-        <shape type="circle" x="center" y="center" radius="49%" color="Graphics.COLOR_TRANSPARENT" border_width="1" border_color="Graphics.COLOR_WHITE"/>
+        <shape type="circle" x="center" y="center" radius="46%" color="Graphics.COLOR_TRANSPARENT" border_width="1" border_color="Graphics.COLOR_WHITE"/>
     </drawable-list>
     <drawable-list id="subwindow" background="Graphics.COLOR_TRANSPARENT">
-        <shape type="rectangle" personality="system_loc__subwindow system_size__subwindow system_color_light__background"/>
         <bitmap id="appIcon" filename="key.png" personality="system_loc__subwindow" />
     </drawable-list>
 </drawables>
