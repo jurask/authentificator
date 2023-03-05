@@ -31,6 +31,8 @@ class AuthentificatorView extends WatchUi.View {
         } else {
             var progress = findDrawableById("innerCircle");
             progress.setVisible(false);
+            var circle = findDrawableById("outerCircle");
+            circle.setVisible(false);
             _otp.reloadCounter();
             updateCode();
         }
