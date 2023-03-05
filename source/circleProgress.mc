@@ -2,6 +2,7 @@ import Toybox.WatchUi;
 import Toybox.Lang;
 import Toybox.Graphics;
 import Toybox.Math;
+import Rez.Styles;
 
 class CircleProgress extends Drawable{
     private var _start as Number;
@@ -31,7 +32,7 @@ class CircleProgress extends Drawable{
         length = length * percents / 100;
         var endangle = Math.round(_start + length).toLong() % 360;
         // draw
-        dc.setColor(0xFFFFFF, 0x000000);
+        dc.setColor(system_color_dark__text.color, system_color_dark__text.background);
         dc.setPenWidth(6);
         dc.drawArc(dc.getWidth()/2, dc.getHeight()/2, dc.getWidth()/2-6, Graphics.ARC_COUNTER_CLOCKWISE, _start, endangle);
     }

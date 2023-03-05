@@ -4,8 +4,8 @@
         <param name="start">76</param>
         <param name="end">15</param>
     </drawable>
-    <drawable id="icon" />
-    <label id="code" text="123456" font="Graphics.FONT_NUMBER_MEDIUM" x="center" y="center" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <drawable id="subwindow" />
+    <label id="code" text="" font="Graphics.FONT_NUMBER_MEDIUM" x="center" y="center" justification="Graphics.TEXT_JUSTIFY_CENTER" />
     <label id="name" text="" font="Graphics.FONT_MEDIUM" x="center" y="70%" justification="Graphics.TEXT_JUSTIFY_CENTER" />
     <bitmap id="menu" personality="system_icon_light__hint_action_menu system_loc__hint_action_menu" />
 </layout>

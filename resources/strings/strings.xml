@@ -1,15 +1,16 @@
 <strings>
-    <string id="AppName">authentificator</string>
-    <string id="Accounts">Accounts</string>
+    <string id="AppName">Keychain</string>
+    <string id="Accounts">Keys</string>
     <string id="Name">Name</string>
     <string id="Type">Type</string>
     <string id="TOTP">TOTP</string>
     <string id="HOTP">HOTP</string>
     <string id="Key">Key</string>
-    <string id="Timeout">Timeout (s)</string>
+    <string id="KeyPrompt">Base32 encoded key string</string>
+    <string id="Timeout">Timeout/counter</string>
+    <string id="TimeoutPrompt">TOTP: key timeout in seconds, HOTP: key counter value</string>
     <string id="Digits">Number of digits to display</string>
     <string id="NoAccounts">No accounts defined</string>
-    <string id="MainMenuTitle">Authentificator</string>
     <string id="Previous">Previous code</string>
     <string id="Next">Next code</string>
 </strings>

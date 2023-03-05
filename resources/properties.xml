@@ -14,10 +14,10 @@
                     <listEntry value="1">@Strings.HOTP</listEntry>
                 </settingConfig>
             </setting>
-            <setting title="@Strings.Key" type="string">
+            <setting title="@Strings.Key" type="string" prompt="@Strings.KeyPrompt">
                 <settingConfig id="keystr" type="alphaNumeric" />
             </setting>
-            <setting title="@Strings.Timeout" type="number">
+            <setting title="@Strings.Timeout" type="number" prompt="@Strings.TimeoutPrompt">
                 <settingConfig id="timeout" type="numeric" />
             </setting>
             <setting title="@Strings.Digits" type="number">

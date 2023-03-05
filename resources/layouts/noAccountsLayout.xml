@@ -1,3 +1,3 @@
 <layout id="NoAccountsLayout">
-    <label id="name" text="@Strings.NoAccounts" font="Graphics.FONT_SMALL" x="center" y="center" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <text-area id="mainLabel" text="@Strings.NoAccounts" personality="prompt_color_dark__body prompt_size__body_no_title prompt_loc__body_no_title prompt_font__body_no_title" />
 </layout>
