@@ -7,6 +7,7 @@ import Rez.Styles;
 class CircleProgress extends Drawable{
     private var _start as Number;
     private var _end as Number;
+    private var _offset as Number;
     private var _visible as Boolean;
     public var percents as Number;
 
@@ -14,6 +15,7 @@ class CircleProgress extends Drawable{
         Drawable.initialize(params);
         _start = params.get(:start) as Number;
         _end = params.get(:end) as Number;
+        _offset = params.get(:offset) as Number;
         _visible = true;
         percents = 0;
     }
@@ -38,7 +40,7 @@ class CircleProgress extends Drawable{
         }
         dc.setColor(system_color_dark__text.color, system_color_dark__text.background);
         dc.setPenWidth(6);
-        dc.drawArc(dc.getWidth()/2, dc.getHeight()/2, radius-7, Graphics.ARC_COUNTER_CLOCKWISE, _start, endangle);
+        dc.drawArc(dc.getWidth()/2, dc.getHeight()/2, radius-_offset, Graphics.ARC_COUNTER_CLOCKWISE, _start, endangle);
     }
 
     public function setVisible(visible as Boolean){

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="62"
+   height="62"
+   viewBox="0 0 62 62"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="key.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   inkscape:export-filename="key.png"
+   inkscape:export-xdpi="40.259998"
+   inkscape:export-ydpi="40.259998"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="8.0000001"
+     inkscape:cx="19.4375"
+     inkscape:cy="29.375"
+     inkscape:window-width="1920"
+     inkscape:window-height="1007"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6"
+     shape-rendering="crispEdges" />
+  <title
+     id="title2">key</title>
+  <path
+     d="m 13.77412,17.247643 a 5.2969597,5.2969597 0 0 0 5.159378,-5.159377 5.1593774,5.1593774 0 0 0 -10.3187546,0 5.2969597,5.2969597 0 0 0 5.1593766,5.159377 z M 18.933498,0.04972154 A 19.089693,19.089693 0 0 1 37.851212,18.967436 23.423569,23.423569 0 0 1 35.443503,28.598273 L 61.928302,55.08307 v 6.87917 H 48.169964 v -6.87917 h -6.879165 v -6.879167 h -6.87917 L 23.404959,37.197233 A 20.121568,20.121568 0 0 1 18.933498,37.88515 19.089693,19.089693 0 0 1 0.01578374,18.967436 19.089693,19.089693 0 0 1 18.933498,0.04972154 Z"
+     id="path4"
+     style="fill:#ffffff;stroke-width:3.43957" />
+  <metadata
+     id="metadata298">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>key</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

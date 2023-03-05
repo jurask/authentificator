@@ -3,6 +3,7 @@
     <drawable id="innerCircle" class="CircleProgress">
         <param name="start">70</param>
         <param name="end">15</param>
+        <param name="offset">7</param>
     </drawable>
     <drawable id="subwindow" />
     <label id="code" text="" font="Graphics.FONT_NUMBER_MEDIUM" x="center" y="center" justification="Graphics.TEXT_JUSTIFY_CENTER" />
