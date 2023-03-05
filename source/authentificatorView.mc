@@ -22,6 +22,20 @@ class AuthentificatorView extends WatchUi.View {
         _timeout = (accounts[accountNum] as Dictionary<String, Number or String>)["timeout"];
         _digits = (accounts[accountNum] as Dictionary<String, Number or String>)["digits"];
         _key = decodeBase32((accounts[accountNum] as Dictionary<String, Number or String>)["keystr"]);
+        if (_timeout == null){
+            _timeout = 30;
+        }
+        if (_timeout < 0){
+            _timeout = 30;
+        }
+        if (_digits == null){
+            _digits = 6;
+        }
+        if (_digits < 1){
+            _digits = 1;
+        } else if (_digits > 10){
+            _digits = 10;
+        }
     }
 
     // Load your resources here
@@ -44,6 +58,12 @@ class AuthentificatorView extends WatchUi.View {
             progress.setVisible(false);
             var accounts = Application.Properties.getValue("accounts");
             var value = (accounts[_accountNum] as Dictionary<String, Number or String>)["timeout"];
+            if (value == null){
+                value = 0;
+            }
+            if (value < 0){
+                value = 0;
+            }
             updateCode(value);
         }
     }

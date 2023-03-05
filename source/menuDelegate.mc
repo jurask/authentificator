@@ -25,8 +25,14 @@ class MenuDelegate extends WatchUi.ActionMenuDelegate {
     private function modifyCounter(delta as Number){
         var accounts = Application.Properties.getValue("accounts");
         var dict = accounts[_accountNum] as Dictionary<String, Number or String>;
+        if (dict["timeout"] == null){
+            dict["timeout"] = 0;
+        }
         var counter = dict["timeout"];
         dict["timeout"] = counter + delta;
+        if(dict["timeout"] < 0){
+            dict["timeout"] = 0;
+        }
         accounts[_accountNum] = dict;
         Application.Properties.setValue("accounts", accounts);
         WatchUi.getCurrentView()[0].onShow();
