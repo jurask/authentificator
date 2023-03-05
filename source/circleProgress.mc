@@ -9,6 +9,8 @@ class CircleProgress extends Drawable{
     private var _end as Number;
     private var _offset as Number;
     private var _visible as Boolean;
+    private var _color as Graphics.ColorValue;
+    private var _thickness as Number;
     public var percents as Number;
 
     public function initialize(params as Dictionary){
@@ -16,6 +18,8 @@ class CircleProgress extends Drawable{
         _start = params.get(:start) as Number;
         _end = params.get(:end) as Number;
         _offset = params.get(:offset) as Number;
+        _thickness = params.get(:thickness) as Number;
+        _color = params.get(:color) as Graphics.ColorValue;
         _visible = true;
         percents = 0;
     }
@@ -38,8 +42,8 @@ class CircleProgress extends Drawable{
         if(dc.getHeight()/2 < radius){
             radius = dc.getHeight()/2;
         }
-        dc.setColor(system_color_dark__text.color, system_color_dark__text.background);
-        dc.setPenWidth(6);
+        dc.setColor(_color, system_color_dark__text.background);
+        dc.setPenWidth(_thickness);
         dc.drawArc(dc.getWidth()/2, dc.getHeight()/2, radius-_offset, Graphics.ARC_COUNTER_CLOCKWISE, _start, endangle);
     }
 
