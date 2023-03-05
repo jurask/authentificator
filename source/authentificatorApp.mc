@@ -53,6 +53,9 @@ class authentificatorApp extends Application.AppBase {
 
     private function updateKeys(){
         var accounts = Application.Properties.getValue("accounts");
+        if (accounts == null){
+            return;
+        }
         var keys = Application.Storage.getValue("keys");
         if (keys == null){
             keys = {};
