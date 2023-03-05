@@ -13,10 +13,10 @@ class OtpCalc{
     function initialize(id as Number){
         _id = id;
         var accounts = Application.Properties.getValue("accounts");
-        _accountName = (accounts[id] as Dictionary<String, Number or String>)["name"];
-        _type = (accounts[id] as Dictionary<String, Number or String>)["type"];
-        _digits = (accounts[id] as Dictionary<String, Number or String>)["digits"];
-        _key = decodeBase32((accounts[id] as Dictionary<String, Number or String>)["keystr"]);
+        _accountName = (accounts as Array<Dictionary<String, String or Number>>)[id]["name"];
+        _type = (accounts as Array<Dictionary<String, String or Number>>)[id]["type"];
+        _digits = (accounts as Array<Dictionary<String, String or Number>>)[id]["digits"];
+        _key = decodeBase32((accounts as Array<Dictionary<String, String or Number>>)[id]["keystr"]);
         _timeout = 0;
         if (_digits == null){
             _digits = 6;
@@ -43,7 +43,7 @@ class OtpCalc{
 
     public function reloadCounter() as Void{
         var accounts = Application.Properties.getValue("accounts");
-        _timeout = (accounts[_id] as Dictionary<String, Number or String>)["timeout"];
+        _timeout = (accounts  as Array<Dictionary<String, String or Number>>)[_id]["timeout"];
         if (_timeout == null){
             _timeout = 30;
         }

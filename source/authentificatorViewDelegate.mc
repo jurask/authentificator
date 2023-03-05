@@ -1,5 +1,6 @@
 import Toybox.WatchUi;
 import Toybox.Lang;
+import Toybox.Application;
 
 class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
     private var _accountNum as Number;
@@ -33,7 +34,7 @@ class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
 
     function onSelect(){
         var accounts = Application.Properties.getValue("accounts");
-        var type = (accounts[_accountNum] as Dictionary<String, Number or String>)["type"];
+        var type = (accounts as Array<Dictionary<String, String or Number>>)[_accountNum]["type"];
         if (type == 1){
             WatchUi.showActionMenu(new $.MainMenu(), new $.MenuDelegate(_accountNum));
             return true;
