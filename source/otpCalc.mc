@@ -1,6 +1,7 @@
 import Toybox.Lang;
 import Toybox.Time;
 
+(:glance)
 class OtpCalc{
     private var _id;
     private var _accountName as String;

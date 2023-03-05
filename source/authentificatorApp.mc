@@ -24,6 +24,10 @@ class authentificatorApp extends Application.AppBase {
         return [ new NoAccountsView() ] as Array<Views or InputDelegates>;
     }
 
+    function getGlanceView() as Lang.Array<WatchUi.GlanceView> or Null{
+        return [new Glance()];
+    }
+
     public function numAccounts() as Number{
         var accounts = Application.Properties.getValue("accounts");
         if (accounts != null){

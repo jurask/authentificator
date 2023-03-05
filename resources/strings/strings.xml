@@ -1,5 +1,5 @@
 <strings>
-    <string id="AppName">Keychain</string>
+    <string id="AppName" scope="glance">Keychain</string>
     <string id="Accounts">Keys</string>
     <string id="Name">Name</string>
     <string id="Type">Type</string>
