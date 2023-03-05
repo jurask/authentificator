@@ -38,10 +38,15 @@ class authentificatorApp extends Application.AppBase {
     }
 
     public function onSettingsChanged(){
-        if (numAccounts() != 0){
-            WatchUi.switchToView(new AuthentificatorView(0), new AuthentificatorViewDelegate(0), WatchUi.SLIDE_BLINK);
-        } else {
-            WatchUi.switchToView(new NoAccountsView(), null, WatchUi.SLIDE_BLINK);
+        var view = WatchUi.getCurrentView();
+        if (view[0] instanceof AuthentificatorView){
+            if (numAccounts() != 0){
+                WatchUi.switchToView(new AuthentificatorView(0), new AuthentificatorViewDelegate(0), WatchUi.SLIDE_BLINK);
+            } else {
+                WatchUi.switchToView(new NoAccountsView(), null, WatchUi.SLIDE_BLINK);
+            }
+        }
+    }
         }
     }
 }
