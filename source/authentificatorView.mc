@@ -6,12 +6,10 @@ import Toybox.Math;
 import Toybox.Cryptography;
 
 class AuthentificatorView extends WatchUi.View {
-    private var _accountNum as Number;
     private var _otp as OtpCalc;
 
     function initialize(accountNum as Number) {
         View.initialize();
-        _accountNum = accountNum;
         _otp = new OtpCalc(accountNum);
     }
 
