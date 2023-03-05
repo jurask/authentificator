@@ -79,8 +79,8 @@ class AuthentificatorView extends WatchUi.View {
 
     private function otpHmacSha1(key as ByteArray, message as Number) as Number{
         // prepare key
+        var sha1 = new Cryptography.Hash({:algorithm => Cryptography.HASH_SHA1});
         if (key.size() > 64){
-            var sha1 = new Cryptography.Hash({:algorithm => Cryptography.HASH_SHA1});
             sha1.update(key);
             key = sha1.digest();
         }
@@ -97,11 +97,9 @@ class AuthentificatorView extends WatchUi.View {
         msgdata.encodeNumber(message, Lang.NUMBER_FORMAT_UINT32, {:offset => 4, :endianness => Lang.ENDIAN_BIG});
         // calculate hmac signature
         innerKey.addAll(msgdata);
-        var sha1 = new Cryptography.Hash({:algorithm => Cryptography.HASH_SHA1});
         sha1.update(innerKey);
         innerKey = sha1.digest();
         outerKey.addAll(innerKey);
-        sha1 = new Cryptography.Hash({:algorithm => Cryptography.HASH_SHA1});
         sha1.update(outerKey);
         outerKey = sha1.digest();
         // extract OTP code
