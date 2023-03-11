@@ -1,0 +1,5 @@
+<drawables>
+    <bitmap id="LauncherIcon" filename="key.png" />
+    <drawable-list id="outerCircle" background="Graphics.COLOR_TRANSPARENT">
+    </drawable-list>
+</drawables>
