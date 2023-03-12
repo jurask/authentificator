@@ -134,4 +134,8 @@ class CircleProgress extends Drawable{
         var portion = lengthToDraw / elementLength;
         return startpos + (endpos - startpos) * portion;
     }
+
+    public function setVisible(visible as Boolean){
+        _visible = visible;
+    }
 }
