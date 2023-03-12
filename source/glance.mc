@@ -15,12 +15,22 @@ class Glance extends WatchUi.GlanceView{
 
     function initialize(){
         GlanceView.initialize();
-        _name = WatchUi.loadResource($.Rez.Strings.AppName).toUpper();
+        _name = loadName();
         _account = "";
         _code = "";
         _timer = new Timer.Timer();
         _otp = null;
         _lastTimeout = -2;
+    }
+
+    (:upper)
+    private function loadName() as String{
+        return WatchUi.loadResource($.Rez.Strings.AppName).toUpper();
+    }
+
+    (:lower)
+    private function loadName() as String{
+        return WatchUi.loadResource($.Rez.Strings.AppName);
     }
 
     (:live)
