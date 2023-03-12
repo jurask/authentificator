@@ -33,6 +33,8 @@
             <iq:product id="instinct2"/>
             <iq:product id="instinct2s"/>
             <iq:product id="instinctcrossover"/>
+            <iq:product id="marq2"/>
+            <iq:product id="marq2aviator"/>
         </iq:products>
         <!--
             Use "Monkey C: Edit Permissions" from the Visual Studio Code command
