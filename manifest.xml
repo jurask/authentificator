@@ -15,6 +15,7 @@
         -->
         <iq:products>
             <iq:product id="d2mach1"/>
+            <iq:product id="enduro"/>
             <iq:product id="epix2"/>
             <iq:product id="fenix6"/>
             <iq:product id="fenix6pro"/>
