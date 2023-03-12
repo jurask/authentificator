@@ -8,8 +8,8 @@
    sodipodi:docname="key.svg"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    inkscape:export-filename="key.png"
-   inkscape:export-xdpi="61.939999"
-   inkscape:export-ydpi="61.939999"
+   inkscape:export-xdpi="92.903229"
+   inkscape:export-ydpi="92.903229"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -29,9 +29,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="8.0000001"
-     inkscape:cx="19.4375"
-     inkscape:cy="29.625"
+     inkscape:zoom="4"
+     inkscape:cx="-4.125"
+     inkscape:cy="-3.5"
      inkscape:window-width="1920"
      inkscape:window-height="1007"
      inkscape:window-x="0"
@@ -41,6 +41,13 @@
      shape-rendering="crispEdges" />
   <title
      id="title2">key</title>
+  <rect
+     style="fill:#2b0000;stroke-width:0;stroke-linecap:round"
+     id="rect341"
+     width="61.988564"
+     height="61.984295"
+     x="0.009647131"
+     y="0.0079735518" />
   <path
      d="m 17.31897,20.083523 a 4.205146,4.205146 0 0 0 4.095923,-4.095922 4.0959225,4.0959225 0 0 0 -8.191845,0 4.205146,4.205146 0 0 0 4.095922,4.095922 z M 21.414893,6.4304512 a 15.15491,15.15491 0 0 1 15.018379,15.0183798 18.595484,18.595484 0 0 1 -1.91143,7.645721 l 21.02573,21.025729 V 55.58151 H 44.625114 V 50.120281 H 39.163888 V 44.659053 H 33.702659 L 24.964693,35.921087 A 15.974094,15.974094 0 0 1 21.414893,36.46721 15.15491,15.15491 0 0 1 6.3965133,21.448831 15.15491,15.15491 0 0 1 21.414893,6.4304512 Z"
      id="path4"
