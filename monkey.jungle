@@ -1,138 +1,138 @@
 project.manifest = manifest.xml
 
 # d2mach1
-d2mach1.excludeAnnotations = nolive
+d2mach1.excludeAnnotations = nolive;bitmap;bitmapfr
 d2mach1.resourcePath = $(d2mach1.resourcePath);resources-icon60_65536;resources-epix2
 
 # enduro
-enduro.excludeAnnotations = live
+enduro.excludeAnnotations = live;bitmap;simple;bitmapfr
 enduro.resourcePath = $(enduro.resourcePath);resources-icon40_64
 
 # epix2
-epix2.excludeAnnotations = nolive
+epix2.excludeAnnotations = nolive;bitmap;bitmapfr
 epix2.resourcePath = $(epix2.resourcePath);resources-icon60_65536
 
 # fenix6
-fenix6.excludeAnnotations = live
+fenix6.excludeAnnotations = live;bitmap;simple;bitmapfr
 fenix6.resourcePath = $(fenix6.resourcePath);resources-icon40_64
 
 # fenix6pro
-fenix6pro.excludeAnnotations = nolive
+fenix6pro.excludeAnnotations = nolive;bitmap;bitmapfr
 fenix6pro.resourcePath = $(fenix6.resourcePath);resources-icon40_64
 
 # fenix6s
-fenix6s.excludeAnnotations = live
+fenix6s.excludeAnnotations = live;bitmap;simple;bitmapfr
 fenix6s.resourcePath = $(fenix6s.resourcePath);resources-icon40_64
 
 # fenix6spro
-fenix6spro.excludeAnnotations = nolive
+fenix6spro.excludeAnnotations = nolive;bitmap;bitmapfr
 fenix6spro.resourcePath = $(fenix6spro.resourcePath);resources-icon40_64
 
 # fenix6xpro
-fenix6xpro.excludeAnnotations = nolive
+fenix6xpro.excludeAnnotations = nolive;bitmap;bitmapfr
 fenix6xpro.resourcePath = $(fenix6xpro.resourcePath);resources-icon40_64
 
 # fenix7
-fenix7.excludeAnnotations = nolive
+fenix7.excludeAnnotations = nolive;bitmap;bitmapfr
 fenix7.resourcePath = $(fenix7.resourcePath);resources-icon40_64
 
 # fenix7s
-fenix7s.excludeAnnotations = nolive
+fenix7s.excludeAnnotations = nolive;bitmap;bitmapfr
 fenix7s.resourcePath = $(fenix7s.resourcePath);resources-icon40_64
 
 # fr55
-fr55.excludeAnnotations = live
+fr55.excludeAnnotations = live;bitmap;simple;bitmapfr
 fr55.resourcePath = $(fr55.resourcePath);resources-icon35-8
 
 # fr255
-fr255.excludeAnnotations = nolive
+fr255.excludeAnnotations = nolive;bitmap;bitmapfr
 fr255.resourcePath = $(fr255.resourcePath);resources-icon40_64
 
 # fr255m
-fr255m.excludeAnnotations = nolive
+fr255m.excludeAnnotations = nolive;bitmap;bitmapfr
 fr255m.resourcePath = $(fr255m.resourcePath);resources-icon40_64
 
 # fr255s
-fr255s.excludeAnnotations = nolive
+fr255s.excludeAnnotations = nolive;bitmap;bitmapfr
 fr255s.resourcePath = $(fr255s.resourcePath);resources-icon40_64
 
 # fr255sm
-fr255sm.excludeAnnotations = nolive
+fr255sm.excludeAnnotations = nolive;bitmap;bitmapfr
 fr255sm.resourcePath = $(fr255sm.resourcePath);resources-icon40_64;resources-fr255s
 
 # fr265
-fr265.excludeAnnotations = nolive
+fr265.excludeAnnotations = nolive;simple;bitmap
 fr265.resourcePath = $(fr265.resourcePath);resources-icon60_65536HC;resources-froled
 
 # fr265s
-fr265s.excludeAnnotations = nolive
+fr265s.excludeAnnotations = nolive;simple;bitmap
 fr265s.resourcePath = $(fr265s.resourcePath);resources-icon60_65536HC;resources-froled
 
 # fr955
-fr955.excludeAnnotations = live
+fr955.excludeAnnotations = live;bitmap;simple;bitmapfr
 fr955.resourcePath = $(fr955.resourcePath);resources-icon40_64
 
 # fr965
-fr965.excludeAnnotations = nolive
+fr965.excludeAnnotations = nolive;simple;bitmap
 fr965.resourcePath = $(fr965.resourcePath);resources-icon65_65536HC;resources-froled
 
 # instinct2
-instinct2.excludeAnnotations = live
+instinct2.excludeAnnotations = live;bitmap;simple;bitmapfr
 
 # instinct2s
-instinct2s.excludeAnnotations = live
+instinct2s.excludeAnnotations = live;bitmap;simple;bitmapfr
 
 # instinctcrossover
-instinctcrossover.excludeAnnotations = live
+instinctcrossover.excludeAnnotations = live;bitmap;simple;bitmapfr
 
 # marq2
-marq2.excludeAnnotations = nolive
+marq2.excludeAnnotations = nolive;bitmap;bitmapfr
 marq2.resourcePath = $(marq2.resourcePath);resources-icon60_65536;resources-epix2
 
 # marq2aviator
-marq2aviator.excludeAnnotations = nolive
+marq2aviator.excludeAnnotations = nolive;bitmap;bitmapfr
 marq2aviator.resourcePath = $(marq2aviator.resourcePath);resources-icon60_65536;resources-epix2
 
 # marqadventurer
-marqadventurer.excludeAnnotations = live
+marqadventurer.excludeAnnotations = live;bitmap;simple;bitmapfr
 marqadventurer.resourcePath = $(marqadventurer.resourcePath);resources-icon40_64
 
 # marqathlete
-marqathlete.excludeAnnotations = live
+marqathlete.excludeAnnotations = live;bitmap;simple;bitmapfr
 marqathlete.resourcePath = $(marqathlete.resourcePath);resources-icon40_64
 
 # marqaviator
-marqaviator.excludeAnnotations = live
+marqaviator.excludeAnnotations = live;bitmap;simple;bitmapfr
 marqaviator.resourcePath = $(marqaviator.resourcePath);resources-icon40_64
 
 # marqcaptain
-marqcaptain.excludeAnnotations = live
+marqcaptain.excludeAnnotations = live;bitmap;simple;bitmapfr
 marqcaptain.resourcePath = $(marqcaptain.resourcePath);resources-icon40_64
 
 # marqcommander
-marqcommander.excludeAnnotations = live
+marqcommander.excludeAnnotations = live;bitmap;simple;bitmapfr
 marqcommander.resourcePath = $(marqcommander.resourcePath);resources-icon40_64
 
 # marqdriver
-marqdriver.excludeAnnotations = live
+marqdriver.excludeAnnotations = live;bitmap;simple;bitmapfr
 marqdriver.resourcePath = $(marqdriver.resourcePath);resources-icon40_64
 
 # marqexpedition
-marqexpedition.excludeAnnotations = live
+marqexpedition.excludeAnnotations = live;bitmap;simple;bitmapfr
 marqexpedition.resourcePath = $(marqexpedition.resourcePath);resources-icon40_64
 
 # marqgolfer
-marqgolfer.excludeAnnotations = live
+marqgolfer.excludeAnnotations = live;bitmap;simple;bitmapfr
 marqgolfer.resourcePath = $(marqgolfer.resourcePath);resources-icon40_64
 
 # venu2
-venu2.excludeAnnotations = nolive
+venu2.excludeAnnotations = nolive;simple;bitmapfr
 venu2.resourcePath = $(venu2.resourcePath);resources-icon70_65536HC
 
 # venu2plus
-venu2plus.excludeAnnotations = nolive
+venu2plus.excludeAnnotations = nolive;simple;bitmapfr
 venu2plus.resourcePath = $(venu2plus.resourcePath);resources-icon70_65536HC;resources-venu2
 
 # venu2s
-venu2s.excludeAnnotations = nolive
+venu2s.excludeAnnotations = nolive;simple;bitmapfr
 venu2s.resourcePath = $(venu2s.resourcePath);resources-icon61_65536HC;resources-venu2

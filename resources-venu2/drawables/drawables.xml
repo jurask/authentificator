@@ -1,0 +1,3 @@
+<drawables>
+    <bitmap id="glanceGradient" scope="glance" filename="gradient.png" />
+</drawables>
