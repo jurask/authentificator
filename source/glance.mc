@@ -81,7 +81,7 @@ class Glance extends WatchUi.GlanceView{
         }
         // draw glance
         var space = (height - nlines * line) / 2;
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(0, space, Graphics.FONT_GLANCE, _name, Graphics.TEXT_JUSTIFY_LEFT);
         dc.drawText(0, space + (nlines - 1) * line, Graphics.FONT_GLANCE, _account, Graphics.TEXT_JUSTIFY_LEFT);
         dc.drawText(width, space + (nlines - 1) * line, Graphics.FONT_GLANCE, _code, Graphics.TEXT_JUSTIFY_RIGHT);
