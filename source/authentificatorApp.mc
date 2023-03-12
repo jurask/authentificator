@@ -31,6 +31,11 @@ class authentificatorApp extends Application.AppBase {
         return [new Glance()];
     }
 
+    (:glance)
+    function getGlanceTheme() as AppBase.GlanceTheme{
+        return AppBase.GLANCE_THEME_GOLD;
+    }
+
     public function numAccounts() as Number{
         var accounts = Application.Properties.getValue("accounts");
         if (accounts != null){
