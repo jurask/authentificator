@@ -69,56 +69,56 @@ class CircleProgress extends Drawable{
         dc.drawLine(width / 2, _offset, endValue, _offset);
         lengthToDraw -= horizontalLine / 2;
         // upper left corner
-        if (lengthToDraw <= 0){
+        if (lengthToDraw <= 1){
             return;
         }
         endValue = calcDrawValue(90, 180, corner, lengthToDraw);
         dc.drawArc(_offset + radius, _offset + radius, radius, Graphics.ARC_COUNTER_CLOCKWISE, 90, endValue);
         lengthToDraw -= corner;
         // left line
-        if (lengthToDraw <= 0){
+        if (lengthToDraw <= 1){
             return;
         }
         endValue = calcDrawValue(_offset+radius, height-_offset - radius, verticalLine, lengthToDraw);
         dc.drawLine(_offset, _offset+radius, _offset, endValue);
         lengthToDraw -= verticalLine;
         // lower left corner
-        if (lengthToDraw <= 0){
+        if (lengthToDraw <= 1){
             return;
         }
         endValue = calcDrawValue(180, 270, corner, lengthToDraw);
         dc.drawArc(_offset + radius, height - _offset - radius - 1, radius, Graphics.ARC_COUNTER_CLOCKWISE, 180, endValue);
         lengthToDraw -= corner;
         // lower line
-        if (lengthToDraw <= 0){
+        if (lengthToDraw <= 1){
             return;
         }
         endValue = calcDrawValue(_offset+radius, width - radius - _offset, horizontalLine, lengthToDraw);
         dc.drawLine(radius+_offset, height - _offset, endValue, height - _offset);
         lengthToDraw -= horizontalLine;
         // lower right corner
-        if (lengthToDraw <= 0){
+        if (lengthToDraw <= 1){
             return;
         }
         endValue = calcDrawValue(270, 360, corner, lengthToDraw);
         dc.drawArc(width - _offset - radius - 1, height - _offset - radius - 1, radius, Graphics.ARC_COUNTER_CLOCKWISE, 270, endValue);
         lengthToDraw -= corner;
         // right line
-        if (lengthToDraw <= 0){
+        if (lengthToDraw <= 1){
             return;
         }
         endValue = calcDrawValue(height-_offset - radius, _offset+radius, verticalLine, lengthToDraw);
         dc.drawLine(width - _offset, height-_offset - radius, width - _offset, endValue);
         lengthToDraw -= verticalLine;
         // upper right corner
-        if (lengthToDraw <= 0){
+        if (lengthToDraw <= 1){
             return;
         }
         endValue = calcDrawValue(0, 90, corner, lengthToDraw);
         dc.drawArc(width - _offset - radius - 1, _offset + radius, radius, Graphics.ARC_COUNTER_CLOCKWISE, 0, endValue);
         lengthToDraw -= corner;
         // upper line
-        if (lengthToDraw <= 0){
+        if (lengthToDraw <= 1){
             return;
         }
         endValue = calcDrawValue(width - radius - _offset, width / 2, horizontalLine/2, lengthToDraw);
