@@ -71,8 +71,6 @@ class authentificatorApp extends Application.AppBase {
             } else {
                 WatchUi.switchToView(new NoAccountsView(), null, WatchUi.SLIDE_BLINK);
             }
-        } else {
-            WatchUi.switchToView(getGlanceView()[0], null, WatchUi.SLIDE_BLINK);
         }
     }
 
