@@ -34,7 +34,7 @@ class Glance extends WatchUi.GlanceView{
     }
 
     (:live)
-    function onLayout(dc as Dc){
+    public function onLayout(dc as Dc) as Void {
         var glance = Application.Properties.getValue("glance");
         if (glance){
             if (numAccounts() != 0){
@@ -57,7 +57,7 @@ class Glance extends WatchUi.GlanceView{
     }
 
     (:nolive)
-    function onLayout(dc as Dc){
+    public function onLayout(dc as Dc) as Void {
         var glance = Application.Properties.getValue("glance");
         if (glance){
             if (numAccounts() != 0){
@@ -74,17 +74,17 @@ class Glance extends WatchUi.GlanceView{
         }
     }
 
-    private function updateCode(){
+    private function updateCode() as Void {
         _code = _otp.code();
     }
 
     (:live)
-    function timerCallback() as Void{
+    public function timerCallback() as Void {
         WatchUi.requestUpdate();
     }
 
     (:live)
-    function onUpdate(dc as Dc){
+    public function onUpdate(dc as Dc) as Void {
         // calculate all data
         var width = dc.getWidth();
         var height = dc.getHeight();
@@ -151,7 +151,7 @@ class Glance extends WatchUi.GlanceView{
     }
 
     (:nolive)
-    function onUpdate(dc as Dc){
+    public function onUpdate(dc as Dc) as Void{
         // calculate all data
         var width = dc.getWidth();
         var height = dc.getHeight();
@@ -173,7 +173,7 @@ class Glance extends WatchUi.GlanceView{
         return 0;
     }
 
-    function onHide() as Void{
+    public function onHide() as Void{
         _timer.stop();
     }
 }

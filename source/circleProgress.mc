@@ -25,7 +25,7 @@ class CircleProgress extends Drawable{
     }
 
     (:circularscreen)
-    public function draw(dc as Dc){
+    public function draw(dc as Dc) as Void {
         if (!_visible){
             return;
         }
@@ -49,7 +49,7 @@ class CircleProgress extends Drawable{
     }
 
     (:rectangularscreen)
-    public function draw(dc as Dc){
+    public function draw(dc as Dc) as Void {
         if (!_visible){
             return;
         }
@@ -135,7 +135,7 @@ class CircleProgress extends Drawable{
         return startpos + (endpos - startpos) * portion;
     }
 
-    public function setVisible(visible as Boolean){
+    public function setVisible(visible as Boolean) as Void{
         _visible = visible;
     }
 }

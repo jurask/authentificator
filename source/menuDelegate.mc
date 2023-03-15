@@ -22,7 +22,7 @@ class MenuDelegate extends WatchUi.ActionMenuDelegate {
         }
     }
 
-    private function modifyCounter(delta as Number){
+    private function modifyCounter(delta as Number) as Void {
         var accounts = Application.Properties.getValue("accounts");
         var timeout = (accounts as Array<Dictionary<String, String or Number>>)[_accountNum]["timeout"];
         if (timeout == null){

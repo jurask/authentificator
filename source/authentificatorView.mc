@@ -14,7 +14,7 @@ class AuthentificatorView extends WatchUi.View {
     }
 
     // Load your resources here
-    function onLayout(dc as Dc) as Void {
+    public function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.MainLayout(dc));
         var name = findDrawableById("name") as Text;
         name.setText(_otp.name());
@@ -23,7 +23,7 @@ class AuthentificatorView extends WatchUi.View {
     // Called when this View is brought to the foreground. Restore
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
-    function onShow() as Void {
+    public function onShow() as Void {
         if (_otp.type() == 0){
             var hint = findDrawableById("menu");
             hint.setVisible(false);
@@ -39,7 +39,7 @@ class AuthentificatorView extends WatchUi.View {
     }
 
     // Update the view
-    function onUpdate(dc as Dc) as Void {
+    public function onUpdate(dc as Dc) as Void {
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
     }
@@ -47,11 +47,11 @@ class AuthentificatorView extends WatchUi.View {
     // Called when this View is removed from the screen. Save the
     // state of this View here. This includes freeing resources from
     // memory.
-    function onHide() as Void {
+    public function onHide() as Void {
         WatchUi.cancelAllAnimations();
     }
 
-    function animateTOTP() as Void {
+    public function animateTOTP() as Void {
         var time = Time.now().value();
         var totpTime = _otp.timeout() - Math.floor(time % _otp.timeout());
         var initValue = totpTime.toFloat() / _otp.timeout() * 100;
@@ -60,7 +60,7 @@ class AuthentificatorView extends WatchUi.View {
         animate(progress, :percents, ANIM_TYPE_LINEAR, initValue, 0, totpTime, method(:animateTOTP));
     }
 
-    private function updateCode(){
+    private function updateCode() as Void{
         var codeLabel = findDrawableById("code") as Text;
         codeLabel.setText(_otp.code());
     }

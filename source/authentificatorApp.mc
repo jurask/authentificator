@@ -26,13 +26,13 @@ class authentificatorApp extends Application.AppBase {
     }
 
     (:glance)
-    function getGlanceView() as Lang.Array<WatchUi.GlanceView> or Null{
+    public function getGlanceView() as Lang.Array<WatchUi.GlanceView> or Null{
         updateKeys();
         return [new Glance()];
     }
 
     (:glance)
-    function getGlanceTheme() as AppBase.GlanceTheme{
+    public function getGlanceTheme() as AppBase.GlanceTheme{
         return AppBase.GLANCE_THEME_GOLD;
     }
 
@@ -44,7 +44,7 @@ class authentificatorApp extends Application.AppBase {
         return 0;
     }
 
-    public function onSettingsChanged(){
+    public function onSettingsChanged() as Void {
         updateKeys();
         var view = WatchUi.getCurrentView();
         if (view[0] instanceof AuthentificatorView || view[0] instanceof NoAccountsView ){
@@ -58,7 +58,7 @@ class authentificatorApp extends Application.AppBase {
         }
     }
 
-    private function updateKeys(){
+    private function updateKeys() as Void {
         var accounts = Application.Properties.getValue("accounts");
         if (accounts == null){
             return;

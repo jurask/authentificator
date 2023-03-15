@@ -10,7 +10,7 @@ class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
         _accountNum = accountNum;
     }
 
-    function onNextPage(){
+    public function onNextPage() as Boolean {
         var totalAccounts = Application.getApp().numAccounts();
         var nextAccount = _accountNum + 1;
         if (nextAccount >= totalAccounts){
@@ -20,7 +20,7 @@ class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
         return true;
     }
 
-    function onPreviousPage(){
+    public function onPreviousPage() as Boolean {
         var totalAccounts = Application.getApp().numAccounts();
         var nextAccount = _accountNum - 1;
         if (nextAccount >= totalAccounts){
@@ -32,7 +32,7 @@ class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
         return true;
     }
 
-    function onSelect(){
+    public function onSelect() as Boolean {
         var accounts = Application.Properties.getValue("accounts");
         var type = (accounts as Array<Dictionary<String, String or Number>>)[_accountNum]["type"];
         if (type == 1){
