@@ -29,7 +29,7 @@ class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
     }
 
     public function onNextPage() as Boolean {
-        var totalAccounts = Application.getApp().numAccounts();
+        var totalAccounts = Application.getApp().accounts().numAccounts();
         var nextAccount = _accountNum + 1;
         if (nextAccount >= totalAccounts){
             nextAccount = 0;
@@ -39,7 +39,7 @@ class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
     }
 
     public function onPreviousPage() as Boolean {
-        var totalAccounts = Application.getApp().numAccounts();
+        var totalAccounts = Application.getApp().accounts().numAccounts();
         var nextAccount = _accountNum - 1;
         if (nextAccount >= totalAccounts){
             nextAccount = 0;
@@ -51,9 +51,8 @@ class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
     }
 
     public function onSelect() as Boolean {
-        var accounts = Application.Properties.getValue("accounts");
-        var type = (accounts as Array<Dictionary<String, String or Number>>)[_accountNum]["type"];
-        if (type == 1){
+        var account = Application.getApp().accounts().getAccount(_accountNum);
+        if (account instanceof HOTPAccount){
             WatchUi.showActionMenu(new $.MainMenu(), new $.MenuDelegate(_accountNum));
             return true;
         } else {

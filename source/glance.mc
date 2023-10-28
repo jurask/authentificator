@@ -55,16 +55,16 @@ class Glance extends WatchUi.GlanceView{
     public function onLayout(dc as Dc) as Void {
         var glance = Application.Properties.getValue("glance");
         if (glance){
-            if (numAccounts() != 0){
+            if (Application.getApp().accounts().numAccounts() != 0){
                 _otp = new OtpCalc(0);
-                _account = _otp.name();
+                _account = _otp.account().name();
                 updateCode();
             } else {
                 _account = "No accounts defined";
                 _code = "";
             }
             if (_otp != null){
-                if (_otp.type() == 0){
+                if (_otp.account() instanceof TOTPAccount){
                     _timer.start(method(:timerCallback), 1000, true);
                 }
             }
@@ -78,9 +78,9 @@ class Glance extends WatchUi.GlanceView{
     public function onLayout(dc as Dc) as Void {
         var glance = Application.Properties.getValue("glance");
         if (glance){
-            if (numAccounts() != 0){
+            if (Application.getApp().accounts().numAccounts() != 0){
                 _otp = new OtpCalc(0);
-                _account = _otp.name();
+                _account = _otp.account().name();
                 updateCode();
             } else {
                 _account = "No accounts defined";
@@ -109,15 +109,15 @@ class Glance extends WatchUi.GlanceView{
         var line = Graphics.getFontHeight(Graphics.FONT_GLANCE);
         var nlines = 2;
         if (_otp != null){
-            if (_otp.type() == 0){
+            if (_otp.account instanceof TOTPAccount){
                 nlines = 3;
                 var time = Time.now().value();
-                var totpTime = _otp.timeout() - Math.floor(time % _otp.timeout());
+                var totpTime = _otp.account().timeout() - Math.floor(time % _otp.timeout());
                 if (totpTime > _lastTimeout){
                     updateCode();
                 }
                 _lastTimeout = totpTime;
-                var timeLeft = totpTime.toFloat() / _otp.timeout();
+                var timeLeft = totpTime.toFloat() / _otp.account().timeout();
                 drawProgress(dc, timeLeft);
             }
         }
@@ -182,15 +182,7 @@ class Glance extends WatchUi.GlanceView{
         dc.drawText(0, space + (nlines - 1) * line, Graphics.FONT_GLANCE, _account, Graphics.TEXT_JUSTIFY_LEFT);
         dc.drawText(width, space + (nlines - 1) * line, Graphics.FONT_GLANCE, _code, Graphics.TEXT_JUSTIFY_RIGHT);
     }
-
-    public function numAccounts() as Number{
-        var accounts = Application.Properties.getValue("accounts");
-        if (accounts != null){
-            return accounts.size();
-        }
-        return 0;
-    }
-
+ 
     public function onHide() as Void{
         _timer.stop();
     }

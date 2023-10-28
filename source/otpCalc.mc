@@ -21,60 +21,19 @@ import Toybox.Time;
 
 (:glance)
 class OtpCalc{
-    private var _id;
-    private var _accountName as String;
-    private var _type as Number;
-    private var _timeout as Number;
-    private var _key as ByteArray;
-    private var _digits as Number;
+    private var _account as Account;
 
     function initialize(id as Number){
-        _id = id;
-        var accounts = Application.Properties.getValue("accounts");
-        _accountName = (accounts as Array<Dictionary<String, String or Number>>)[id]["name"];
-        _type = (accounts as Array<Dictionary<String, String or Number>>)[id]["type"];
-        _digits = (accounts as Array<Dictionary<String, String or Number>>)[id]["digits"];
-        var keystr = (accounts as Array<Dictionary<String, String or Number>>)[id]["keystr"];
-        _timeout = 0;
-        if (_digits == null){
-            _digits = 6;
-        }
-        if (_digits < 1){
-            _digits = 1;
-        } else if (_digits > 10){
-            _digits = 10;
-        }
-        reloadCounter();
-        // load key from db
-        var keys = Application.Storage.getValue("keys");
-        var keyid = keystr.substring(8, keystr.length()).toNumber();
-        _key = (keys as Dictionary<Number, ByteArray>)[keyid];
+        var accounts = Application.getApp().accounts();
+        _account = accounts.getAccount(id);
     }
 
-    public function name() as String{
-        return _accountName;
+    public function account() as Account{
+        return _account;
     }
 
-    public function type() as Number{
-        return _type;
-    }
-
-    public function timeout() as Number{
-        return _timeout;
-    }
-
-    public function reloadCounter() as Void{
-        var accounts = Application.Properties.getValue("accounts");
-        _timeout = (accounts  as Array<Dictionary<String, String or Number>>)[_id]["timeout"];
-        if (_timeout == null){
-            _timeout = 30;
-        }
-        if (_timeout < 0){
-            _timeout = 30;
-        }
-    }
-
-    private function otpHmacSha1(key as ByteArray, message as Number) as Number{
+    private function otpHmacSha1(message as Number) as Number{
+        var key = _account.key();
         // prepare key
         var sha1 = new Cryptography.Hash({:algorithm => Cryptography.HASH_SHA1});
         if (key.size() > 64){
@@ -120,13 +79,15 @@ class OtpCalc{
 
     public function code() as String{
         var msg = 0;
-        if (_type == 0){
+        if (_account instanceof TOTPAccount){
             var time = Time.now().value();
-            msg = Math.floor(time / _timeout);
+            var totpAccount = _account as TOTPAccount;
+            msg = Math.floor(time / totpAccount.timeout());
         } else {
-            msg = _timeout;
+            var hotpAccount = _account as HOTPAccount;
+            msg = hotpAccount.counter();
         }
-        var value = otpHmacSha1(_key, msg).format("%010d");
-        return (value.substring(10-_digits, 10));
+        var value = otpHmacSha1(msg).format("%010d");
+        return (value.substring(10-_account.digits(), 10));
     }
 }
