@@ -109,15 +109,16 @@ class Glance extends WatchUi.GlanceView{
         var line = Graphics.getFontHeight(Graphics.FONT_GLANCE);
         var nlines = 2;
         if (_otp != null){
-            if (_otp.account instanceof TOTPAccount){
+            if (_otp.account() instanceof TOTPAccount){
+                var account = (_otp as OtpCalc).account() as TOTPAccount;
                 nlines = 3;
                 var time = Time.now().value();
-                var totpTime = _otp.account().timeout() - Math.floor(time % _otp.timeout());
+                var totpTime = account.timeout() - Math.floor(time % account.timeout());
                 if (totpTime > _lastTimeout){
                     updateCode();
                 }
                 _lastTimeout = totpTime;
-                var timeLeft = totpTime.toFloat() / _otp.account().timeout();
+                var timeLeft = totpTime.toFloat() / account.timeout();
                 drawProgress(dc, timeLeft);
             }
         }

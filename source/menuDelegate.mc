@@ -32,7 +32,7 @@ class MenuDelegate extends WatchUi.ActionMenuDelegate {
 
     //! Handle a menu item being selected
     //! @param item Symbol identifier of the menu item that was chosen
-    public function onSelect(item as WatchUi.MenuItem) as Void {
+    public function onSelect(item as WatchUi.ActionMenuItem) as Void {
         if (item.getId() == :next) {
             modifyCounter(1);
         } else if (item.getId() == :previous) {

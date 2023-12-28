@@ -37,16 +37,16 @@ class authentificatorApp extends Application.AppBase {
     }
 
     // Return the initial view of your application here
-    function getInitialView() as Array<Views or InputDelegates>? {
+    function getInitialView() as [ WatchUi.Views ] or [ WatchUi.Views, WatchUi.InputDelegates ] {
         _accounts.updateKeys();
         if (_accounts.numAccounts() != 0){
-            return [ new AuthentificatorView(0), new AuthentificatorViewDelegate(0) ] as Array<Views or InputDelegates>;
+            return [ new AuthentificatorView(0), new AuthentificatorViewDelegate(0) ];
         }
-        return [ new NoAccountsView() ] as Array<Views or InputDelegates>;
+        return [ new NoAccountsView() ];
     }
 
     (:glance)
-    public function getGlanceView() as Lang.Array<WatchUi.GlanceView> or Null{
+    public function getGlanceView() as [ WatchUi.GlanceView ] or [ WatchUi.GlanceView, WatchUi.GlanceViewDelegate ] or Null {
         _accounts.updateKeys();
         return [new Glance()];
     }
