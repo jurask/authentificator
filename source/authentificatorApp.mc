@@ -25,6 +25,7 @@ class authentificatorApp extends Application.AppBase {
 
     function initialize() {
         AppBase.initialize();
+        AccountsModel.updateKeys();
         _accounts = new AccountsModel();
     }
 
@@ -38,7 +39,6 @@ class authentificatorApp extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() as [ WatchUi.Views ] or [ WatchUi.Views, WatchUi.InputDelegates ] {
-        _accounts.updateKeys();
         if (_accounts.numAccounts() != 0){
             return [ new AuthentificatorView(0), new AuthentificatorViewDelegate(0) ];
         }
@@ -47,7 +47,6 @@ class authentificatorApp extends Application.AppBase {
 
     (:glance)
     public function getGlanceView() as [ WatchUi.GlanceView ] or [ WatchUi.GlanceView, WatchUi.GlanceViewDelegate ] or Null {
-        _accounts.updateKeys();
         return [new Glance()];
     }
 
@@ -57,7 +56,8 @@ class authentificatorApp extends Application.AppBase {
     }
 
     public function onSettingsChanged() as Void {
-        _accounts.updateKeys();
+        AccountsModel.updateKeys();
+        _accounts = new AccountsModel();
         var view = WatchUi.getCurrentView();
         if (view[0] instanceof AuthentificatorView || view[0] instanceof NoAccountsView ){
             if (_accounts.numAccounts() != 0){

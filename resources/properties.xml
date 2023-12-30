@@ -1,41 +1,145 @@
 <resources>
     <properties>
-        <property id="accounts" type="array" ></property>
         <property id="glance" type="boolean">true</property>
+
+        <property id="name1" type="string"></property>
+        <property id="type1" type="number">0</property>
+        <property id="key1" type="string"></property>
+        <property id="timeout1" type="number">30</property>
+        <property id="digits1" type="number">6</property>
+
+        <property id="name2" type="string"></property>
+        <property id="type2" type="number">0</property>
+        <property id="key2" type="string"></property>
+        <property id="timeout2" type="number">30</property>
+        <property id="digits2" type="number">6</property>
+
+        <property id="name3" type="string"></property>
+        <property id="type3" type="number">0</property>
+        <property id="key3" type="string"></property>
+        <property id="timeout3" type="number">30</property>
+        <property id="digits3" type="number">6</property>
+
+        <property id="name4" type="string"></property>
+        <property id="type4" type="number">0</property>
+        <property id="key4" type="string"></property>
+        <property id="timeout4" type="number">30</property>
+        <property id="digits4" type="number">6</property>
+
+        <property id="name5" type="string"></property>
+        <property id="type5" type="number">0</property>
+        <property id="key5" type="string"></property>
+        <property id="timeout5" type="number">30</property>
+        <property id="digits5" type="number">6</property>
     </properties>
 
     <settings>
-        <setting propertyKey="@Properties.accounts" title="@Strings.Accounts">
-            <setting title="@Strings.Name" type="string">
-                <settingConfig id="name" type="alphaNumeric" />
+        <setting propertyKey="@Properties.glance" title="@Strings.Glance">
+            <settingConfig type="boolean" />
+        </setting>
+        <group id="acc1" title="@Strings.Account1">
+            <setting propertyKey="@Properties.name1" title="@Strings.Name">
+                <settingConfig type="alphaNumeric"/>
             </setting>
-            <setting title="@Strings.Type" type="number">
-                <settingConfig id="type" type="list">
+            <setting propertyKey="@Properties.type1" title="@Strings.Type">
+                <settingConfig type="list">
                     <listEntry value="0">@Strings.TOTP</listEntry>
                     <listEntry value="1">@Strings.HOTP</listEntry>
                 </settingConfig>
             </setting>
-            <setting title="@Strings.Key" type="string" prompt="@Strings.KeyPrompt">
-                <settingConfig id="keystr" type="alphaNumeric" />
+            <setting propertyKey="@Properties.key1" title="@Strings.Key" prompt="@Strings.KeyPrompt">
+                <settingConfig type="alphaNumeric" />
             </setting>
-            <setting title="@Strings.Timeout" type="number" prompt="@Strings.TimeoutPrompt">
-                <settingConfig id="timeout" type="numeric" />
+            <setting propertyKey="@Properties.timeout1" title="@Strings.Timeout" prompt="@Strings.TimeoutPrompt">
+                <settingConfig type="numeric" />
             </setting>
-            <setting title="@Strings.Digits" type="number">
-                <settingConfig id="digits" type="numeric" />
+            <setting propertyKey="@Properties.digits1" title="@Strings.Digits">
+                <settingConfig type="numeric" />
             </setting>
-            <defaults>
-                <entry>
-                    <default id="name"></default>
-                    <default id="type">0</default>
-                    <default id="keystr"></default>
-                    <default id="timeout">30</default>
-                    <default id="digits">6</default>
-                </entry>
-            </defaults>
-        </setting>
-        <setting propertyKey="@Properties.glance" title="@Strings.Glance">
-            <settingConfig type="boolean" />
-        </setting>
+        </group>
+
+        <group id="acc2" title="@Strings.Account2">
+            <setting propertyKey="@Properties.name2" title="@Strings.Name">
+                <settingConfig type="alphaNumeric"/>
+            </setting>
+            <setting propertyKey="@Properties.type2" title="@Strings.Type">
+                <settingConfig type="list">
+                    <listEntry value="0">@Strings.TOTP</listEntry>
+                    <listEntry value="1">@Strings.HOTP</listEntry>
+                </settingConfig>
+            </setting>
+            <setting propertyKey="@Properties.key2" title="@Strings.Key" prompt="@Strings.KeyPrompt">
+                <settingConfig type="alphaNumeric" />
+            </setting>
+            <setting propertyKey="@Properties.timeout2" title="@Strings.Timeout" prompt="@Strings.TimeoutPrompt">
+                <settingConfig type="numeric" />
+            </setting>
+            <setting propertyKey="@Properties.digits2" title="@Strings.Digits">
+                <settingConfig type="numeric" />
+            </setting>
+        </group>
+
+        <group id="acc3" title="@Strings.Account3">
+            <setting propertyKey="@Properties.name3" title="@Strings.Name">
+                <settingConfig type="alphaNumeric"/>
+            </setting>
+            <setting propertyKey="@Properties.type3" title="@Strings.Type">
+                <settingConfig type="list">
+                    <listEntry value="0">@Strings.TOTP</listEntry>
+                    <listEntry value="1">@Strings.HOTP</listEntry>
+                </settingConfig>
+            </setting>
+            <setting propertyKey="@Properties.key3" title="@Strings.Key" prompt="@Strings.KeyPrompt">
+                <settingConfig type="alphaNumeric" />
+            </setting>
+            <setting propertyKey="@Properties.timeout3" title="@Strings.Timeout" prompt="@Strings.TimeoutPrompt">
+                <settingConfig type="numeric" />
+            </setting>
+            <setting propertyKey="@Properties.digits3" title="@Strings.Digits">
+                <settingConfig type="numeric" />
+            </setting>
+        </group>
+
+        <group id="acc4" title="@Strings.Account4">
+            <setting propertyKey="@Properties.name4" title="@Strings.Name">
+                <settingConfig type="alphaNumeric"/>
+            </setting>
+            <setting propertyKey="@Properties.type4" title="@Strings.Type">
+                <settingConfig type="list">
+                    <listEntry value="0">@Strings.TOTP</listEntry>
+                    <listEntry value="1">@Strings.HOTP</listEntry>
+                </settingConfig>
+            </setting>
+            <setting propertyKey="@Properties.key4" title="@Strings.Key" prompt="@Strings.KeyPrompt">
+                <settingConfig type="alphaNumeric" />
+            </setting>
+            <setting propertyKey="@Properties.timeout4" title="@Strings.Timeout" prompt="@Strings.TimeoutPrompt">
+                <settingConfig type="numeric" />
+            </setting>
+            <setting propertyKey="@Properties.digits4" title="@Strings.Digits">
+                <settingConfig type="numeric" />
+            </setting>
+        </group>
+
+        <group id="acc5" title="@Strings.Account5">
+            <setting propertyKey="@Properties.name5" title="@Strings.Name">
+                <settingConfig type="alphaNumeric"/>
+            </setting>
+            <setting propertyKey="@Properties.type5" title="@Strings.Type">
+                <settingConfig type="list">
+                    <listEntry value="0">@Strings.TOTP</listEntry>
+                    <listEntry value="1">@Strings.HOTP</listEntry>
+                </settingConfig>
+            </setting>
+            <setting propertyKey="@Properties.key5" title="@Strings.Key" prompt="@Strings.KeyPrompt">
+                <settingConfig type="alphaNumeric" />
+            </setting>
+            <setting propertyKey="@Properties.timeout5" title="@Strings.Timeout" prompt="@Strings.TimeoutPrompt">
+                <settingConfig type="numeric" />
+            </setting>
+            <setting propertyKey="@Properties.digits5" title="@Strings.Digits">
+                <settingConfig type="numeric" />
+            </setting>
+        </group>
     </settings>
 </resources>

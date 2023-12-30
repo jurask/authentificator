@@ -1,6 +1,11 @@
 <strings>
     <string id="AppName" scope="glance">Keychain</string>
     <string id="Accounts">Keys</string>
+    <string id="Account1">Account 1</string>
+    <string id="Account2">Account 2</string>
+    <string id="Account3">Account 3</string>
+    <string id="Account4">Account 4</string>
+    <string id="Account5">Account 5</string>
     <string id="Name">Name</string>
     <string id="Type">Type</string>
     <string id="TOTP">TOTP</string>

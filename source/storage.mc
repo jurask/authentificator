@@ -17,99 +17,80 @@
 */
 
 import Toybox.Lang;
+import Toybox.Application.Storage;
+import Toybox.Application.Properties;
 
 (:glance)
-class AccountsModel{
-
-    public function numAccounts() as Number{
-        var accounts = Application.Properties.getValue("accounts");
-        if (accounts != null){
-            return accounts.size();
+class AccountLoader {
+    function loadAccount(i as Number) as Account {
+        var indexStr = i.format("%i");
+        var name = Properties.getValue("name" + indexStr);
+        var type = Properties.getValue("type" + indexStr);
+        var keyStr = Properties.getValue("key" + indexStr);
+        var timeout = Properties.getValue("timeout" + indexStr);
+        var digits = Properties.getValue("digits" + indexStr);
+        var key = _loadKey(keyStr);
+        if (type == 0) {
+            return new TOTPAccount(name, key, digits, timeout);
+        } else {
+            return new HOTPAccount(name, key, digits, timeout);
         }
-        return 0;
     }
 
-    public function getAccount(index as Number) as Account{
-        var accounts = Application.Properties.getValue("accounts");
-        var accountName = (accounts as Array<Dictionary<String, String or Number>>)[index]["name"];
-        var type = (accounts as Array<Dictionary<String, String or Number>>)[index]["type"];
-        var digits = (accounts as Array<Dictionary<String, String or Number>>)[index]["digits"];
-        var keystr = (accounts as Array<Dictionary<String, String or Number>>)[index]["keystr"];
-        var timeoutCounter = (accounts  as Array<Dictionary<String, String or Number>>)[index]["timeout"];
-        var keys = Application.Storage.getValue("keys");
+    private function _loadKey(keystr as String) as ByteArray {
+        var keys = Storage.getValue("keys");
         var keyid = keystr.substring(8, keystr.length()).toNumber();
-        var key = (keys as Dictionary<Number, ByteArray>)[keyid];
-        switch (type){
-            case 0:
-                return new TOTPAccount(index, accountName, key, digits, timeoutCounter);
-            case 1:
-                return new HOTPAccount(index, accountName, key, digits, timeoutCounter);
-            default:
-                throw new InvalidValueException("invalid account type");
+        return (keys as Dictionary<Number, ByteArray>)[keyid];
+    }
+}
+
+(:glance)
+class AccountUpdater {
+    function updateKey(i as Number) as Number {
+        var indexStr = i.format("%i");
+        var keyStr = Properties.getValue("key" + indexStr);
+        if(keyStr.toCharArray()[0] != '#') {
+            Properties.setValue("key" + indexStr, _registerKey(keyStr));
         }
+        keyStr = Properties.getValue("key" + indexStr);
+        return keyStr.substring(8, keyStr.length()).toNumber();
     }
 
-    public function updateKeys() as Void {
-        var accounts = Application.Properties.getValue("accounts");
-        if (accounts == null){
-            return;
-        }
-        var keys = Application.Storage.getValue("keys");
-        if (keys == null){
+    private function _registerKey(keyStr as String) as String {
+        var keys = Storage.getValue("keys");
+        if (keys == null) {
             keys = {};
         }
-        // add new keys to store
-        var foundids = [];
-        for(var i = 0; i < accounts.size(); i++){
-            var key = (accounts as Array<Dictionary<String, String or Number>>)[i]["keystr"];
-            if (key == null){
-                key = "";
-            }
-            if(key.toCharArray()[0] != '#'){
-                var binkey = decodeBase32(key);
-                var num = 0;
-                while(keys.hasKey(num)){
-                    num++;
-                }
-                foundids.add(num);
-                (keys as Dictionary<Number, ByteArray>).put(num, binkey);
-                (accounts as Array<Dictionary<String, String or Number>>)[i].put("keystr", "#hidden "+num.format("%d"));
-            } else {
-                foundids.add(key.substring(8, key.length()).toNumber());
-            }
+        var binkey = _decodeBase32(keyStr);
+        var num = 0;
+        while(keys.hasKey(num)) {
+            num++;
         }
-        // remove unused keys
-        var ids = keys.keys();
-        for(var i = 0; i < ids.size(); i++){
-            var id = ids[i];
-            if (foundids.indexOf(id) == -1){
-                keys.remove(id);
-            }
-        }
-        Application.Properties.setValue("accounts", accounts);
-        Application.Storage.setValue("keys", keys);
+        (keys as Dictionary<Number, ByteArray>).put(num, binkey);
+        Storage.setValue("keys", keys);
+        return "#hidden "+num.format("%d");
     }
 
-    private function decodeBase32(key as String) as ByteArray{
+    private function _decodeBase32(key as String) as ByteArray {
         key = key.toUpper().toCharArray();
         var out = []b;
         var block = [];
-        for (var i = 0; i < key.size(); i++){
+        for (var i = 0; i < key.size(); i++) {
             var character = key[i];
-            if (character <= 'Z'  && character >= 'A'){
+            if (character <= 'Z'  && character >= 'A') {
                 block.add(character.toNumber() - 65);
-            } else if (character <= '7' && character >= '2'){
+            } else if (character <= '7' && character >= '2') {
                 block.add(character.toNumber() - 24);
             }
             // add padding
             var validBytes = 5;
-            if (i == key.size() - 1){
+            if (i == key.size() - 1) {
                 var paddedChars = 0;
-                while (block.size() != 8){
+                while (block.size() != 8) {
                     block.add(0);
                     paddedChars++;
                 }
-                switch(paddedChars){
+                switch(paddedChars) {
                     case 6:
                         validBytes = 1;
                         break;
@@ -124,12 +105,12 @@ class AccountsModel{
                         break;
                 }
             }
-            if (block.size() == 8){
+            if (block.size() == 8) {
                 // rearrange block bits
                 var buf = 0l;
                 var decodedBits = 0;
                 var ba = []b;
-                for (var j = 0; j < 8; j++){
+                for (var j = 0; j < 8; j++) {
                     var chr = block[7 - j];
                     buf = buf | (chr << decodedBits);
                     decodedBits += 5;
@@ -149,14 +130,69 @@ class AccountsModel{
 }
 
 (:glance)
+class AccountsModel {
+    private var _accounts as Array?;
+
+    public function initialize () {
+        var loader = new AccountLoader();
+        var operation = loader.method(:loadAccount);
+        _accounts = _walkAccounts(operation);
+    }
+
+    static function updateKeys() {
+        // add new accounts
+        var updater = new AccountUpdater();
+        var operation = updater.method(:updateKey);
+        var validAccountIDs = _walkAccounts(operation);
+        // clear unused
+        var keys = Storage.getValue("keys");
+        if (keys == null){
+            keys = {};
+        }
+        var storedKeys = keys.keys();
+        for(var i = 0; i < storedKeys.size(); i++){
+            var id = storedKeys[i];
+            if (validAccountIDs.indexOf(id) == -1){
+                keys.remove(id);
+            }
+        }
+        Storage.setValue("keys", keys);
+    }
+
+    static function _walkAccounts(operation as Method) as Array {
+        var results = [];
+        for(var i = 1; i <=5; i++) {
+            if (!_validateAccount(i)) {
+                continue;
+            }
+            results.add(operation.invoke(i));
+        }
+        return results;
+    }
+
+    static function _validateAccount(index as Number) as Boolean {
+        var indexStr = index.format("%i");
+        var name = Properties.getValue("name" + indexStr);
+        var keyStr = Properties.getValue("key" + indexStr);
+        return !(name.equals("") || keyStr.equals(""));
+    }
+
+    public function numAccounts() as Number {
+        return _accounts.size();
+    }
+
+    public function getAccount(index as Number) as Account {
+        return _accounts[index];
+    }
+}
+
+(:glance)
 class Account{
-    private var _id as Number;
     private var _accountName as String;
     private var _key as ByteArray;
     private var _digits as Number;
 
-    function initialize(id as Number, accountName as String, key as ByteArray, digits as Number){
-        _id = id;
+    function initialize(accountName as String, key as ByteArray, digits as Number){
         _accountName = accountName;
         _key = key;
         if (digits == null){
@@ -188,8 +224,8 @@ class Account{
 class TOTPAccount extends Account{
     private var _timeout as Number;
 
-    function initialize(id as Number, accountName as String, key as ByteArray, digits as Number, timeout as Number){
-        Account.initialize(id, accountName, key, digits);
+    function initialize(accountName as String, key as ByteArray, digits as Number, timeout as Number){
+        Account.initialize(accountName, key, digits);
         _timeout = timeout;
     }
 
@@ -202,8 +238,8 @@ class TOTPAccount extends Account{
 class HOTPAccount extends Account{
     private var _counter as Number;
 
-    function initialize(id as Number, accountName as String, key as ByteArray, digits as Number, counter as Number){
-        Account.initialize(id, accountName, key, digits);
+    function initialize(accountName as String, key as ByteArray, digits as Number, counter as Number){
+        Account.initialize(accountName, key, digits);
         _counter = counter;
     }
 
