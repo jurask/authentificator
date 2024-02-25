@@ -73,16 +73,7 @@ class OtpCalc{
     }
 
     public function code() as String{
-        var msg = 0;
-        //TODO move to account implementation
-        if (_account instanceof TOTPAccount){
-            var time = Time.now().value();
-            var totpAccount = _account as TOTPAccount;
-            msg = Math.floor(time / totpAccount.timeout());
-        } else {
-            var hotpAccount = _account as HOTPAccount;
-            msg = hotpAccount.counter();
-        }
+        var msg = _account.message();
         var value = _otpHmacSha1(msg).format("%010d");
         return (value.substring(10-_account.digits(), 10));
     }

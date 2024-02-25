@@ -223,6 +223,10 @@ class Account{
     public function digits() as Number{
         return _digits;
     }
+
+    public function message() as Number{
+        return 0;
+    }
 }
 
 (:glance)
@@ -237,6 +241,11 @@ class TOTPAccount extends Account{
     public function timeout() as Number{
         return _timeout;
     }
+
+    public function message() as Number{
+        var time = Time.now().value();
+        return Math.floor(time / _timeout);
+    }
 }
 
 (:glance)
@@ -249,6 +258,10 @@ class HOTPAccount extends Account{
     }
 
     public function counter() as Number{
+        return _counter;
+    }
+
+    public function message() as Number{
         return _counter;
     }
 }
