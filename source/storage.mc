@@ -33,7 +33,7 @@ class AccountLoader {
         if (type == 0) {
             return new TOTPAccount(name, key, digits, timeout);
         } else {
-            return new HOTPAccount(name, key, digits, timeout);
+            return new HOTPAccount(name, key, digits, timeout, i);
         }
     }
 
@@ -251,10 +251,18 @@ class TOTPAccount extends Account{
 (:glance)
 class HOTPAccount extends Account{
     private var _counter as Number;
+    private var _index as Number;
 
-    function initialize(accountName as String, key as ByteArray, digits as Number, counter as Number){
+    function initialize(accountName as String, key as ByteArray, digits as Number, counter as Number, index as Number){
         Account.initialize(accountName, key, digits);
         _counter = counter;
+        _index = index;
+    }
+
+    public function updateCounter(delta as Number){
+        _counter += delta;
+        var indexStr = _index.format("%i");
+        Properties.setValue("timeout" + indexStr, _counter);
     }
 
     public function counter() as Number{

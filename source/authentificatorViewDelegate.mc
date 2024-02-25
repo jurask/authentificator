@@ -27,18 +27,15 @@ class TOTPDelegate extends AuthentificatorViewDelegate {
 }
 
 class HOTPDelegate extends AuthentificatorViewDelegate {
-    public function initialize(current as Number, total as Number, factory as ViewFactory){
+    private var _account as HOTPAccount;
+
+    public function initialize(current as Number, total as Number, factory as ViewFactory, account as HOTPAccount){
         AuthentificatorViewDelegate.initialize(current, total, factory);
+        _account = account;
     }
 
    public function onSelect() as Boolean {
-        /*var account = Application.getApp().accounts().getAccount(_accountNum);
-        if (account instanceof HOTPAccount){
-            WatchUi.showActionMenu(new $.MainMenu(), new $.MenuDelegate(_accountNum));
-            return true;
-        } else {
-            return false;
-        }*/
+        WatchUi.showActionMenu(new Rez.Menus.ActionMenu(), new $.MenuDelegate(_account));
         return true;
     }
 }

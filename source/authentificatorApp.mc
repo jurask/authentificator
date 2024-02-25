@@ -49,7 +49,7 @@ class ViewFactory {
         if (account instanceof TOTPAccount){
             return new TOTPDelegate(accountNumber, numAccounts, self);
         } else {
-            return new HOTPDelegate(accountNumber, numAccounts, self);
+            return new HOTPDelegate(accountNumber, numAccounts, self, account as HOTPAccount);
         }
     }
 }
