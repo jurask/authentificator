@@ -54,7 +54,7 @@ class Glance extends WatchUi.GlanceView{
     (:live)
     public function onLayout(dc as Dc) as Void {
         var glance = Application.Properties.getValue("glance");
-        if (glance){
+        /*if (glance){
             if (Application.getApp().accounts().numAccounts() != 0){
                 _otp = new OtpCalc(0);
                 _account = _otp.account().name();
@@ -68,10 +68,10 @@ class Glance extends WatchUi.GlanceView{
                     _timer.start(method(:timerCallback), 1000, true);
                 }
             }
-        } else {
+        } else {*/
             _account = "";
             _code = "";
-        }
+        //}
     }
 
     (:nolive)
@@ -108,7 +108,7 @@ class Glance extends WatchUi.GlanceView{
         var height = dc.getHeight();
         var line = Graphics.getFontHeight(Graphics.FONT_GLANCE);
         var nlines = 2;
-        if (_otp != null){
+        /*if (_otp != null){
             if (_otp.account() instanceof TOTPAccount){
                 var account = (_otp as OtpCalc).account() as TOTPAccount;
                 nlines = 3;
@@ -121,7 +121,7 @@ class Glance extends WatchUi.GlanceView{
                 var timeLeft = totpTime.toFloat() / account.timeout();
                 drawProgress(dc, timeLeft);
             }
-        }
+        }*/
 `        // draw glance
         var space = (height - nlines * line) / 2;
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);

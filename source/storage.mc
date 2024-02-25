@@ -133,13 +133,18 @@ class AccountUpdater {
 class AccountsModel {
     private var _accounts as Array?;
 
-    public function initialize () {
+    public function initialize() {
+        _updateKeys();
         var loader = new AccountLoader();
         var operation = loader.method(:loadAccount);
         _accounts = _walkAccounts(operation);
     }
 
-    static function updateKeys() {
+    public function reinitialize() {
+        initialize();
+    }
+
+    private function _updateKeys() {
         // add new accounts
         var updater = new AccountUpdater();
         var operation = updater.method(:updateKey);

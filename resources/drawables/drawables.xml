@@ -1,4 +1,6 @@
 <drawables>
     <drawable-list id="outerCircle" background="Graphics.COLOR_TRANSPARENT">
     </drawable-list>
+    <drawable-list id="Background" background="Graphics.COLOR_TRANSPARENT">
+    </drawable-list>
 </drawables>

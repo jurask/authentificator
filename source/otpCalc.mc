@@ -23,16 +23,11 @@ import Toybox.Time;
 class OtpCalc{
     private var _account as Account;
 
-    function initialize(id as Number){
-        var accounts = Application.getApp().accounts();
-        _account = accounts.getAccount(id);
+    function initialize(account as Account){
+        _account = account;
     }
 
-    public function account() as Account{
-        return _account;
-    }
-
-    private function otpHmacSha1(message as Number) as Number{
+    private function _otpHmacSha1(message as Number) as Number{
         var key = _account.key();
         // prepare key
         var sha1 = new Cryptography.Hash({:algorithm => Cryptography.HASH_SHA1});
@@ -46,8 +41,8 @@ class OtpCalc{
         // pad key with ipad and opad bytes
         var ipad = 0x36;
         var opad = 0x5C;
-        var outerKey = padKey(key, opad);
-        var innerKey = padKey(key, ipad);
+        var outerKey = _padKey(key, opad);
+        var innerKey = _padKey(key, ipad);
         // encode message
         var msgdata = new[8]b;
         msgdata.encodeNumber(message, Lang.NUMBER_FORMAT_UINT32, {:offset => 4, :endianness => Lang.ENDIAN_BIG});
@@ -69,7 +64,7 @@ class OtpCalc{
         return result;
     }
 
-    private function padKey(key as ByteArray, pad as Number) as ByteArray{
+    private function _padKey(key as ByteArray, pad as Number) as ByteArray{
         var out = []b;
         for (var i = 0; i < key.size(); i++){
             out.add(key[i] ^ pad);
@@ -79,6 +74,7 @@ class OtpCalc{
 
     public function code() as String{
         var msg = 0;
+        //TODO move to account implementation
         if (_account instanceof TOTPAccount){
             var time = Time.now().value();
             var totpAccount = _account as TOTPAccount;
@@ -87,7 +83,7 @@ class OtpCalc{
             var hotpAccount = _account as HOTPAccount;
             msg = hotpAccount.counter();
         }
-        var value = otpHmacSha1(msg).format("%010d");
+        var value = _otpHmacSha1(msg).format("%010d");
         return (value.substring(10-_account.digits(), 10));
     }
 }

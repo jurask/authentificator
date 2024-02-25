@@ -20,43 +20,58 @@ import Toybox.WatchUi;
 import Toybox.Lang;
 import Toybox.Application;
 
-class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
-    private var _accountNum as Number;
+class TOTPDelegate extends AuthentificatorViewDelegate {
+    public function initialize(current as Number, total as Number, factory as ViewFactory){
+        AuthentificatorViewDelegate.initialize(current, total, factory);
+    }
+}
 
-    function initialize(accountNum as Number) {
-        BehaviorDelegate.initialize();
-        _accountNum = accountNum;
+class HOTPDelegate extends AuthentificatorViewDelegate {
+    public function initialize(current as Number, total as Number, factory as ViewFactory){
+        AuthentificatorViewDelegate.initialize(current, total, factory);
     }
 
-    public function onNextPage() as Boolean {
-        var totalAccounts = Application.getApp().accounts().numAccounts();
-        var nextAccount = _accountNum + 1;
-        if (nextAccount >= totalAccounts){
-            nextAccount = 0;
-        }
-        WatchUi.switchToView(new AuthentificatorView(nextAccount), new AuthentificatorViewDelegate(nextAccount), WatchUi.SLIDE_UP);
-        return true;
-    }
-
-    public function onPreviousPage() as Boolean {
-        var totalAccounts = Application.getApp().accounts().numAccounts();
-        var nextAccount = _accountNum - 1;
-        if (nextAccount >= totalAccounts){
-            nextAccount = 0;
-        } else if (nextAccount < 0){
-            nextAccount = totalAccounts - 1;
-        }
-        WatchUi.switchToView(new AuthentificatorView(nextAccount), new AuthentificatorViewDelegate(nextAccount), WatchUi.SLIDE_DOWN);
-        return true;
-    }
-
-    public function onSelect() as Boolean {
-        var account = Application.getApp().accounts().getAccount(_accountNum);
+   public function onSelect() as Boolean {
+        /*var account = Application.getApp().accounts().getAccount(_accountNum);
         if (account instanceof HOTPAccount){
             WatchUi.showActionMenu(new $.MainMenu(), new $.MenuDelegate(_accountNum));
             return true;
         } else {
             return false;
+        }*/
+        return true;
+    }
+}
+
+class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
+    private var _current as Number;
+    private var _total as Number;
+    private var _factory as ViewFactory;
+
+    function initialize(current as Number, total as Number, factory as ViewFactory) {
+        BehaviorDelegate.initialize();
+        _current = current;
+        _total = total;
+        _factory = factory;
+    }
+
+    public function onNextPage() as Boolean {
+        var next = _current + 1;
+        if (next >= _total){
+            next = 0;
         }
+        WatchUi.switchToView(_factory.createView(next), _factory.createDelegate(next), WatchUi.SLIDE_UP);
+        return true;
+    }
+
+    public function onPreviousPage() as Boolean {
+        var next = _current - 1;
+        if (next >= _total){
+            next = 0;
+        } else if (next < 0){
+            next = _total - 1;
+        }
+        WatchUi.switchToView(_factory.createView(next), _factory.createDelegate(next), WatchUi.SLIDE_DOWN);
+        return true;
     }
 }

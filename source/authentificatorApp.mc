@@ -20,12 +20,45 @@ import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
+class ViewFactory {
+    private var _accounts as AccountsModel;
+
+    public function initialize(accountModel as AccountsModel){
+        _accounts = accountModel;
+    }
+
+    public function createView(accountNumber as Number){
+        var numAccounts = _accounts.numAccounts();
+        if (numAccounts == 0){
+            return new NoAccountsView();
+        }
+        var account = _accounts.getAccount(accountNumber);
+        if (account instanceof TOTPAccount){
+            return new TOTPView(account);
+        } else {
+            return new HOTPView(account as HOTPAccount);
+        }
+    }
+
+    public function createDelegate(accountNumber as Number){
+        var numAccounts = _accounts.numAccounts();
+        if (numAccounts == 0){
+            return new WatchUi.BehaviorDelegate();
+        }
+        var account = _accounts.getAccount(accountNumber);
+        if (account instanceof TOTPAccount){
+            return new TOTPDelegate(accountNumber, numAccounts, self);
+        } else {
+            return new HOTPDelegate(accountNumber, numAccounts, self);
+        }
+    }
+}
+
 class authentificatorApp extends Application.AppBase {
     private var _accounts as AccountsModel;
 
     function initialize() {
         AppBase.initialize();
-        AccountsModel.updateKeys();
         _accounts = new AccountsModel();
     }
 
@@ -39,10 +72,8 @@ class authentificatorApp extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() as [ WatchUi.Views ] or [ WatchUi.Views, WatchUi.InputDelegates ] {
-        if (_accounts.numAccounts() != 0){
-            return [ new AuthentificatorView(0), new AuthentificatorViewDelegate(0) ];
-        }
-        return [ new NoAccountsView() ];
+        var factory = new ViewFactory(_accounts);
+        return [factory.createView(0), factory.createDelegate(0)];
     }
 
     (:glance)
@@ -56,20 +87,12 @@ class authentificatorApp extends Application.AppBase {
     }
 
     public function onSettingsChanged() as Void {
-        AccountsModel.updateKeys();
-        _accounts = new AccountsModel();
+        _accounts.reinitialize();
         var view = WatchUi.getCurrentView();
-        if (view[0] instanceof AuthentificatorView || view[0] instanceof NoAccountsView ){
-            if (_accounts.numAccounts() != 0){
-                WatchUi.switchToView(new AuthentificatorView(0), new AuthentificatorViewDelegate(0), WatchUi.SLIDE_BLINK);
-            } else {
-                WatchUi.switchToView(new NoAccountsView(), null, WatchUi.SLIDE_BLINK);
-            }
+        if (view[0] instanceof BaseView){
+            var factory = new ViewFactory(_accounts);
+            WatchUi.switchToView(factory.createView(0), factory.createDelegate(0), WatchUi.SLIDE_BLINK);
         }
-    }
-
-    public function accounts() as AccountsModel{
-        return _accounts;
     }
 }    
 
