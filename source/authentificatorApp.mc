@@ -78,7 +78,19 @@ class authentificatorApp extends Application.AppBase {
 
     (:glance)
     public function getGlanceView() as [ WatchUi.GlanceView ] or [ WatchUi.GlanceView, WatchUi.GlanceViewDelegate ] or Null {
-        return [new Glance()];
+        var glance = Application.Properties.getValue("glance");
+        if (!glance){
+            return [new Glance()];
+        }
+        if (_accounts.numAccounts() == 0){
+            return [new NoAccountsGlance()];
+        }
+        var account = _accounts.getAccount(0);
+        if (account instanceof TOTPAccount) {
+            return [new TOTPGlance(account)];
+        } else {
+            return [new OTPGlance(account)];
+        }
     }
 
     (:glance)

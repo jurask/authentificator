@@ -23,77 +23,117 @@ import Toybox.Lang;
 import Toybox.Timer;
 
 (:glance)
-class Glance extends WatchUi.GlanceView{
-    private var _name as String;
-    private var _account as String;
-    private var _code as String;
-    private var _timer as Timer.Timer;
-    private var _otp as OtpCalc or Null;
-    private var _lastTimeout as Number;
+class Glance extends WatchUi.GlanceView {
+    protected var _nlines;
 
-    function initialize(){
+    public function initialize(){
         GlanceView.initialize();
-        _name = loadName();
-        _account = "";
-        _code = "";
-        _timer = new Timer.Timer();
-        _otp = null;
-        _lastTimeout = -2;
+        _nlines = 2;
     }
 
     (:upper)
-    private function loadName() as String{
+    protected function getName() as String {
         return WatchUi.loadResource($.Rez.Strings.AppName).toUpper();
     }
 
     (:lower)
-    private function loadName() as String{
+    protected function getName() as String {
         return WatchUi.loadResource($.Rez.Strings.AppName);
+    }
+
+    protected function getCode() as String {
+        return "";
+    }
+
+    protected function getAccount() as String {
+        return "";
+    }
+
+    public function onUpdate(dc as Dc) {
+        var width = dc.getWidth();
+        var height = dc.getHeight();
+        var line = Graphics.getFontHeight(Graphics.FONT_GLANCE);
+        var space = (height - _nlines * line) / 2;
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(0, space, Graphics.FONT_GLANCE, getName(), Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(0, space + (_nlines - 1) * line, Graphics.FONT_GLANCE, getAccount(), Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(width, space + (_nlines - 1) * line, Graphics.FONT_GLANCE, getCode(), Graphics.TEXT_JUSTIFY_RIGHT);
+    }
+}
+
+(:glance)
+class NoAccountsGlance extends Glance {
+    public function initialize() {
+        Glance.initialize();
+    }
+
+    protected function getAccount() as String {
+        return "No accounts defined";
+    }
+}
+
+(:glance)
+class OTPGlance extends Glance {
+    protected var _account as Account;
+    protected var _otp as OtpCalc;
+
+    public function initialize(account as Account) {
+        Glance.initialize();
+        _account = account;
+        _otp = new OtpCalc(account);
+    }
+
+    protected function getAccount() as String {
+        return _account.name();
+    }
+
+    protected function getCode() as String {
+        return _otp.code();
+    }
+}
+
+(:glance)
+class TOTPGlance extends OTPGlance {
+    (:live) private var _code as String;
+    (:live) private var _timer as Timer.Timer;
+    (:live) private var _lastTimeout as Number;
+
+    (:nolive)
+    public function initialize (account as Account) {
+        OTPGlance.initialize(account);
+    }
+
+    (:live)
+    public function initialize(account as Account) {
+        OTPGlance.initialize(account);
+        _code = _otp.code();
+        _lastTimeout = -2;
+        _timer = new Timer.Timer();
+        _nlines = 3;
+    }
+
+    (:live)
+    public function getCode() as String {
+        return _code;
     }
 
     (:live)
     public function onLayout(dc as Dc) as Void {
-        var glance = Application.Properties.getValue("glance");
-        /*if (glance){
-            if (Application.getApp().accounts().numAccounts() != 0){
-                _otp = new OtpCalc(0);
-                _account = _otp.account().name();
-                updateCode();
-            } else {
-                _account = "No accounts defined";
-                _code = "";
-            }
-            if (_otp != null){
-                if (_otp.account() instanceof TOTPAccount){
-                    _timer.start(method(:timerCallback), 1000, true);
-                }
-            }
-        } else {*/
-            _account = "";
-            _code = "";
-        //}
+        _timer.start(method(:timerCallback), 1000, true);
     }
 
-    (:nolive)
-    public function onLayout(dc as Dc) as Void {
-        var glance = Application.Properties.getValue("glance");
-        if (glance){
-            if (Application.getApp().accounts().numAccounts() != 0){
-                _otp = new OtpCalc(0);
-                _account = _otp.account().name();
-                updateCode();
-            } else {
-                _account = "No accounts defined";
-                _code = "";
-            }
-        } else {
-            _account = "";
-            _code = "";
+    (:live)
+    public function onUpdate(dc as Dc) as Void {
+        OTPGlance.onUpdate(dc);
+        var time = Time.now().value();
+        var totpAccount = _account as TOTPAccount;
+        var totpTime = totpAccount.timeout() - Math.floor(time % totpAccount.timeout());
+        if (totpTime > _lastTimeout){
+            _otp.code();
         }
-    }
-
-    private function updateCode() as Void {
-        _code = _otp.code();
+        _lastTimeout = totpTime;
+        var timeLeft = totpTime.toFloat() / totpAccount.timeout();
+        drawProgress(dc, timeLeft);
     }
 
     (:live)
@@ -102,32 +142,8 @@ class Glance extends WatchUi.GlanceView{
     }
 
     (:live)
-    public function onUpdate(dc as Dc) as Void {
-        // calculate all data
-        var width = dc.getWidth();
-        var height = dc.getHeight();
-        var line = Graphics.getFontHeight(Graphics.FONT_GLANCE);
-        var nlines = 2;
-        /*if (_otp != null){
-            if (_otp.account() instanceof TOTPAccount){
-                var account = (_otp as OtpCalc).account() as TOTPAccount;
-                nlines = 3;
-                var time = Time.now().value();
-                var totpTime = account.timeout() - Math.floor(time % account.timeout());
-                if (totpTime > _lastTimeout){
-                    updateCode();
-                }
-                _lastTimeout = totpTime;
-                var timeLeft = totpTime.toFloat() / account.timeout();
-                drawProgress(dc, timeLeft);
-            }
-        }*/
-`        // draw glance
-        var space = (height - nlines * line) / 2;
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(0, space, Graphics.FONT_GLANCE, _name, Graphics.TEXT_JUSTIFY_LEFT);
-        dc.drawText(0, space + (nlines - 1) * line, Graphics.FONT_GLANCE, _account, Graphics.TEXT_JUSTIFY_LEFT);
-        dc.drawText(width, space + (nlines - 1) * line, Graphics.FONT_GLANCE, _code, Graphics.TEXT_JUSTIFY_RIGHT);
+    public function onHide() as Void{
+        _timer.stop();
     }
 
     (:simple)
@@ -167,24 +183,5 @@ class Glance extends WatchUi.GlanceView{
         dc.setColor(0xeb1445, 0xeb1445);
         dc.drawLine(width * timeLeft, height / 2-8, width * timeLeft, height / 2+3);
         dc.drawLine(width * timeLeft+1, height / 2-8, width * timeLeft+1, height / 2-3);
-    }
-
-    (:nolive)
-    public function onUpdate(dc as Dc) as Void{
-        // calculate all data
-        var width = dc.getWidth();
-        var height = dc.getHeight();
-        var line = Graphics.getFontHeight(Graphics.FONT_GLANCE);
-        var nlines = 2;
-        // draw glance
-        var space = (height - nlines * line) / 2;
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(0, space, Graphics.FONT_GLANCE, _name, Graphics.TEXT_JUSTIFY_LEFT);
-        dc.drawText(0, space + (nlines - 1) * line, Graphics.FONT_GLANCE, _account, Graphics.TEXT_JUSTIFY_LEFT);
-        dc.drawText(width, space + (nlines - 1) * line, Graphics.FONT_GLANCE, _code, Graphics.TEXT_JUSTIFY_RIGHT);
-    }
- 
-    public function onHide() as Void{
-        _timer.stop();
     }
 }
