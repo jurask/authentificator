@@ -114,7 +114,7 @@ class AccountUpdater {
                     var chr = block[7 - j];
                     buf = buf | (chr << decodedBits);
                     decodedBits += 5;
-                    if (decodedBits >= 8){
+                    if (decodedBits >= 8) {
                         ba.add((buf & 0xFF).toNumber());
                         buf = buf >> 8;
                         decodedBits -= 8;
@@ -192,84 +192,84 @@ class AccountsModel {
 }
 
 (:glance)
-class Account{
+class Account {
     private var _accountName as String;
     private var _key as ByteArray;
     private var _digits as Number;
 
-    function initialize(accountName as String, key as ByteArray, digits as Number){
+    function initialize(accountName as String, key as ByteArray, digits as Number) {
         _accountName = accountName;
         _key = key;
-        if (digits == null){
+        if (digits == null) {
             _digits = 6;
         }
-        else if (digits < 1){
+        else if (digits < 1) {
             _digits = 1;
-        } else if (digits > 10){
+        } else if (digits > 10) {
             _digits = 10;
         } else {
             _digits = digits;
         }
     }
 
-    public function name() as String{
+    public function name() as String {
         return _accountName;
     }
 
-    public function key() as ByteArray{
+    public function key() as ByteArray {
         return _key;
     }
 
-    public function digits() as Number{
+    public function digits() as Number {
         return _digits;
     }
 
-    public function message() as Number{
+    public function message() as Number {
         return 0;
     }
 }
 
 (:glance)
-class TOTPAccount extends Account{
+class TOTPAccount extends Account {
     private var _timeout as Number;
 
-    function initialize(accountName as String, key as ByteArray, digits as Number, timeout as Number){
+    function initialize(accountName as String, key as ByteArray, digits as Number, timeout as Number) {
         Account.initialize(accountName, key, digits);
         _timeout = timeout;
     }
 
-    public function timeout() as Number{
+    public function timeout() as Number {
         return _timeout;
     }
 
-    public function message() as Number{
+    public function message() as Number {
         var time = Time.now().value();
         return Math.floor(time / _timeout);
     }
 }
 
 (:glance)
-class HOTPAccount extends Account{
+class HOTPAccount extends Account {
     private var _counter as Number;
     private var _index as Number;
 
-    function initialize(accountName as String, key as ByteArray, digits as Number, counter as Number, index as Number){
+    function initialize(accountName as String, key as ByteArray, digits as Number, counter as Number, index as Number) {
         Account.initialize(accountName, key, digits);
         _counter = counter;
         _index = index;
     }
 
-    public function updateCounter(delta as Number){
+    public function updateCounter(delta as Number) {
         _counter += delta;
         var indexStr = _index.format("%i");
         Properties.setValue("timeout" + indexStr, _counter);
     }
 
-    public function counter() as Number{
+    public function counter() as Number {
         return _counter;
     }
 
-    public function message() as Number{
+    public function message() as Number {
         return _counter;
     }
 }

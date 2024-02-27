@@ -21,7 +21,7 @@ import Toybox.Lang;
 import Toybox.Application;
 
 class TOTPDelegate extends AuthentificatorViewDelegate {
-    public function initialize(current as Number, total as Number, factory as ViewFactory){
+    public function initialize(current as Number, total as Number, factory as ViewFactory) {
         AuthentificatorViewDelegate.initialize(current, total, factory);
     }
 }
@@ -29,7 +29,7 @@ class TOTPDelegate extends AuthentificatorViewDelegate {
 class HOTPDelegate extends AuthentificatorViewDelegate {
     private var _account as HOTPAccount;
 
-    public function initialize(current as Number, total as Number, factory as ViewFactory, account as HOTPAccount){
+    public function initialize(current as Number, total as Number, factory as ViewFactory, account as HOTPAccount) {
         AuthentificatorViewDelegate.initialize(current, total, factory);
         _account = account;
     }
@@ -40,7 +40,7 @@ class HOTPDelegate extends AuthentificatorViewDelegate {
     }
 }
 
-class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
+class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate {
     private var _current as Number;
     private var _total as Number;
     private var _factory as ViewFactory;
@@ -54,7 +54,7 @@ class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
 
     public function onNextPage() as Boolean {
         var next = _current + 1;
-        if (next >= _total){
+        if (next >= _total) {
             next = 0;
         }
         WatchUi.switchToView(_factory.createView(next), _factory.createDelegate(next), WatchUi.SLIDE_UP);
@@ -63,9 +63,9 @@ class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate{
 
     public function onPreviousPage() as Boolean {
         var next = _current - 1;
-        if (next >= _total){
+        if (next >= _total) {
             next = 0;
-        } else if (next < 0){
+        } else if (next < 0) {
             next = _total - 1;
         }
         WatchUi.switchToView(_factory.createView(next), _factory.createDelegate(next), WatchUi.SLIDE_DOWN);

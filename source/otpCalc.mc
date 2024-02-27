@@ -20,22 +20,22 @@ import Toybox.Lang;
 import Toybox.Time;
 
 (:glance)
-class OtpCalc{
+class OtpCalc {
     private var _account as Account;
 
-    function initialize(account as Account){
+    function initialize(account as Account) {
         _account = account;
     }
 
-    private function _otpHmacSha1(message as Number) as Number{
+    private function _otpHmacSha1(message as Number) as Number {
         var key = _account.key();
         // prepare key
         var sha1 = new Cryptography.Hash({:algorithm => Cryptography.HASH_SHA1});
-        if (key.size() > 64){
+        if (key.size() > 64) {
             sha1.update(key);
             key = sha1.digest();
         }
-        while(key.size() != 64){
+        while(key.size() != 64) {
             key.add(0x00);
         }
         // pad key with ipad and opad bytes
@@ -64,15 +64,15 @@ class OtpCalc{
         return result;
     }
 
-    private function _padKey(key as ByteArray, pad as Number) as ByteArray{
+    private function _padKey(key as ByteArray, pad as Number) as ByteArray {
         var out = []b;
-        for (var i = 0; i < key.size(); i++){
+        for (var i = 0; i < key.size(); i++) {
             out.add(key[i] ^ pad);
         }
         return out;
     }
 
-    public function code() as String{
+    public function code() as String {
         var msg = _account.message();
         var value = _otpHmacSha1(msg).format("%010d");
         return (value.substring(10-_account.digits(), 10));

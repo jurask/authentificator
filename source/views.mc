@@ -82,13 +82,13 @@ class AuthentificatorView extends BaseView {
         return layout;
     }
 
-    public function onLayout(dc as Dc){
+    public function onLayout(dc as Dc) as Void {
         BaseView.onLayout(dc);
         var name = findDrawableById("name") as Text;
         name.setText(_account.name());
     }
 
-    protected function updateCode() as Void{
+    protected function updateCode() as Void {
         var codeLabel = findDrawableById("code") as Text;
         codeLabel.setText(_calc.code());
     }

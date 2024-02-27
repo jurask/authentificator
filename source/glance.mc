@@ -26,7 +26,7 @@ import Toybox.Timer;
 class Glance extends WatchUi.GlanceView {
     protected var _nlines;
 
-    public function initialize(){
+    public function initialize() {
         GlanceView.initialize();
         _nlines = 2;
     }
@@ -49,7 +49,7 @@ class Glance extends WatchUi.GlanceView {
         return "";
     }
 
-    public function onUpdate(dc as Dc) {
+    public function onUpdate(dc as Dc) as Void  {
         var width = dc.getWidth();
         var height = dc.getHeight();
         var line = Graphics.getFontHeight(Graphics.FONT_GLANCE);
@@ -128,7 +128,7 @@ class TOTPGlance extends OTPGlance {
         var time = Time.now().value();
         var totpAccount = _account as TOTPAccount;
         var totpTime = totpAccount.timeout() - Math.floor(time % totpAccount.timeout());
-        if (totpTime > _lastTimeout){
+        if (totpTime > _lastTimeout) {
             _otp.code();
         }
         _lastTimeout = totpTime;
@@ -142,12 +142,12 @@ class TOTPGlance extends OTPGlance {
     }
 
     (:live)
-    public function onHide() as Void{
+    public function onHide() as Void {
         _timer.stop();
     }
 
     (:simple)
-    private function drawProgress(dc as Dc, timeLeft as Float) as Void{
+    private function drawProgress(dc as Dc, timeLeft as Float) as Void {
         var width = dc.getWidth();
         var height = dc.getHeight();
         dc.setPenWidth(2);
@@ -159,7 +159,7 @@ class TOTPGlance extends OTPGlance {
     }
 
     (:bitmap)
-    private function drawProgress(dc as Dc, timeLeft as Float) as Void{
+    private function drawProgress(dc as Dc, timeLeft as Float) as Void {
         var width = dc.getWidth();
         var height = dc.getHeight();
         dc.setPenWidth(3);
@@ -169,7 +169,7 @@ class TOTPGlance extends OTPGlance {
     }
 
     (:bitmapfr)
-    private function drawProgress(dc as Dc, timeLeft as Float) as Void{
+    private function drawProgress(dc as Dc, timeLeft as Float) as Void {
         var width = dc.getWidth();
         var height = dc.getHeight();
         dc.setPenWidth(3);
