@@ -129,7 +129,7 @@ class TOTPGlance extends OTPGlance {
         var totpAccount = _account as TOTPAccount;
         var totpTime = totpAccount.timeout() - Math.floor(time % totpAccount.timeout());
         if (totpTime > _lastTimeout) {
-            _otp.code();
+            _code = _otp.code();
         }
         _lastTimeout = totpTime;
         var timeLeft = totpTime.toFloat() / totpAccount.timeout();
