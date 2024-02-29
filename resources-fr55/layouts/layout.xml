@@ -1,13 +1,16 @@
-<layout id="MainLayout">
-    <drawable id="outerCircle" />
-    <drawable id="innerCircle" class="CircleProgress">
-        <param name="start">90.1</param>
-        <param name="end">90</param>
-        <param name="offset">3</param>
-        <param name="thickness">2</param>
-        <param name="color">Graphics.COLOR_RED</param>
-    </drawable>
-    <label id="code" text="" font="Graphics.FONT_NUMBER_MILD" x="center" y="center" justification="Graphics.TEXT_JUSTIFY_CENTER" />
-    <label id="name" text="" font="Graphics.FONT_SMALL" x="center" y="70%" justification="Graphics.TEXT_JUSTIFY_CENTER" />
-    <bitmap id="menu" personality="system_icon_dark__hint_action_menu system_loc__hint_action_menu" />
-</layout>
+<layouts>
+    <layout id="TOTPLayout">
+        <drawable id="innerCircle" class="CircleProgress">
+            <param name="start">90.1</param>
+            <param name="end">90</param>
+            <param name="offset">5</param>
+            <param name="thickness">4</param>
+            <param name="color">Graphics.COLOR_RED</param>
+        </drawable>
+    </layout>
+    <layout id="AuthentificatorLayout">
+        <drawable id="outerCircle" />
+        <label id="code" text="" font="Graphics.FONT_NUMBER_MILD" x="center" y="center" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+        <label id="name" text="" font="Graphics.FONT_SMALL" x="center" y="70%" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    </layout>
+</layouts>

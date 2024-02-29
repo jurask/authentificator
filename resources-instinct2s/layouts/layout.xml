@@ -1,14 +1,15 @@
-<layout id="MainLayout">
-    <drawable id="outerCircle" />
-    <drawable id="innerCircle" class="CircleProgress">
-        <param name="start">70</param>
-        <param name="end">15</param>
-        <param name="offset">7</param>
-        <param name="thickness">6</param>
-        <param name="color">Graphics.COLOR_WHITE</param>
-    </drawable>
-    <drawable id="subwindow" />
-    <label id="code" text="" font="Graphics.FONT_NUMBER_MEDIUM" x="center" y="center" justification="Graphics.TEXT_JUSTIFY_CENTER" />
-    <label id="name" text="" font="Graphics.FONT_MEDIUM" x="center" y="70%" justification="Graphics.TEXT_JUSTIFY_CENTER" />
-    <bitmap id="menu" personality="system_icon_light__hint_action_menu system_loc__hint_action_menu" />
-</layout>
+<layouts>
+    <layout id="TOTPLayout">
+        <drawable id="outerCircle" />
+        <drawable id="innerCircle" class="CircleProgress">
+            <param name="start">70</param>
+            <param name="end">15</param>
+            <param name="offset">7</param>
+            <param name="thickness">6</param>
+            <param name="color">Graphics.COLOR_WHITE</param>
+        </drawable>
+    </layout>
+    <layout id="HOTPLayout">
+        <bitmap id="menu" personality="system_icon_light__hint_action_menu system_loc__hint_action_menu" />
+    </layout>
+</layouts>

@@ -26,9 +26,10 @@ class TOTPView extends AuthentificatorView {
     }
 
     public function createLayout(dc as Dc) as Lang.Array<WatchUi.Drawable> {
-        var layout = AuthentificatorView.createLayout(dc);
+        var layout = [];
         layout.addAll(Rez.Layouts.TOTPLayout(dc));
-        return layout;
+        layout.addAll(AuthentificatorView.createLayout(dc));
+        return layout as Lang.Array<WatchUi.Drawable>;
     }
 
     public function onShow() as Void {
@@ -77,8 +78,9 @@ class AuthentificatorView extends BaseView {
     }
 
     public function createLayout(dc as Dc) as Lang.Array<WatchUi.Drawable> {
-        var layout = BaseView.createLayout(dc);
+        var layout = [];
         layout.addAll(Rez.Layouts.AuthentificatorLayout(dc));
+        layout.addAll(BaseView.createLayout(dc));
         return layout;
     }
 
