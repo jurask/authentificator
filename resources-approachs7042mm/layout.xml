@@ -1,0 +1,11 @@
+<layouts>
+    <layout id="TOTPLayout">
+        <drawable id="innerCircle" class="CircleProgress">
+            <param name="start">90.1</param>
+            <param name="end">90</param>
+            <param name="offset">8</param>
+            <param name="thickness">5</param>
+            <param name="color">Graphics.COLOR_RED</param>
+        </drawable>
+    </layout>
+</layouts>

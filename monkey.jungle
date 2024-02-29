@@ -1,5 +1,10 @@
 project.manifest = manifest.xml
 
+
+# approachs7042mm
+approachs7042mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+approachs7042mm.resourcePath = $(approachs7042mm.resourcePath);resources-icon70_65536
+
 # d2mach1
 d2mach1.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
 d2mach1.resourcePath = $(d2mach1.resourcePath);resources-icon60_65536;resources-epix2
