@@ -36,6 +36,10 @@ fenix6xpro.resourcePath = $(fenix6xpro.resourcePath);resources-icon40_64
 fenix7.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
 fenix7.resourcePath = $(fenix7.resourcePath);resources-icon40_64
 
+# fenix7x
+fenix7x.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+fenix7x.resourcePath = $(fenix7x.resourcePath);resources-icon40_64
+
 # fenix7s
 fenix7s.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
 fenix7s.resourcePath = $(fenix7s.resourcePath);resources-icon40_64
