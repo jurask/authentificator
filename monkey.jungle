@@ -9,6 +9,10 @@ approachs7042mm.resourcePath = $(approachs7042mm.resourcePath);resources-icon70_
 approachs7047mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
 approachs7047mm.resourcePath = $(approachs7047mm.resourcePath);resources-icon80_65536;resources-approachs7042mm
 
+# d2airx10
+d2airx10.excludeAnnotations = nolive;simple;bitmapfr;lower;rectangularscreen
+d2airx10.resourcePath = $(d2airx10.resourcePath);resources-icon70_65536HC;resources-venu2
+
 # d2mach1
 d2mach1.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
 d2mach1.resourcePath = $(d2mach1.resourcePath);resources-icon60_65536;resources-epix2
