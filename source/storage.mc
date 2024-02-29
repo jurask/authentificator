@@ -164,7 +164,7 @@ class AccountsModel {
         Storage.setValue("keys", keys);
     }
 
-    static function _walkAccounts(operation as Method) as Array {
+    static function _walkAccounts(operation as Method(i as $.Toybox.Lang.Number) as $.Toybox.Lang.Number or $.Account) as Array {
         var results = [];
         for(var i = 1; i <=5; i++) {
             if (!_validateAccount(i)) {

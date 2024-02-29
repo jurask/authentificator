@@ -9,7 +9,6 @@
         </drawable>
     </layout>
     <layout id="AuthentificatorLayout">
-        <drawable id="outerCircle" />
         <label id="code" text="" font="Graphics.FONT_NUMBER_MILD" x="center" y="center" justification="Graphics.TEXT_JUSTIFY_CENTER" />
         <label id="name" text="" font="Graphics.FONT_MEDIUM" x="center" y="70%" justification="Graphics.TEXT_JUSTIFY_CENTER" />
     </layout>

@@ -35,7 +35,7 @@ class HOTPDelegate extends AuthentificatorViewDelegate {
     }
 
    public function onSelect() as Boolean {
-        WatchUi.showActionMenu(new Rez.Menus.ActionMenu(), new $.MenuDelegate(_account, _factory, _current));
+        WatchUi.showActionMenu(new MainMenu(), new $.MenuDelegate(_account, _factory, _current));
         return true;
     }
 }
