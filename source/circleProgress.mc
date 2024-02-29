@@ -26,7 +26,6 @@ class CircleProgress extends Drawable {
     private var _start as Number;
     private var _end as Number;
     private var _offset as Number;
-    private var _visible as Boolean;
     private var _color as Graphics.ColorValue;
     private var _thickness as Number;
     public var percents as Number;
@@ -38,15 +37,11 @@ class CircleProgress extends Drawable {
         _offset = params.get(:offset) as Number;
         _thickness = params.get(:thickness) as Number;
         _color = params.get(:color) as Graphics.ColorValue;
-        _visible = true;
         percents = 0;
     }
 
     (:circularscreen)
     public function draw(dc as Dc) as Void {
-        if (!_visible) {
-            return;
-        }
         // calculate end angle
         var length = 0;
         if (_end > _start) {
@@ -68,9 +63,6 @@ class CircleProgress extends Drawable {
 
     (:rectangularscreen)
     public function draw(dc as Dc) as Void {
-        if (!_visible) {
-            return;
-        }
         var width = dc.getWidth();
         var height = dc.getHeight();
         var radius = 20;
