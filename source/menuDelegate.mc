@@ -23,11 +23,15 @@ import Toybox.WatchUi;
 //! Input handler to respond to main menu selections
 class MenuDelegate extends WatchUi.ActionMenuDelegate {
     private var _account as HOTPAccount;
+    private var _factory as ViewFactory;
+    private var _accNum as Number;
 
     //! Constructor
-    public function initialize(account as HOTPAccount) {
+    public function initialize(account as HOTPAccount, factory as ViewFactory, accountNo as Number) {
         ActionMenuDelegate.initialize();
         _account = account;
+        _factory = factory;
+        _accNum  = accountNo;
     }
 
     //! Handle a menu item being selected
@@ -38,5 +42,6 @@ class MenuDelegate extends WatchUi.ActionMenuDelegate {
         } else if (item.getId() == :previous) {
             _account.updateCounter(-1);
         }
+        WatchUi.switchToView(_factory.createView(_accNum), _factory.createDelegate(_accNum), WatchUi.SLIDE_BLINK);
     }
 }

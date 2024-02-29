@@ -35,15 +35,15 @@ class HOTPDelegate extends AuthentificatorViewDelegate {
     }
 
    public function onSelect() as Boolean {
-        WatchUi.showActionMenu(new Rez.Menus.ActionMenu(), new $.MenuDelegate(_account));
+        WatchUi.showActionMenu(new Rez.Menus.ActionMenu(), new $.MenuDelegate(_account, _factory, _current));
         return true;
     }
 }
 
 class AuthentificatorViewDelegate extends WatchUi.BehaviorDelegate {
-    private var _current as Number;
+    protected var _current as Number;
     private var _total as Number;
-    private var _factory as ViewFactory;
+    protected var _factory as ViewFactory;
 
     function initialize(current as Number, total as Number, factory as ViewFactory) {
         BehaviorDelegate.initialize();
