@@ -1,4 +1,4 @@
 <action-menu id="ActionMenu">
-    <action-menu-item id="previous" label="@Strings.Previous" />
     <action-menu-item id="next" label="@Strings.Next" />
+    <action-menu-item id="previous" label="@Strings.Previous" />
 </action-menu>
