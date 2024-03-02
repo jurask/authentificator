@@ -3,8 +3,8 @@
         <drawable id="innerCircle" class="CircleProgress">
             <param name="start">90.1</param>
             <param name="end">90</param>
-            <param name="offset">5</param>
-            <param name="thickness">4</param>
+            <param name="offset">3</param>
+            <param name="thickness">2</param>
             <param name="color">Graphics.COLOR_RED</param>
         </drawable>
     </layout>
