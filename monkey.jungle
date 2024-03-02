@@ -37,6 +37,18 @@ enduro.resourcePath = $(enduro.resourcePath);resources-icon40_64
 epix2.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
 epix2.resourcePath = $(epix2.resourcePath);resources-icon60_65536
 
+# epix2pro42mm
+epix2pro42mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+epix2pro42mm.resourcePath = $(epix2pro42mm.resourcePath);resources-icon60_65536;resources-epix2
+
+# epix2pro47mm
+epix2pro47mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+epix2pro47mm.resourcePath = $(epix2pro47mm.resourcePath);resources-icon60_65536;resources-epix2
+
+# epix2pro51mm
+epix2pro51mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+epix2pro51mm.resourcePath = $(epix2pro51mm.resourcePath);resources-icon60_65536;resources-epix2
+
 # fenix6
 fenix6.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
 fenix6.resourcePath = $(fenix6.resourcePath);resources-icon40_64
