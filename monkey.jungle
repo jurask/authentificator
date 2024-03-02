@@ -17,6 +17,18 @@ d2airx10.resourcePath = $(d2airx10.resourcePath);resources-icon70_65536HC;resour
 d2mach1.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
 d2mach1.resourcePath = $(d2mach1.resourcePath);resources-icon60_65536;resources-epix2
 
+# descentg1
+descentg1.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
+descentg1.resourcePath = $(descentg1.resourcePath);resources-instinct2
+
+# descentmk343mm
+descentmk343mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+descentmk343mm.resourcePath = $(descentmk343mm.resourcePath);resources-icon60_65536;resources-epix2
+
+# descentmk351mm
+descentmk351mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+descentmk351mm.resourcePath = $(descentmk351mm.resourcePath);resources-icon60_65536;resources-epix2
+
 # enduro
 enduro.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
 enduro.resourcePath = $(enduro.resourcePath);resources-icon40_64
