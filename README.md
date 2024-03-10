@@ -3,7 +3,7 @@ OTP authentificator for Garmin devices
 
 ## Features
 - Time based (TOTP) and counter based (HOTP) keys
-- Unlimited number of accounts
+- Up to 5 accounts (unilimited impossible due to broken CIQ settings)
 - Keys are stored in hidden storage not visible through Connect app
 - Live glance on supported devices
 
