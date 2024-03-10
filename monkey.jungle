@@ -202,6 +202,14 @@ venu2plus.resourcePath = $(venu2plus.resourcePath);resources-icon70_65536HC;reso
 venu2s.excludeAnnotations = nolive;simple;bitmapfr;lower;rectangularscreen
 venu2s.resourcePath = $(venu2s.resourcePath);resources-icon61_65536HC;resources-venu2
 
+# venu3
+venu3.excludeAnnotations = nolive;simple;bitmapfr;lower;rectangularscreen
+venu3.resourcePath = $(venu3.resourcePath);resources-icon70_65536HC;resources-venu2
+
+# venu3s
+venu3s.excludeAnnotations = nolive;simple;bitmapfr;lower;rectangularscreen
+venu3s.resourcePath = $(venu3s.resourcePath);resources-icon70_65536HC;resources-venu2
+
 # venusq2
 venusq2.excludeAnnotations = nolive;bitmap;bitmapfr;lower;circularscreen
 venusq2.resourcePath = $(venusq2.resourcePath);resources-icon40_65536HC
