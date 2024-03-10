@@ -146,6 +146,10 @@ instinct2s.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscr
 # instinctcrossover
 instinctcrossover.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
 
+# instinct2x
+instinct2x.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
+instinct2x.resourcePath = $(instinct2x.resourcePath);resources-instinct2
+
 # marq2
 marq2.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
 marq2.resourcePath = $(marq2.resourcePath);resources-icon60_65536;resources-epix2
