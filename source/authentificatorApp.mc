@@ -71,13 +71,13 @@ class authentificatorApp extends Application.AppBase {
     }
 
     // Return the initial view of your application here
-    function getInitialView() as Lang.Array<WatchUi.Views or WatchUi.InputDelegates> or Null {
+    function getInitialView() as [ WatchUi.Views ] or [ WatchUi.Views, WatchUi.InputDelegates ] {
         var factory = new ViewFactory(_accounts);
         return [factory.createView(0), factory.createDelegate(0)];
     }
 
     (:glance)
-    public function getGlanceView() as Lang.Array<WatchUi.GlanceView or WatchUi.GlanceViewDelegate> or Null {
+    public function getGlanceView() as [ WatchUi.GlanceView ] or [ WatchUi.GlanceView, WatchUi.GlanceViewDelegate ] or Null {
         var glance = Application.Properties.getValue("glance");
         if (!glance) {
             return [new Glance()];
