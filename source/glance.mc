@@ -196,7 +196,11 @@ class TOTPGlance extends OTPGlance {
         dc.setPenWidth(3);
         dc.setColor(0xd1d9e1, Graphics.COLOR_BLACK);
         dc.drawLine(width * timeLeft + 6, height / 2, width, height / 2);
-        dc.drawScaledBitmap(2, height / 2-8, width * timeLeft-2, 16, _progress);
+        var scaleX = (width * timeLeft-2) / _progress.getWidth() as Float;
+        var scaleY = 16 / _progress.getHeight() as Float;
+        var transform = new Graphics.AffineTransform();
+        transform.scale(scaleX, scaleY);
+        dc.drawBitmap2(2, height / 2-8, _progress, {:transform => transform});
         dc.setPenWidth(1);
         dc.setColor(0xa81f20, 0xa81f20);
         dc.drawLine(0, height / 2+3, 0, height / 2+7);
