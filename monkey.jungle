@@ -217,3 +217,7 @@ venusq2.resourcePath = $(venusq2.resourcePath);resources-icon40_65536HC
 # venusq2m
 venusq2m.excludeAnnotations = nolive;bitmap;bitmapfr;lower;circularscreen
 venusq2m.resourcePath = $(venusq2m.resourcePath);resources-icon40_65536HC;resources-venusq2
+
+# vivoactive5
+vivoactive5.excludeAnnotations = nolive;simple;bitmapfr;lower;rectangularscreen
+vivoactive5.resourcePath = $(vivoactive5.resourcePath);resources-icon70_65536HC;resources-venu2
