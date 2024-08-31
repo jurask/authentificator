@@ -33,6 +33,10 @@ descentmk351mm.resourcePath = $(descentmk351mm.resourcePath);resources-icon60_65
 enduro.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
 enduro.resourcePath = $(enduro.resourcePath);resources-icon40_64
 
+# enduro3
+enduro3.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+enduro3.resourcePath = $(enduro3.resourcePath);resources-icon40_64
+
 # epix2
 epix2.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
 epix2.resourcePath = $(epix2.resourcePath);resources-icon60_65536
