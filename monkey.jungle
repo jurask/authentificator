@@ -129,6 +129,14 @@ fenixe.resourcePath = $(fenixe.resourcePath);resources-icon60_65536A;resources-e
 fr55.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
 fr55.resourcePath = $(fr55.resourcePath);resources-icon35-8
 
+# fr165
+fr165.excludeAnnotations = nolive;simple;bitmap;upper;rectangularscreen
+fr165.resourcePath = $(fr165.resourcePath);resources-icon54_65536HC;resources-froled
+
+# fr165m
+fr165m.excludeAnnotations = nolive;simple;bitmap;upper;rectangularscreen
+fr165m.resourcePath = $(fr165m.resourcePath);resources-icon54_65536HC;resources-froled
+
 # fr255
 fr255.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
 fr255.resourcePath = $(fr255.resourcePath);resources-icon40_64
