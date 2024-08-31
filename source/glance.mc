@@ -97,6 +97,8 @@ class TOTPGlance extends OTPGlance {
     (:live) private var _code as String;
     (:live) private var _timer as Timer.Timer;
     (:live) private var _lastTimeout as Number;
+    (:bitmap) private var _progress as BitmapResource or Null;
+    (:bitmapfr) private var _progress as BitmapResource or Null;
 
     (:nolive)
     public function initialize (account as Account) {
@@ -110,6 +112,21 @@ class TOTPGlance extends OTPGlance {
         _lastTimeout = -2;
         _timer = new Timer.Timer();
         _nlines = 3;
+        initializeBitmap();
+    }
+
+    (:simple)
+    private function initializeBitmap() {
+    }
+
+    (:bitmap)
+    private function initializeBitmap() {
+        _progress = WatchUi.loadResource($.Rez.Drawables.glanceGradient);
+    }
+
+    (:bitmapfr)
+    private function initializeBitmap() {
+        _progress = WatchUi.loadResource($.Rez.Drawables.glanceGradient);
     }
 
     (:live)
@@ -165,12 +182,11 @@ class TOTPGlance extends OTPGlance {
         dc.setPenWidth(3);
         dc.setColor(0xd1d9e1, Graphics.COLOR_BLACK);
         dc.drawLine(0, height / 2, width, height / 2);
-        var progressBar = WatchUi.loadResource($.Rez.Drawables.glanceGradient);
-        var scaleX = width * timeLeft / progressBar.getWidth() as Float;
-        var scaleY = 16 / progressBar.getHeight() as Float;
+        var scaleX = width * timeLeft / _progress.getWidth() as Float;
+        var scaleY = 16 / _progress.getHeight() as Float;
         var transform = new Graphics.AffineTransform();
         transform.scale(scaleX, scaleY);
-        dc.drawBitmap2(0, height / 2-8, progressBar, {:transform => transform});
+        dc.drawBitmap2(0, height / 2-8, _progress, {:transform => transform});
     }
 
     (:bitmapfr)
@@ -180,7 +196,7 @@ class TOTPGlance extends OTPGlance {
         dc.setPenWidth(3);
         dc.setColor(0xd1d9e1, Graphics.COLOR_BLACK);
         dc.drawLine(width * timeLeft + 6, height / 2, width, height / 2);
-        dc.drawScaledBitmap(2, height / 2-8, width * timeLeft-2, 16, WatchUi.loadResource($.Rez.Drawables.glanceGradient));
+        dc.drawScaledBitmap(2, height / 2-8, width * timeLeft-2, 16, _progress);
         dc.setPenWidth(1);
         dc.setColor(0xa81f20, 0xa81f20);
         dc.drawLine(0, height / 2+3, 0, height / 2+7);
