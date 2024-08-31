@@ -105,6 +105,26 @@ fenix7xpro.resourcePath = $(fenix7xpro.resourcePath);resources-icon40_64
 fenix7xpronowifi.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
 fenix7xpronowifi.resourcePath = $(fenix7xpronowifi.resourcePath);resources-icon40_64
 
+# fenix843mm
+fenix843mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+fenix843mm.resourcePath = $(fenix843mm.resourcePath);resources-icon60_65536A;resources-epix2
+
+# fenix847mm
+fenix847mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+fenix847mm.resourcePath = $(fenix847mm.resourcePath);resources-icon65_65536A;resources-epix2
+
+# fenix8solar47mm
+fenix8solar47mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+fenix8solar47mm.resourcePath = $(fenix8solar47mm.resourcePath);resources-icon40_64
+
+# fenix8solar51mm
+fenix8solar51mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+fenix8solar51mm.resourcePath = $(fenix8solar51mm.resourcePath);resources-icon40_64
+
+# fenixe
+fenixe.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+fenixe.resourcePath = $(fenixe.resourcePath);resources-icon60_65536A;resources-epix2
+
 # fr55
 fr55.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
 fr55.resourcePath = $(fr55.resourcePath);resources-icon35-8
