@@ -165,7 +165,12 @@ class TOTPGlance extends OTPGlance {
         dc.setPenWidth(3);
         dc.setColor(0xd1d9e1, Graphics.COLOR_BLACK);
         dc.drawLine(0, height / 2, width, height / 2);
-        dc.drawScaledBitmap(0, height / 2-8, width * timeLeft, 16, WatchUi.loadResource($.Rez.Drawables.glanceGradient));
+        var progressBar = WatchUi.loadResource($.Rez.Drawables.glanceGradient);
+        var scaleX = width * timeLeft / progressBar.getWidth() as Float;
+        var scaleY = 16 / progressBar.getHeight() as Float;
+        var transform = new Graphics.AffineTransform();
+        transform.scale(scaleX, scaleY);
+        dc.drawBitmap2(0, height / 2-8, progressBar, {:transform => transform});
     }
 
     (:bitmapfr)
