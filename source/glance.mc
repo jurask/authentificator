@@ -130,7 +130,7 @@ class TOTPGlance extends OTPGlance {
     }
 
     (:live)
-    public function getCode() as String {
+    private function getCode() as String {
         return _code;
     }
 
