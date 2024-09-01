@@ -4,3 +4,4 @@ source/mir
 source/internal-mir
 source/authentificator.prg.debug.xml
 source/authentificator-settings.json
+.vscode
