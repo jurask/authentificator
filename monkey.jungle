@@ -59,7 +59,7 @@ fenix6.resourcePath = $(fenix6.resourcePath);resources-icon40_64
 
 # fenix6pro
 fenix6pro.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix6pro.resourcePath = $(fenix6.resourcePath);resources-icon40_64
+fenix6pro.resourcePath = $(fenix6pro.resourcePath);resources-icon40_64
 
 # fenix6s
 fenix6s.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
