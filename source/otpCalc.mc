@@ -21,15 +21,15 @@ import Toybox.Time;
 
 (:glance)
 class OtpCalc {
-    private var _account as Account;
+    private var _key as ByteArray;
+    private var _digits as Number;
 
-    function initialize(account as Account) {
-        _account = account;
+    function initialize(key as ByteArray, digits as Number) {
+        _digits = digits;    
+        _key = _prepareKey(key);
     }
 
-    private function _otpHmacSha1(message as Number) as Number {
-        var key = _account.key();
-        // prepare key
+    private function _prepareKey(key as ByteArray) as ByteArray {
         var sha1 = new Cryptography.Hash({:algorithm => Cryptography.HASH_SHA1});
         if (key.size() > 64) {
             sha1.update(key);
@@ -38,15 +38,20 @@ class OtpCalc {
         while(key.size() != 64) {
             key.add(0x00);
         }
+        return key;
+    }
+
+    private function _otpHmacSha1(message as Number) as Number {
         // pad key with ipad and opad bytes
         var ipad = 0x36;
         var opad = 0x5C;
-        var outerKey = _padKey(key, opad);
-        var innerKey = _padKey(key, ipad);
+        var outerKey = _padKey(_key, opad);
+        var innerKey = _padKey(_key, ipad);
         // encode message
         var msgdata = new[8]b;
         msgdata.encodeNumber(message, Lang.NUMBER_FORMAT_UINT32, {:offset => 4, :endianness => Lang.ENDIAN_BIG});
         // calculate hmac signature
+        var sha1 = new Cryptography.Hash({:algorithm => Cryptography.HASH_SHA1});
         innerKey.addAll(msgdata);
         sha1.update(innerKey);
         innerKey = sha1.digest();
@@ -72,9 +77,8 @@ class OtpCalc {
         return out;
     }
 
-    public function code() as String {
-        var msg = _account.message();
+    public function code(msg as Number) as String {
         var value = _otpHmacSha1(msg).format("%010d");
-        return (value.substring(10-_account.digits(), 10));
+        return (value.substring(10-_digits, 10));
     }
 }

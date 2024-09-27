@@ -74,7 +74,7 @@ class AuthentificatorView extends BaseView {
     public function initialize(account as Account) {
         BaseView.initialize();
         _account = account;
-        _calc = new OtpCalc(account);
+        _calc = new OtpCalc(account.key(), account.digits());
     }
 
     public function createLayout(dc as Dc) as Lang.Array<WatchUi.Drawable> {
@@ -92,7 +92,7 @@ class AuthentificatorView extends BaseView {
 
     protected function updateCode() as Void {
         var codeLabel = findDrawableById("code") as Text;
-        codeLabel.setText(_calc.code());
+        codeLabel.setText(_calc.code(_account.message()));
     }
 }
 

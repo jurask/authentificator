@@ -80,7 +80,7 @@ class OTPGlance extends Glance {
     public function initialize(account as Account) {
         Glance.initialize();
         _account = account;
-        _otp = new OtpCalc(account);
+        _otp = new OtpCalc(account.key(), account.digits());
     }
 
     protected function getAccount() as String {
@@ -88,7 +88,7 @@ class OTPGlance extends Glance {
     }
 
     protected function getCode() as String {
-        return _otp.code();
+        return _otp.code(_account.message());
     }
 }
 
@@ -108,7 +108,7 @@ class TOTPGlance extends OTPGlance {
     (:live)
     public function initialize(account as Account) {
         OTPGlance.initialize(account);
-        _code = _otp.code();
+        _code = _otp.code(_account.message());
         _lastTimeout = -2;
         _timer = new Timer.Timer();
         _nlines = 3;
@@ -146,7 +146,7 @@ class TOTPGlance extends OTPGlance {
         var totpAccount = _account as TOTPAccount;
         var totpTime = totpAccount.timeout() - Math.floor(time % totpAccount.timeout());
         if (totpTime > _lastTimeout) {
-            _code = _otp.code();
+            _code = _otp.code(_account.message());
         }
         _lastTimeout = totpTime;
         var timeLeft = totpTime.toFloat() / totpAccount.timeout();
