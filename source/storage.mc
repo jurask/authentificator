@@ -17,18 +17,20 @@
 */
 
 import Toybox.Lang;
+import Toybox.Application;
 import Toybox.Application.Storage;
 import Toybox.Application.Properties;
+import Toybox.StringUtil;
 
 (:glance)
 class AccountLoader {
     function loadAccount(i as Number) as Account {
         var indexStr = i.format("%i");
-        var name = Properties.getValue("name" + indexStr);
-        var type = Properties.getValue("type" + indexStr);
-        var keyStr = Properties.getValue("key" + indexStr);
-        var timeout = Properties.getValue("timeout" + indexStr);
-        var digits = Properties.getValue("digits" + indexStr);
+        var name = Properties.getValue("name" + indexStr) as String;
+        var type = Properties.getValue("type" + indexStr) as String;
+        var keyStr = Properties.getValue("key" + indexStr) as String;
+        var timeout = Properties.getValue("timeout" + indexStr) as Number;
+        var digits = Properties.getValue("digits" + indexStr) as Number;
         var key = _loadKey(keyStr);
         if (type == 0) {
             return new TOTPAccount(name, key, digits, timeout);
@@ -38,77 +40,115 @@ class AccountLoader {
     }
 
     private function _loadKey(keystr as String) as ByteArray {
-        var keys = Storage.getValue("keys");
-        var keyid = keystr.substring(8, keystr.length()).toNumber();
-        return (keys as Dictionary<Number, ByteArray>)[keyid];
+        var keys = Storage.getValue("keys") as Dictionary<Number, String>;
+        var keyid = keystr.substring(8, keystr.length());
+        if (keyid == null){
+            throw new InvalidValueException("Failed to parse key id");
+        }
+        var encodedKey = keys[keyid.toNumber()];
+        if (encodedKey == null){
+            throw new ValueOutOfBoundsException("Key not found in database");
+        }
+        var decodedKey = StringUtil.convertEncodedString(encodedKey,
+                                                {:fromRepresentation => StringUtil.REPRESENTATION_STRING_BASE64,
+                                                 :toRepresentation => StringUtil.REPRESENTATION_BYTE_ARRAY}) as ByteArray;
+        return decodedKey;
     }
 }
 
 (:glance)
 class AccountUpdater {
-    function updateKey(i as Number) as Number {
-        var indexStr = i.format("%i");
-        var keyStr = Properties.getValue("key" + indexStr);
-        if(keyStr.toCharArray()[0] != '#') {
-            Properties.setValue("key" + indexStr, _registerKey(keyStr));
+    function checkKey(i as Number) as Number {
+        var keyName = "key" + i.format("%i");
+        var keyStr = Properties.getValue(keyName) as String;
+        var keyNumber = _getKeyNumber(keyStr);
+        if (keyNumber == null){
+            keyStr = _updateKey(keyName, keyStr);
+            keyNumber = _getKeyNumber(keyStr) as Number;
         }
-        keyStr = Properties.getValue("key" + indexStr);
-        return keyStr.substring(8, keyStr.length()).toNumber();
+        return keyNumber;
     }
 
-    private function _registerKey(keyStr as String) as String {
+    private function _getKeyNumber(keyStr as String) as Number or Null {
+        if(keyStr.toCharArray()[0] != '#') {
+            return null;
+        }
+        var numberString = keyStr.substring(8, keyStr.length());
+        if (numberString == null){
+            return null;
+        }
+        var keyNumber = numberString.toNumber();
+        if (keyNumber == null) {
+            return null;
+        }
+        return keyNumber;
+    }
+
+    private function _updateKey(keyName as String, keyStr as String) as String {
         var keys = Storage.getValue("keys");
         if (keys == null) {
             keys = {};
         }
+        keys = keys as Dictionary<Number, String>;
         var binkey = decodeBase32(keyStr);
+        var base64Key = StringUtil.convertEncodedString(binkey,
+                                                {:toRepresentation => StringUtil.REPRESENTATION_STRING_BASE64,
+                                                 :fromRepresentation => StringUtil.REPRESENTATION_BYTE_ARRAY}) as String;
         var num = 0;
         while(keys.hasKey(num)) {
             num++;
         }
-        (keys as Dictionary<Number, ByteArray>).put(num, binkey);
-        Storage.setValue("keys", keys);
-        return "#hidden "+num.format("%d");
+        keys.put(num, base64Key);
+        Storage.setValue("keys", keys as Dictionary<Application.PropertyKeyType, Application.PropertyValueType>);
+        var newString = "#hidden "+num.format("%d");
+        Properties.setValue(keyName, newString);
+        return newString;
     }
 }
 
 (:glance)
 class AccountsModel {
-    private var _accounts as Array?;
+    private var _accounts as Array<Account>;
 
     public function initialize() {
         _updateKeys();
         var loader = new AccountLoader();
         var operation = loader.method(:loadAccount);
-        _accounts = _walkAccounts(operation);
+        _accounts = _walkAccounts(operation) as Array<Account>;
     }
 
-    public function reinitialize() {
+    public function reinitialize() as Void {
         initialize();
     }
 
-    private function _updateKeys() {
+    private function _updateKeys() as Void {
         // add new accounts
         var updater = new AccountUpdater();
-        var operation = updater.method(:updateKey);
-        var validAccountIDs = _walkAccounts(operation);
+        var operation = updater.method(:checkKey);
+        var validAccountIDs = _walkAccounts(operation) as Array<Number>;
         // clear unused
         var keys = Storage.getValue("keys");
         if (keys == null){
             keys = {};
         }
+        keys = keys as Dictionary<Number, String or ByteArray>;
         var storedKeys = keys.keys();
         for(var i = 0; i < storedKeys.size(); i++){
-            var id = storedKeys[i];
+            var id = storedKeys[i] as Number;
             if (validAccountIDs.indexOf(id) == -1){
                 keys.remove(id);
+            } else if (keys[id] instanceof ByteArray){
+                //convert keys stored as byte array to string
+                keys[id] = StringUtil.convertEncodedString(keys[id] as ByteArray,
+                                                {:toRepresentation => StringUtil.REPRESENTATION_STRING_BASE64,
+                                                 :fromRepresentation => StringUtil.REPRESENTATION_BYTE_ARRAY}) as String;
             }
         }
-        Storage.setValue("keys", keys);
+        Storage.setValue("keys", keys as Dictionary<Application.PropertyKeyType, Application.PropertyValueType>);
     }
 
-    static function _walkAccounts(operation as Method(i as $.Toybox.Lang.Number) as $.Toybox.Lang.Number or $.Account) as Array {
-        var results = [];
+    static function _walkAccounts(operation as Method(i as Number) as Number or Account) as Array<Account or Number> {
+        var results = [] as Array<Account or Number>;
         for(var i = 1; i <=5; i++) {
             if (!_validateAccount(i)) {
                 continue;
@@ -120,8 +160,8 @@ class AccountsModel {
 
     static function _validateAccount(index as Number) as Boolean {
         var indexStr = index.format("%i");
-        var name = Properties.getValue("name" + indexStr);
-        var keyStr = Properties.getValue("key" + indexStr);
+        var name = Properties.getValue("name" + indexStr) as String;
+        var keyStr = Properties.getValue("key" + indexStr) as String;
         return !(name.equals("") || keyStr.equals(""));
     }
 
@@ -187,7 +227,7 @@ class TOTPAccount extends Account {
 
     public function message() as Number {
         var time = Time.now().value();
-        return Math.floor(time / _timeout);
+        return Math.floor(time / _timeout).toNumber();
     }
 }
 
@@ -202,7 +242,7 @@ class HOTPAccount extends Account {
         _index = index;
     }
 
-    public function updateCounter(delta as Number) {
+    public function updateCounter(delta as Number) as Void {
         _counter += delta;
         var indexStr = _index.format("%i");
         Properties.setValue("timeout" + indexStr, _counter);
@@ -217,6 +257,7 @@ class HOTPAccount extends Account {
     }
 }
 
+(:glance)
 function decodeBase32(key as String) as ByteArray {
     key = key.toUpper().toCharArray();
     var out = []b;
@@ -261,7 +302,7 @@ function decodeBase32(key as String) as ByteArray {
                 buf = buf | (chr << decodedBits);
                 decodedBits += 5;
                 if (decodedBits >= 8) {
-                    ba.add((buf & 0xFF).toNumber());
+                    ba.add(((buf & 0xFF) as Long).toNumber());
                     buf = buf >> 8;
                     decodedBits -= 8;
                 }

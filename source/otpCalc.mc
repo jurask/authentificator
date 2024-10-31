@@ -66,7 +66,7 @@ class OtpCalc {
         code.add(outerKey[offset + 2]);
         code.add(outerKey[offset + 3]);
         var result = code.decodeNumber(Lang.NUMBER_FORMAT_UINT32, {:offset => 0, :endianness => Lang.ENDIAN_BIG});
-        return result;
+        return result as Number;
     }
 
     private function _padKey(key as ByteArray, pad as Number) as ByteArray {
@@ -79,6 +79,10 @@ class OtpCalc {
 
     public function code(msg as Number) as String {
         var value = _otpHmacSha1(msg).format("%010d");
-        return (value.substring(10-_digits, 10));
+        var string = value.substring(10-_digits, 10);
+        if (string == null){
+            throw new Lang.ValueOutOfBoundsException("Calculated code has wrong lenght");
+        }
+        return string;
     }
 }

@@ -46,6 +46,9 @@ class TOTPView extends AuthentificatorView {
         var totpTime = account.timeout() - Math.floor(time % account.timeout());
         var initValue = totpTime.toFloat() / account.timeout() * 100;
         var progress = findDrawableById("innerCircle");
+        if (progress == null){
+            throw new InvalidValueException("Progress bar drawable not found");
+        }
         updateCode();
         animate(progress, :percents, ANIM_TYPE_LINEAR, initValue, 0, totpTime, method(:animateTOTP));
     }
@@ -108,7 +111,6 @@ class NoAccountsView extends BaseView {
         return layout;
     }
 }
-
 
 class BaseView extends WatchUi.View {
     public function initialize() {

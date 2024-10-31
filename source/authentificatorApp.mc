@@ -20,6 +20,7 @@ import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
+(:typecheck(disableGlanceCheck))
 class ViewFactory {
     private var _accounts as AccountsModel;
 
@@ -54,7 +55,7 @@ class ViewFactory {
     }
 }
 
-class authentificatorApp extends Application.AppBase {
+class AuthentificatorApp extends Application.AppBase {
     private var _accounts as AccountsModel;
 
     function initialize() {
@@ -62,23 +63,20 @@ class authentificatorApp extends Application.AppBase {
         _accounts = new AccountsModel();
     }
 
-    // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
     }
 
-    // onStop() is called when your application is exiting
     function onStop(state as Dictionary?) as Void {
     }
 
-    // Return the initial view of your application here
-    function getInitialView() as [ WatchUi.Views ] or [ WatchUi.Views, WatchUi.InputDelegates ] {
+    function getInitialView() as [ Views ] or [ Views, InputDelegates ] {
         var factory = new ViewFactory(_accounts);
         return [factory.createView(0), factory.createDelegate(0)];
     }
 
     (:glance)
-    public function getGlanceView() as [ WatchUi.GlanceView ] or [ WatchUi.GlanceView, WatchUi.GlanceViewDelegate ] or Null {
-        var glance = Application.Properties.getValue("glance");
+    public function getGlanceView() as [ GlanceView ] or [ GlanceView, GlanceViewDelegate ] or Null {
+        var glance = Application.Properties.getValue("glance") as Boolean;
         if (!glance) {
             return [new Glance()];
         }
@@ -101,13 +99,13 @@ class authentificatorApp extends Application.AppBase {
     public function onSettingsChanged() as Void {
         _accounts.reinitialize();
         var view = WatchUi.getCurrentView();
-        if (view[0] instanceof BaseView) {
+        if (!(view[0] instanceof Glance)) {
             var factory = new ViewFactory(_accounts);
             WatchUi.switchToView(factory.createView(0), factory.createDelegate(0), WatchUi.SLIDE_BLINK);
         }
     }
 }    
 
-function getApp() as authentificatorApp {
-    return Application.getApp() as authentificatorApp;
+function getApp() as AuthentificatorApp {
+    return Application.getApp() as AuthentificatorApp;
 }

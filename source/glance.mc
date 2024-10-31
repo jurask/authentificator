@@ -24,7 +24,7 @@ import Toybox.Timer;
 
 (:glance)
 class Glance extends WatchUi.GlanceView {
-    protected var _nlines;
+    protected var _nlines as Number;
 
     public function initialize() {
         GlanceView.initialize();
@@ -33,7 +33,7 @@ class Glance extends WatchUi.GlanceView {
 
     (:upper)
     protected function getName() as String {
-        return WatchUi.loadResource($.Rez.Strings.AppName).toUpper();
+        return (WatchUi.loadResource($.Rez.Strings.AppName) as String).toUpper();
     }
 
     (:lower)
@@ -116,16 +116,11 @@ class TOTPGlance extends OTPGlance {
     }
 
     (:simple)
-    private function initializeBitmap() {
+    private function initializeBitmap() as Void {
     }
 
-    (:bitmap)
-    private function initializeBitmap() {
-        _progress = WatchUi.loadResource($.Rez.Drawables.glanceGradient);
-    }
-
-    (:bitmapfr)
-    private function initializeBitmap() {
+    (:bitmap,:bitmapfr)
+    private function initializeBitmap() as Void {
         _progress = WatchUi.loadResource($.Rez.Drawables.glanceGradient);
     }
 
@@ -144,12 +139,12 @@ class TOTPGlance extends OTPGlance {
         OTPGlance.onUpdate(dc);
         var time = Time.now().value();
         var totpAccount = _account as TOTPAccount;
-        var totpTime = totpAccount.timeout() - Math.floor(time % totpAccount.timeout());
+        var totpTime = totpAccount.timeout() - Math.floor(time % totpAccount.timeout()).toFloat();
         if (totpTime > _lastTimeout) {
             _code = _otp.code(_account.message());
         }
-        _lastTimeout = totpTime;
-        var timeLeft = totpTime.toFloat() / totpAccount.timeout();
+        _lastTimeout = totpTime.toNumber();
+        var timeLeft = totpTime / totpAccount.timeout();
         drawProgress(dc, timeLeft);
     }
 
