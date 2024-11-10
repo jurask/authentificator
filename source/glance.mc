@@ -38,7 +38,7 @@ class Glance extends WatchUi.GlanceView {
 
     (:lower)
     protected function getName() as String {
-        return WatchUi.loadResource($.Rez.Strings.AppName);
+        return WatchUi.loadResource($.Rez.Strings.AppName) as String;
     }
 
     protected function getCode() as String {
@@ -119,9 +119,14 @@ class TOTPGlance extends OTPGlance {
     private function initializeBitmap() as Void {
     }
 
-    (:bitmap,:bitmapfr)
+    (:bitmap)
     private function initializeBitmap() as Void {
-        _progress = WatchUi.loadResource($.Rez.Drawables.glanceGradient);
+        _progress = WatchUi.loadResource($.Rez.Drawables.glanceGradient) as BitmapResource;
+    }
+
+    (:bitmapfr)
+    private function initializeBitmap() as Void {
+        _progress = WatchUi.loadResource($.Rez.Drawables.glanceGradient) as BitmapResource;
     }
 
     (:live)
@@ -177,11 +182,11 @@ class TOTPGlance extends OTPGlance {
         dc.setPenWidth(3);
         dc.setColor(0xd1d9e1, Graphics.COLOR_BLACK);
         dc.drawLine(0, height / 2, width, height / 2);
-        var scaleX = width * timeLeft / _progress.getWidth() as Float;
-        var scaleY = 16 / _progress.getHeight() as Float;
+        var scaleX = width * timeLeft / (_progress as BitmapResource).getWidth() as Float;
+        var scaleY = 16 / (_progress as BitmapResource).getHeight() as Float;
         var transform = new Graphics.AffineTransform();
         transform.scale(scaleX, scaleY);
-        dc.drawBitmap2(0, height / 2-8, _progress, {:transform => transform});
+        dc.drawBitmap2(0, height / 2-8, (_progress as BitmapResource), {:transform => transform});
     }
 
     (:bitmapfr)
@@ -192,11 +197,11 @@ class TOTPGlance extends OTPGlance {
         dc.setColor(0xd1d9e1, Graphics.COLOR_BLACK);
         dc.drawLine(width * timeLeft + 6, height / 2, width, height / 2);
         var bitmapSize = width * timeLeft - 4;
-        var scaleX = bitmapSize / _progress.getWidth() as Float;
-        var scaleY = 16 / _progress.getHeight() as Float;
+        var scaleX = bitmapSize / (_progress as BitmapResource).getWidth() as Float;
+        var scaleY = 16 / (_progress as BitmapResource).getHeight() as Float;
         var transform = new Graphics.AffineTransform();
         transform.scale(scaleX, scaleY);
-        dc.drawBitmap2(2, height / 2-8, _progress, {:transform => transform});
+        dc.drawBitmap2(2, height / 2-8, (_progress as BitmapResource), {:transform => transform});
         dc.setPenWidth(1);
         dc.setColor(0xa81f20, 0xa81f20);
         dc.drawLine(0, height / 2+3, 0, height / 2+7);
