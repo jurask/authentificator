@@ -3,11 +3,11 @@ project.manifest = manifest.xml
 
 # approachs7042mm
 approachs7042mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-approachs7042mm.resourcePath = $(approachs7042mm.resourcePath);resources-icon70_65536
+approachs7042mm.resourcePath = $(approachs7042mm.resourcePath);resources-icon60_65536
 
 # approachs7047mm
 approachs7047mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-approachs7047mm.resourcePath = $(approachs7047mm.resourcePath);resources-icon80_65536;resources-approachs7042mm
+approachs7047mm.resourcePath = $(approachs7047mm.resourcePath);resources-icon70_65536;resources-approachs7042mm
 
 # d2airx10
 d2airx10.excludeAnnotations = nolive;simple;bitmapfr;lower;rectangularscreen
