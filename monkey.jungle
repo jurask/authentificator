@@ -3,253 +3,256 @@ project.manifest = manifest.xml
 
 # approachs7042mm
 approachs7042mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-approachs7042mm.resourcePath = $(approachs7042mm.resourcePath);resources-icon60_65536
+approachs7042mm.resourcePath = $(approachs7042mm.resourcePath);gui/base;gui/approachs70;icons/60_65536
 
 # approachs7047mm
 approachs7047mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-approachs7047mm.resourcePath = $(approachs7047mm.resourcePath);resources-icon70_65536;resources-approachs7042mm
+approachs7047mm.resourcePath = $(approachs7047mm.resourcePath);gui/base;gui/approachs70;icons/70_65536
 
 # d2airx10
 d2airx10.excludeAnnotations = nolive;simple;bitmapfr;lower;rectangularscreen
-d2airx10.resourcePath = $(d2airx10.resourcePath);resources-icon70_65536HC;resources-venu2
+d2airx10.resourcePath = $(d2airx10.resourcePath);gui/base;gui/venu2;icons/70_65536HC
 
 # d2mach1
 d2mach1.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-d2mach1.resourcePath = $(d2mach1.resourcePath);resources-icon60_65536;resources-epix2
+d2mach1.resourcePath = $(d2mach1.resourcePath);gui/base;gui/epix2;icons/60_65536
 
 # descentg1
 descentg1.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-descentg1.resourcePath = $(descentg1.resourcePath);resources-instinct2
+descentg1.resourcePath = $(descentg1.resourcePath);gui/base;gui/instinct2;icons/62_1
 
 # descentmk343mm
 descentmk343mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-descentmk343mm.resourcePath = $(descentmk343mm.resourcePath);resources-icon60_65536;resources-epix2
+descentmk343mm.resourcePath = $(descentmk343mm.resourcePath);gui/base;gui/epix2;icons/60_65536
 
 # descentmk351mm
 descentmk351mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-descentmk351mm.resourcePath = $(descentmk351mm.resourcePath);resources-icon60_65536;resources-epix2
+descentmk351mm.resourcePath = $(descentmk351mm.resourcePath);gui/base;gui/epix2;icons/60_65536
 
 # enduro
 enduro.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-enduro.resourcePath = $(enduro.resourcePath);resources-icon40_64
+enduro.resourcePath = $(enduro.resourcePath);gui/base;icons/40_64
 
 # enduro3
 enduro3.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-enduro3.resourcePath = $(enduro3.resourcePath);resources-icon40_64
+enduro3.resourcePath = $(enduro3.resourcePath);gui/base;icons/40_64
 
 # epix2
 epix2.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-epix2.resourcePath = $(epix2.resourcePath);resources-icon60_65536
+epix2.resourcePath = $(epix2.resourcePath);gui/base;gui/epix2;icons/60_65536
 
 # epix2pro42mm
 epix2pro42mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-epix2pro42mm.resourcePath = $(epix2pro42mm.resourcePath);resources-icon60_65536;resources-epix2
+epix2pro42mm.resourcePath = $(epix2pro42mm.resourcePath);gui/base;gui/epix2;icons/60_65536
 
 # epix2pro47mm
 epix2pro47mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-epix2pro47mm.resourcePath = $(epix2pro47mm.resourcePath);resources-icon60_65536;resources-epix2
+epix2pro47mm.resourcePath = $(epix2pro47mm.resourcePath);gui/base;gui/epix2;icons/60_65536
 
 # epix2pro51mm
 epix2pro51mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-epix2pro51mm.resourcePath = $(epix2pro51mm.resourcePath);resources-icon60_65536;resources-epix2
+epix2pro51mm.resourcePath = $(epix2pro51mm.resourcePath);gui/base;gui/epix2;icons/60_65536
 
 # fenix6
 fenix6.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-fenix6.resourcePath = $(fenix6.resourcePath);resources-icon40_64
+fenix6.resourcePath = $(fenix6.resourcePath);gui/base;icons/40_64
 
 # fenix6pro
 fenix6pro.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix6pro.resourcePath = $(fenix6pro.resourcePath);resources-icon40_64
+fenix6pro.resourcePath = $(fenix6pro.resourcePath);gui/base;icons/40_64
 
 # fenix6s
 fenix6s.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-fenix6s.resourcePath = $(fenix6s.resourcePath);resources-icon40_64
+fenix6s.resourcePath = $(fenix6s.resourcePath);gui/base;icons/40_64
 
 # fenix6spro
 fenix6spro.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix6spro.resourcePath = $(fenix6spro.resourcePath);resources-icon40_64
+fenix6spro.resourcePath = $(fenix6spro.resourcePath);gui/base;icons/40_64
 
 # fenix6xpro
 fenix6xpro.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix6xpro.resourcePath = $(fenix6xpro.resourcePath);resources-icon40_64
+fenix6xpro.resourcePath = $(fenix6xpro.resourcePath);gui/base;icons/40_64
 
 # fenix7
 fenix7.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix7.resourcePath = $(fenix7.resourcePath);resources-icon40_64
+fenix7.resourcePath = $(fenix7.resourcePath);gui/base;icons/40_64
 
 # fenix7pro
 fenix7pro.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix7pro.resourcePath = $(fenix7pro.resourcePath);resources-icon40_64
+fenix7pro.resourcePath = $(fenix7pro.resourcePath);gui/base;icons/40_64
 
 # fenix7pronowifi
 fenix7pronowifi.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix7pronowifi.resourcePath = $(fenix7pronowifi.resourcePath);resources-icon40_64
+fenix7pronowifi.resourcePath = $(fenix7pronowifi.resourcePath);gui/base;icons/40_64
 
 # fenix7s
 fenix7s.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix7s.resourcePath = $(fenix7s.resourcePath);resources-icon40_64
+fenix7s.resourcePath = $(fenix7s.resourcePath);gui/base;icons/40_64
 
 # fenix7spro
 fenix7spro.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix7spro.resourcePath = $(fenix7spro.resourcePath);resources-icon40_64
+fenix7spro.resourcePath = $(fenix7spro.resourcePath);gui/base;icons/40_64
 
 # fenix7x
 fenix7x.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix7x.resourcePath = $(fenix7x.resourcePath);resources-icon40_64
+fenix7x.resourcePath = $(fenix7x.resourcePath);gui/base;icons/40_64
 
 # fenix7xpro
 fenix7xpro.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix7xpro.resourcePath = $(fenix7xpro.resourcePath);resources-icon40_64
+fenix7xpro.resourcePath = $(fenix7xpro.resourcePath);gui/base;icons/40_64
 
 # fenix7xpronowifi
 fenix7xpronowifi.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix7xpronowifi.resourcePath = $(fenix7xpronowifi.resourcePath);resources-icon40_64
+fenix7xpronowifi.resourcePath = $(fenix7xpronowifi.resourcePath);gui/base;icons/40_64
 
 # fenix843mm
 fenix843mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix843mm.resourcePath = $(fenix843mm.resourcePath);resources-icon60_65536A;resources-epix2
+fenix843mm.resourcePath = $(fenix843mm.resourcePath);gui/base;gui/epix2;icons/60_65536A
 
 # fenix847mm
 fenix847mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix847mm.resourcePath = $(fenix847mm.resourcePath);resources-icon65_65536A;resources-epix2
+fenix847mm.resourcePath = $(fenix847mm.resourcePath);gui/base;gui/epix2;icons/65_65536A
 
 # fenix8solar47mm
 fenix8solar47mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix8solar47mm.resourcePath = $(fenix8solar47mm.resourcePath);resources-icon40_64
+fenix8solar47mm.resourcePath = $(fenix8solar47mm.resourcePath);gui/base;icons/40_64
 
 # fenix8solar51mm
 fenix8solar51mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenix8solar51mm.resourcePath = $(fenix8solar51mm.resourcePath);resources-icon40_64
+fenix8solar51mm.resourcePath = $(fenix8solar51mm.resourcePath);gui/base;icons/40_64
 
 # fenixe
 fenixe.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fenixe.resourcePath = $(fenixe.resourcePath);resources-icon60_65536A;resources-epix2
+fenixe.resourcePath = $(fenixe.resourcePath);gui/base;gui/epix2;icons/60_65536A
 
 # fr55
 fr55.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-fr55.resourcePath = $(fr55.resourcePath);resources-icon35-8
+fr55.resourcePath = $(fr55.resourcePath);gui/base;gui/fr55;icons/35_8
 
 # fr165
 fr165.excludeAnnotations = nolive;simple;bitmap;upper;rectangularscreen
-fr165.resourcePath = $(fr165.resourcePath);resources-icon54_65536HC;resources-froled
+fr165.resourcePath = $(fr165.resourcePath);gui/base;gui/froled;icons/54_65536HC
 
 # fr165m
 fr165m.excludeAnnotations = nolive;simple;bitmap;upper;rectangularscreen
-fr165m.resourcePath = $(fr165m.resourcePath);resources-icon54_65536HC;resources-froled
+fr165m.resourcePath = $(fr165m.resourcePath);gui/base;gui/froled;icons/54_65536HC
 
 # fr255
 fr255.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fr255.resourcePath = $(fr255.resourcePath);resources-icon40_64
+fr255.resourcePath = $(fr255.resourcePath);gui/base;icons/40_64
 
 # fr255m
 fr255m.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fr255m.resourcePath = $(fr255m.resourcePath);resources-icon40_64
+fr255m.resourcePath = $(fr255m.resourcePath);gui/base;icons/40_64
 
 # fr255s
 fr255s.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fr255s.resourcePath = $(fr255s.resourcePath);resources-icon40_64
+fr255s.resourcePath = $(fr255s.resourcePath);gui/base;gui/fr255s;icons/40_64
 
 # fr255sm
 fr255sm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-fr255sm.resourcePath = $(fr255sm.resourcePath);resources-icon40_64;resources-fr255s
+fr255sm.resourcePath = $(fr255sm.resourcePath);gui/base;gui/fr255s;icons/40_64
 
 # fr265
 fr265.excludeAnnotations = nolive;simple;bitmap;upper;rectangularscreen
-fr265.resourcePath = $(fr265.resourcePath);resources-icon60_65536HC;resources-froled
+fr265.resourcePath = $(fr265.resourcePath);gui/base;gui/froled;icons/60_65536HC
 
 # fr265s
 fr265s.excludeAnnotations = nolive;simple;bitmap;upper;rectangularscreen
-fr265s.resourcePath = $(fr265s.resourcePath);resources-icon60_65536HC;resources-froled
+fr265s.resourcePath = $(fr265s.resourcePath);gui/base;gui/froled;icons/60_65536HC
 
 # fr955
 fr955.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-fr955.resourcePath = $(fr955.resourcePath);resources-icon40_64
+fr955.resourcePath = $(fr955.resourcePath);gui/base;icons/40_64
 
 # fr965
 fr965.excludeAnnotations = nolive;simple;bitmap;upper;rectangularscreen
-fr965.resourcePath = $(fr965.resourcePath);resources-icon65_65536HC;resources-froled
+fr965.resourcePath = $(fr965.resourcePath);gui/base;gui/froled;icons/65_65536HC
 
 # instinct2
 instinct2.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
+instinct2.resourcePath = $(instinct2.resourcePath);gui/base;gui/instinct2;icons/62_1
 
 # instinct2s
 instinct2s.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
+instinct2s.resourcePath = $(instinct2s.resourcePath);gui/base;gui/instinct2s;icons/54_1
 
 # instinctcrossover
 instinctcrossover.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
+instinctcrossover.resourcePath = $(instinctcrossover.resourcePath);gui/base;gui/instinctcrossover;icons/26_1
 
 # instinct2x
 instinct2x.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-instinct2x.resourcePath = $(instinct2x.resourcePath);resources-instinct2
+instinct2x.resourcePath = $(instinct2x.resourcePath);gui/base;gui/instinct2;icons/62_1
 
 # marq2
 marq2.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-marq2.resourcePath = $(marq2.resourcePath);resources-icon60_65536;resources-epix2
+marq2.resourcePath = $(marq2.resourcePath);gui/base;gui/epix2;icons/60_65536
 
 # marq2aviator
 marq2aviator.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
-marq2aviator.resourcePath = $(marq2aviator.resourcePath);resources-icon60_65536;resources-epix2
+marq2aviator.resourcePath = $(marq2aviator.resourcePath);gui/base;gui/epix2;icons/60_65536
 
 # marqadventurer
 marqadventurer.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-marqadventurer.resourcePath = $(marqadventurer.resourcePath);resources-icon40_64
+marqadventurer.resourcePath = $(marqadventurer.resourcePath);gui/base;icons/40_64
 
 # marqathlete
 marqathlete.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-marqathlete.resourcePath = $(marqathlete.resourcePath);resources-icon40_64
+marqathlete.resourcePath = $(marqathlete.resourcePath);gui/base;icons/40_64
 
 # marqaviator
 marqaviator.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-marqaviator.resourcePath = $(marqaviator.resourcePath);resources-icon40_64
+marqaviator.resourcePath = $(marqaviator.resourcePath);gui/base;icons/40_64
 
 # marqcaptain
 marqcaptain.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-marqcaptain.resourcePath = $(marqcaptain.resourcePath);resources-icon40_64
+marqcaptain.resourcePath = $(marqcaptain.resourcePath);gui/base;icons/40_64
 
 # marqcommander
 marqcommander.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-marqcommander.resourcePath = $(marqcommander.resourcePath);resources-icon40_64
+marqcommander.resourcePath = $(marqcommander.resourcePath);gui/base;icons/40_64
 
 # marqdriver
 marqdriver.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-marqdriver.resourcePath = $(marqdriver.resourcePath);resources-icon40_64
+marqdriver.resourcePath = $(marqdriver.resourcePath);gui/base;icons/40_64
 
 # marqexpedition
 marqexpedition.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-marqexpedition.resourcePath = $(marqexpedition.resourcePath);resources-icon40_64
+marqexpedition.resourcePath = $(marqexpedition.resourcePath);gui/base;icons/40_64
 
 # marqgolfer
 marqgolfer.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
-marqgolfer.resourcePath = $(marqgolfer.resourcePath);resources-icon40_64
+marqgolfer.resourcePath = $(marqgolfer.resourcePath);gui/base;icons/40_64
 
 # venu2
 venu2.excludeAnnotations = nolive;simple;bitmapfr;lower;rectangularscreen
-venu2.resourcePath = $(venu2.resourcePath);resources-icon70_65536HC
+venu2.resourcePath = $(venu2.resourcePath);gui/base;gui/venu2;icons/70_65536HC
 
 # venu2plus
 venu2plus.excludeAnnotations = nolive;simple;bitmapfr;lower;rectangularscreen
-venu2plus.resourcePath = $(venu2plus.resourcePath);resources-icon70_65536HC;resources-venu2
+venu2plus.resourcePath = $(venu2plus.resourcePath);gui/base;gui/venu2;icons/70_65536HC
 
 # venu2s
 venu2s.excludeAnnotations = nolive;simple;bitmapfr;lower;rectangularscreen
-venu2s.resourcePath = $(venu2s.resourcePath);resources-icon61_65536HC;resources-venu2
+venu2s.resourcePath = $(venu2s.resourcePath);gui/base;gui/venu2;icons/61_65536HC
 
 # venu3
 venu3.excludeAnnotations = nolive;simple;bitmapfr;lower;rectangularscreen
-venu3.resourcePath = $(venu3.resourcePath);resources-icon70_65536HC;resources-venu2
+venu3.resourcePath = $(venu3.resourcePath);gui/base;gui/venu2;icons/70_65536HC
 
 # venu3s
 venu3s.excludeAnnotations = nolive;simple;bitmapfr;lower;rectangularscreen
-venu3s.resourcePath = $(venu3s.resourcePath);resources-icon70_65536HC;resources-venu2
+venu3s.resourcePath = $(venu3s.resourcePath);gui/base;gui/venu2;icons/70_65536HC
 
 # venusq2
 venusq2.excludeAnnotations = nolive;bitmap;bitmapfr;lower;circularscreen
-venusq2.resourcePath = $(venusq2.resourcePath);resources-icon40_65536HC
+venusq2.resourcePath = $(venusq2.resourcePath);gui/base;gui/venusq2;icons/40_65536HC
 
 # venusq2m
 venusq2m.excludeAnnotations = nolive;bitmap;bitmapfr;lower;circularscreen
-venusq2m.resourcePath = $(venusq2m.resourcePath);resources-icon40_65536HC;resources-venusq2
+venusq2m.resourcePath = $(venusq2m.resourcePath);gui/base;gui/venusq2;icons/40_65536HC
 
 # vivoactive5
 vivoactive5.excludeAnnotations = nolive;simple;bitmapfr;lower;rectangularscreen
-vivoactive5.resourcePath = $(vivoactive5.resourcePath);resources-icon70_65536HC;resources-venu2
+vivoactive5.resourcePath = $(vivoactive5.resourcePath);gui/base;gui/venu2;icons/70_65536HC
