@@ -131,17 +131,12 @@ class AccountsModel {
         if (keys == null){
             keys = {};
         }
-        keys = keys as Dictionary<Number, String or ByteArray>;
+        keys = keys as Dictionary<Number, String>;
         var storedKeys = keys.keys();
         for(var i = 0; i < storedKeys.size(); i++){
             var id = storedKeys[i] as Number;
             if (validAccountIDs.indexOf(id) == -1){
                 keys.remove(id);
-            } else if (keys[id] instanceof ByteArray){
-                //convert keys stored as byte array to string
-                keys[id] = StringUtil.convertEncodedString(keys[id] as ByteArray,
-                                                {:toRepresentation => StringUtil.REPRESENTATION_STRING_BASE64,
-                                                 :fromRepresentation => StringUtil.REPRESENTATION_BYTE_ARRAY}) as String;
             }
         }
         Storage.setValue("keys", keys as Dictionary<Application.PropertyKeyType, Application.PropertyValueType>);
