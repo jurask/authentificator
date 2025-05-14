@@ -3,6 +3,6 @@
         <shape type="circle" x="center" y="center" radius="46%" color="Graphics.COLOR_TRANSPARENT" border_width="1" border_color="Graphics.COLOR_WHITE"/>
     </drawable-list>
     <drawable-list id="Background" background="Graphics.COLOR_TRANSPARENT">
-        <bitmap id="subwindow" filename="../../icons/54_1/key.png" personality="system_loc__subwindow" />
+        <bitmap id="subwindow" filename="../../../icons/54_1/key.png" personality="system_loc__subwindow" />
     </drawable-list>
 </drawables>
