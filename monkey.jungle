@@ -1,5 +1,8 @@
 project.manifest = manifest.xml
 
+#approachs50
+approachs50.excludeAnnotations = nolive;bitmap;bitmapfr;upper;rectangularscreen
+approachs50.resourcePath = $(approachs50.resourcePath);gui/base;gui/epix2;icons/56_65536
 
 # approachs7042mm
 approachs7042mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
