@@ -24,6 +24,10 @@ d2mach1.resourcePath = $(d2mach1.resourcePath);gui/base;gui/epix2;icons/60_65536
 descentg1.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
 descentg1.resourcePath = $(descentg1.resourcePath);gui/base;gui/instinct2;icons/62_1
 
+# descentg2
+descentg2.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+descentg2.resourcePath = $(descentg2.resourcePath);gui/base;gui/epix2;icons/60_65536
+
 # descentmk343mm
 descentmk343mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
 descentmk343mm.resourcePath = $(descentmk343mm.resourcePath);gui/base;gui/epix2;icons/60_65536
