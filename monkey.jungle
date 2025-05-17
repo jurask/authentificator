@@ -168,6 +168,14 @@ fr265.resourcePath = $(fr265.resourcePath);gui/base;gui/froled;icons/60_65536HC
 fr265s.excludeAnnotations = nolive;simple;bitmap;upper;rectangularscreen
 fr265s.resourcePath = $(fr265s.resourcePath);gui/base;gui/froled;icons/60_65536HC
 
+# fr57042mm
+fr57042mm.excludeAnnotations = nolive;simple;bitmap;upper;rectangularscreen
+fr57042mm.resourcePath = $(fr57042mm.resourcePath);gui/base;gui/froled;icons/54_65536HC
+
+# fr57047mm
+fr57047mm.excludeAnnotations = nolive;simple;bitmap;upper;rectangularscreen
+fr57047mm.resourcePath = $(fr57047mm.resourcePath);gui/base;gui/froled;icons/65_65536HC
+
 # fr955
 fr955.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
 fr955.resourcePath = $(fr955.resourcePath);gui/base;icons/40_64
