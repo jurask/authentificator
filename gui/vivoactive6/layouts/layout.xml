@@ -1,0 +1,5 @@
+<layouts>
+    <layout id="HOTPLayout">
+        <bitmap id="menu" personality="system_icon_light__hint_button_right_top system_loc__hint_button_right_top" />
+    </layout>
+</layouts>

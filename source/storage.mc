@@ -175,7 +175,7 @@ class Account {
     private var _key as ByteArray;
     private var _digits as Number;
 
-    function initialize(accountName as String, key as ByteArray, digits as Number) {
+    function initialize(accountName as String, key as ByteArray, digits as Number or Null) {
         _accountName = accountName;
         _key = key;
         if (digits == null) {
