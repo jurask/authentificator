@@ -184,6 +184,10 @@ fr955.resourcePath = $(fr955.resourcePath);gui/base;icons/40_64
 fr965.excludeAnnotations = nolive;simple;bitmap;upper;rectangularscreen
 fr965.resourcePath = $(fr965.resourcePath);gui/base;gui/froled;icons/65_65536HC
 
+# fr970
+fr970.excludeAnnotations = nolive;simple;bitmap;upper;rectangularscreen
+fr970.resourcePath = $(fr970.resourcePath);gui/base;gui/froled;icons/65_65536HC
+
 # instinct2
 instinct2.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
 instinct2.resourcePath = $(instinct2.resourcePath);gui/base;gui/instinct2;icons/62_1
