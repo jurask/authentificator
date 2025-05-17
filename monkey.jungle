@@ -196,6 +196,14 @@ instinct2.resourcePath = $(instinct2.resourcePath);gui/base;gui/instinct2;icons/
 instinct2s.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
 instinct2s.resourcePath = $(instinct2s.resourcePath);gui/base;gui/instinct2s;icons/54_1
 
+# instinct3amoled45mm
+instinct3amoled45mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+instinct3amoled45mm.resourcePath = $(instinct3amoled45mm.resourcePath);gui/base;gui/approachs70;icons/60_2A
+
+# instinct3amoled50mm
+instinct3amoled50mm.excludeAnnotations = nolive;bitmap;bitmapfr;lower;rectangularscreen
+instinct3amoled50mm.resourcePath = $(instinct3amoled50mm.resourcePath);gui/base;gui/approachs70;icons/60_2A
+
 # instinctcrossover
 instinctcrossover.excludeAnnotations = live;bitmap;simple;bitmapfr;lower;rectangularscreen
 instinctcrossover.resourcePath = $(instinctcrossover.resourcePath);gui/base;gui/instinctcrossover;icons/26_1

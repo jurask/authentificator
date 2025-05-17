@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="62"
+   height="62"
+   viewBox="0 0 62 62"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="instinct-oled.svg"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   inkscape:export-filename="../icons/60_2A/drawables/key.png"
+   inkscape:export-xdpi="92.903229"
+   inkscape:export-ydpi="92.903229"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="5.6568543"
+     inkscape:cx="15.291184"
+     inkscape:cy="21.831922"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6"
+     shape-rendering="crispEdges" />
+  <title
+     id="title2">key</title>
+  <path
+     d="m 21.731304,23.575949 a 2.8414937,2.8414937 0 0 0 2.767689,-2.767689 2.767689,2.767689 0 0 0 -5.535378,0 2.8414937,2.8414937 0 0 0 2.767689,2.767689 z m 2.767689,-9.225629 a 10.240448,10.240448 0 0 1 10.148192,10.148192 12.565307,12.565307 0 0 1 -1.291588,5.166353 l 14.207469,14.207468 v 3.690252 H 40.182563 V 43.872333 H 36.492312 V 40.182082 H 32.80206 L 26.897657,34.277679 A 10.793986,10.793986 0 0 1 24.498993,34.646704 10.240448,10.240448 0 0 1 14.350801,24.498512 10.240448,10.240448 0 0 1 24.498993,14.35032 Z"
+     id="path4"
+     style="stroke-width:1.84512;fill:#ffffff" />
+  <metadata
+     id="metadata298">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>key</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
