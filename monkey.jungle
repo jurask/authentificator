@@ -277,11 +277,11 @@ venu2s.excludeAnnotations = nolive;simple;bitmapfr;white;red;lower;rectangularsc
 venu2s.resourcePath = $(venu2s.resourcePath);gui/base;gui/venu2;icons/61_65536HC
 
 # venu3
-venu3.excludeAnnotations = nolive;simple;bitmapfr;white;red;lower;rectangularscreen
+venu3.excludeAnnotations = nolive;simple;bitmapfr;white;red;upper;rectangularscreen
 venu3.resourcePath = $(venu3.resourcePath);gui/base;gui/venu2;icons/70_65536HC
 
 # venu3s
-venu3s.excludeAnnotations = nolive;simple;bitmapfr;white;red;lower;rectangularscreen
+venu3s.excludeAnnotations = nolive;simple;bitmapfr;white;red;upper;rectangularscreen
 venu3s.resourcePath = $(venu3s.resourcePath);gui/base;gui/venu2;icons/70_65536HC
 
 # venusq2
@@ -293,5 +293,9 @@ venusq2m.excludeAnnotations = nolive;bitmap;bitmapfr;white;lower;circularscreen
 venusq2m.resourcePath = $(venusq2m.resourcePath);gui/base;gui/venusq2;icons/40_65536HC
 
 # vivoactive5
-vivoactive5.excludeAnnotations = nolive;simple;bitmapfr;white;red;lower;rectangularscreen
+vivoactive5.excludeAnnotations = nolive;simple;bitmapfr;white;red;upper;rectangularscreen
 vivoactive5.resourcePath = $(vivoactive5.resourcePath);gui/base;gui/venu2;icons/70_65536HC
+
+# vivoactive6
+vivoactive6.excludeAnnotations = nolive;simple;bitmapfr;white;red;upper;rectangularscreen
+vivoactive6.resourcePath = $(vivoactive6.resourcePath);gui/base;gui/venu2;gui/vivoactive6;icons/54_65536HC
