@@ -53,11 +53,10 @@ class Glance extends WatchUi.GlanceView {
         var width = dc.getWidth();
         var height = dc.getHeight();
         var line = Graphics.getFontHeight(Graphics.FONT_GLANCE);
-        var space = (height - _nlines * line) / 2;
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(0, space, Graphics.FONT_GLANCE, getName(), Graphics.TEXT_JUSTIFY_LEFT);
-        dc.drawText(0, space + (_nlines - 1) * line, Graphics.FONT_GLANCE, getAccount(), Graphics.TEXT_JUSTIFY_LEFT);
-        dc.drawText(width, space + (_nlines - 1) * line, Graphics.FONT_GLANCE, getCode(), Graphics.TEXT_JUSTIFY_RIGHT);
+        dc.drawText(0, 0, Graphics.FONT_GLANCE, getName(), Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(0, height -line, Graphics.FONT_GLANCE, getAccount(), Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(width, height - line, Graphics.FONT_GLANCE, getCode(), Graphics.TEXT_JUSTIFY_RIGHT);
     }
 }
 
@@ -99,6 +98,8 @@ class TOTPGlance extends OTPGlance {
     (:live) private var _lastTimeout as Number;
     (:bitmap) private var _progress as BitmapResource or Null;
     (:bitmapfr) private var _progress as BitmapResource or Null;
+    (:red) private var _color as Graphics.ColorValue = Graphics.COLOR_RED;
+    (:white) private var _color as Graphics.ColorValue = Graphics.COLOR_WHITE;
 
     (:nolive)
     public function initialize (account as Account) {
@@ -112,20 +113,20 @@ class TOTPGlance extends OTPGlance {
         _lastTimeout = -2;
         _timer = new Timer.Timer();
         _nlines = 3;
-        initializeBitmap();
+        initializeProgress();
     }
 
     (:simple)
-    private function initializeBitmap() as Void {
+    private function initializeProgress() as Void {
     }
 
     (:bitmap)
-    private function initializeBitmap() as Void {
+    private function initializeProgress() as Void {
         _progress = WatchUi.loadResource($.Rez.Drawables.glanceGradient) as BitmapResource;
     }
 
     (:bitmapfr)
-    private function initializeBitmap() as Void {
+    private function initializeProgress() as Void {
         _progress = WatchUi.loadResource($.Rez.Drawables.glanceGradient) as BitmapResource;
     }
 
@@ -170,7 +171,7 @@ class TOTPGlance extends OTPGlance {
         dc.setPenWidth(2);
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
         dc.drawLine(width * timeLeft + 4, height / 2, width, height / 2);
-        dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_BLACK);
+        dc.setColor(_color, Graphics.COLOR_BLACK);
         dc.setPenWidth(8);
         dc.drawLine(0, height / 2, width * timeLeft - 4, height / 2);
     }
