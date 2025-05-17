@@ -294,7 +294,7 @@ venusq2m.resourcePath = $(venusq2m.resourcePath);gui/base;gui/venusq2;icons/40_6
 
 # vivoactive5
 vivoactive5.excludeAnnotations = nolive;simple;bitmapfr;white;red;upper;rectangularscreen
-vivoactive5.resourcePath = $(vivoactive5.resourcePath);gui/base;gui/venu2;icons/70_65536HC
+vivoactive5.resourcePath = $(vivoactive5.resourcePath);gui/base;gui/venu2;icons/56_65536HC
 
 # vivoactive6
 vivoactive6.excludeAnnotations = nolive;simple;bitmapfr;white;red;upper;rectangularscreen
