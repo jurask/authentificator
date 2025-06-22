@@ -22,18 +22,18 @@ import Toybox.WatchUi;
 
 (:typecheck(disableGlanceCheck))
 class ViewFactory {
-    private var _accounts as AccountsModel;
+    private var _accounts as Array<Account>;
 
-    public function initialize(accountModel as AccountsModel) {
+    public function initialize(accountModel as Array<Account>) {
         _accounts = accountModel;
     }
 
     public function createView(accountNumber as Number) as BaseView {
-        var numAccounts = _accounts.numAccounts();
+        var numAccounts = _accounts.size();
         if (numAccounts == 0) {
             return new NoAccountsView();
         }
-        var account = _accounts.getAccount(accountNumber);
+        var account = _accounts[accountNumber];
         if (account instanceof TOTPAccount) {
             return new TOTPView(account);
         } else {
@@ -42,11 +42,11 @@ class ViewFactory {
     }
 
     public function createDelegate(accountNumber as Number) as BehaviorDelegate {
-        var numAccounts = _accounts.numAccounts();
+        var numAccounts = _accounts.size();
         if (numAccounts == 0) {
             return new WatchUi.BehaviorDelegate();
         }
-        var account = _accounts.getAccount(accountNumber);
+        var account = _accounts[accountNumber];
         if (account instanceof TOTPAccount) {
             return new TOTPDelegate(accountNumber, numAccounts, self);
         } else {
@@ -56,11 +56,11 @@ class ViewFactory {
 }
 
 class AuthentificatorApp extends Application.AppBase {
-    private var _accounts as AccountsModel;
+    private var _accounts as Array<Account>;
 
     function initialize() {
         AppBase.initialize();
-        _accounts = new AccountsModel();
+        _accounts = loadAccounts(true);
     }
 
     function onStart(state as Dictionary?) as Void {
@@ -80,10 +80,10 @@ class AuthentificatorApp extends Application.AppBase {
         if (!glance) {
             return [new Glance()];
         }
-        if (_accounts.numAccounts() == 0) {
+        if (_accounts.size() == 0) {
             return [new NoAccountsGlance()];
         }
-        var account = _accounts.getAccount(0);
+        var account = _accounts[0];
         if (account instanceof TOTPAccount) {
             return [new TOTPGlance(account)];
         } else {
@@ -97,7 +97,7 @@ class AuthentificatorApp extends Application.AppBase {
     }
 
     public function onSettingsChanged() as Void {
-        _accounts.reinitialize();
+        _accounts = loadAccounts(true);
         var view = WatchUi.getCurrentView();
         if (!(view[0] instanceof Glance)) {
             var factory = new ViewFactory(_accounts);
