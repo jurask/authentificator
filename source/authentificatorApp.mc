@@ -56,11 +56,10 @@ class ViewFactory {
 }
 
 class AuthentificatorApp extends Application.AppBase {
-    private var _accounts as Array<Account>;
+    private var _accounts as Array<Account> or Null;
 
     function initialize() {
         AppBase.initialize();
-        _accounts = loadAccounts(true);
     }
 
     function onStart(state as Dictionary?) as Void {
@@ -70,20 +69,22 @@ class AuthentificatorApp extends Application.AppBase {
     }
 
     function getInitialView() as [ Views ] or [ Views, InputDelegates ] {
+        _accounts = loadAccounts(true);
         var factory = new ViewFactory(_accounts);
         return [factory.createView(0), factory.createDelegate(0)];
     }
 
     (:glance)
     public function getGlanceView() as [ GlanceView ] or [ GlanceView, GlanceViewDelegate ] or Null {
+        _accounts = loadAccounts(false);
         var glance = Application.Properties.getValue("glance") as Boolean;
         if (!glance) {
             return [new Glance()];
         }
-        if (_accounts.size() == 0) {
+        if ((_accounts as Array<Account>).size() == 0) {
             return [new NoAccountsGlance()];
         }
-        var account = _accounts[0];
+        var account = (_accounts as Array<Account>)[0];
         if (account instanceof TOTPAccount) {
             return [new TOTPGlance(account)];
         } else {
@@ -97,10 +98,11 @@ class AuthentificatorApp extends Application.AppBase {
     }
 
     public function onSettingsChanged() as Void {
-        _accounts = loadAccounts(true);
         var view = WatchUi.getCurrentView();
-        if (!(view[0] instanceof Glance)) {
-            var factory = new ViewFactory(_accounts);
+        var glance = view[0] instanceof Glance;
+        _accounts = loadAccounts(!glance);
+        if (!glance) {
+            var factory = new ViewFactory(_accounts as Array<Account>);
             WatchUi.switchToView(factory.createView(0), factory.createDelegate(0), WatchUi.SLIDE_BLINK);
         }
     }
