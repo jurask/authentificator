@@ -45,10 +45,10 @@ class KeyStorage {
         return num;
     }
 
-    public function loadKey(keyID as Number) as ByteArray {
+    public function loadKey(keyID as Number) as ByteArray or Null {
         var encodedKey = keys[keyID];
         if (encodedKey == null){
-            throw new ValueOutOfBoundsException("Key not found in database");
+            return null;
         }
         var decodedKey = StringUtil.convertEncodedString(encodedKey,
                                                          {:fromRepresentation => StringUtil.REPRESENTATION_STRING_BASE64,
@@ -112,6 +112,9 @@ function loadAccount(i as Number, keys as KeyStorage, validKeys as Array<Number>
         }
     }
     var key = keys.loadKey(keyID);
+    if (key == null){
+        return null;
+    }
     validKeys.add(keyID);
     if (type == 0) {
         return new TOTPAccount(name, key, digits, timeout);
