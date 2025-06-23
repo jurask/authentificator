@@ -23,150 +23,125 @@ import Toybox.Application.Properties;
 import Toybox.StringUtil;
 
 (:glance)
-class AccountLoader {
-    function loadAccount(i as Number) as Account {
-        var indexStr = i.format("%i");
-        var name = Properties.getValue("name" + indexStr) as String;
-        var type = Properties.getValue("type" + indexStr) as String;
-        var keyStr = Properties.getValue("key" + indexStr) as String;
-        var timeout = Properties.getValue("timeout" + indexStr) as Number;
-        var digits = Properties.getValue("digits" + indexStr) as Number;
-        var key = _loadKey(keyStr);
-        if (type == 0) {
-            return new TOTPAccount(name, key, digits, timeout);
+class KeyStorage {
+    function initialize(storage as Application.PropertyValueType) {
+        if (storage == null) {
+            keys = {} as Dictionary<Number, String>;
         } else {
-            return new HOTPAccount(name, key, digits, timeout, i);
+            keys = storage as Dictionary<Number, String>;
         }
     }
 
-    private function _loadKey(keystr as String) as ByteArray {
-        var keys = Storage.getValue("keys") as Dictionary<Number, String>;
-        var keyid = keystr.substring(8, keystr.length());
-        if (keyid == null){
-            throw new InvalidValueException("Failed to parse key id");
-        }
-        var encodedKey = keys[keyid.toNumber()];
-        if (encodedKey == null){
-            throw new ValueOutOfBoundsException("Key not found in database");
-        }
-        var decodedKey = StringUtil.convertEncodedString(encodedKey,
-                                                {:fromRepresentation => StringUtil.REPRESENTATION_STRING_BASE64,
-                                                 :toRepresentation => StringUtil.REPRESENTATION_BYTE_ARRAY}) as ByteArray;
-        return decodedKey;
-    }
-}
-
-(:glance)
-class AccountUpdater {
-    function checkKey(i as Number) as Number {
-        var keyName = "key" + i.format("%i");
-        var keyStr = Properties.getValue(keyName) as String;
-        var keyNumber = _getKeyNumber(keyStr);
-        if (keyNumber == null){
-            keyStr = _updateKey(keyName, keyStr);
-            keyNumber = _getKeyNumber(keyStr) as Number;
-        }
-        return keyNumber;
-    }
-
-    private function _getKeyNumber(keyStr as String) as Number or Null {
-        if(keyStr.toCharArray()[0] != '#') {
-            return null;
-        }
-        var numberString = keyStr.substring(8, keyStr.length());
-        if (numberString == null){
-            return null;
-        }
-        var keyNumber = numberString.toNumber();
-        if (keyNumber == null) {
-            return null;
-        }
-        return keyNumber;
-    }
-
-    private function _updateKey(keyName as String, keyStr as String) as String {
-        var keys = Storage.getValue("keys");
-        if (keys == null) {
-            keys = {};
-        }
-        keys = keys as Dictionary<Number, String>;
+    public function registerKey(keyStr as String) as Number {
         var binkey = decodeBase32(keyStr);
         var base64Key = StringUtil.convertEncodedString(binkey,
-                                                {:toRepresentation => StringUtil.REPRESENTATION_STRING_BASE64,
-                                                 :fromRepresentation => StringUtil.REPRESENTATION_BYTE_ARRAY}) as String;
+                                                        {:toRepresentation => StringUtil.REPRESENTATION_STRING_BASE64,
+                                                         :fromRepresentation => StringUtil.REPRESENTATION_BYTE_ARRAY}) as String;
         var num = 0;
         while(keys.hasKey(num)) {
             num++;
         }
         keys.put(num, base64Key);
-        Storage.setValue("keys", keys as Dictionary<Application.PropertyKeyType, Application.PropertyValueType>);
-        var newString = "#hidden "+num.format("%d");
-        Properties.setValue(keyName, newString);
-        return newString;
+        return num;
+    }
+
+    public function loadKey(keyID as Number) as ByteArray or Null {
+        var encodedKey = keys[keyID];
+        if (encodedKey == null){
+            return null;
+        }
+        var decodedKey = StringUtil.convertEncodedString(encodedKey,
+                                                         {:fromRepresentation => StringUtil.REPRESENTATION_STRING_BASE64,
+                                                          :toRepresentation => StringUtil.REPRESENTATION_BYTE_ARRAY}) as ByteArray;
+        return decodedKey;
+    }
+
+    public function getStorage() as Application.PropertyValueType {
+        return keys as Application.PropertyValueType;
+    }
+
+    public function cleanup(keyIDs as Array<Number>) as Void {
+        var storedKeys = keys.keys();
+        for(var i = 0; i < storedKeys.size(); i++){
+            var id = storedKeys[i] as Number;
+            if (keyIDs.indexOf(id) == -1){
+                keys.remove(id);
+            }
+        }
+    }
+
+    private var keys as Dictionary<Number, String>;
+}
+
+(:glance)
+function getKeyNumber(keyStr as String) as Number or Null {
+    if(keyStr.toCharArray()[0] != '#') {
+        return null;
+    }
+    var numberString = keyStr.substring(8, keyStr.length());
+    if (numberString == null){
+        return null;
+    }
+    var keyNumber = numberString.toNumber();
+    if (keyNumber == null) {
+        return null;
+    }
+    return keyNumber;
+}
+
+(:glance)
+function loadAccount(i as Number, keys as KeyStorage, validKeys as Array<Number>) as Account or Null {
+    var indexStr = i.format("%i");
+    var name = Properties.getValue("name" + indexStr) as String;
+    var type = Properties.getValue("type" + indexStr) as Number;
+    var keyStr = Properties.getValue("key" + indexStr) as String;
+    var timeout = Properties.getValue("timeout" + indexStr) as Number;
+    var digits = Properties.getValue("digits" + indexStr) as Number;
+    if (name == null || name.equals("")){
+        return null;
+    }
+    var keyID;
+    var idSubStr = keyStr.substring(0, 7);
+    if (idSubStr == null || !idSubStr.equals("#hidden")){
+        keyID = keys.registerKey(keyStr);
+        Properties.setValue("key" + indexStr, "#hidden " + keyID.format("%i"));
+    } else {
+        keyID = getKeyNumber(keyStr);
+        if(keyID == null){
+            return null;
+        }
+    }
+    var key = keys.loadKey(keyID);
+    if (key == null){
+        return null;
+    }
+    validKeys.add(keyID);
+    if (type == 0) {
+        return new TOTPAccount(name, key, digits, timeout);
+    } else {
+        return new HOTPAccount(name, key, digits, timeout, i);
     }
 }
 
 (:glance)
-class AccountsModel {
-    private var _accounts as Array<Account>;
-
-    public function initialize() {
-        _updateKeys();
-        var loader = new AccountLoader();
-        var operation = loader.method(:loadAccount);
-        _accounts = _walkAccounts(operation) as Array<Account>;
-    }
-
-    public function reinitialize() as Void {
-        initialize();
-    }
-
-    private function _updateKeys() as Void {
-        // add new accounts
-        var updater = new AccountUpdater();
-        var operation = updater.method(:checkKey);
-        var validAccountIDs = _walkAccounts(operation) as Array<Number>;
-        // clear unused
-        var keys = Storage.getValue("keys");
-        if (keys == null){
-            keys = {};
-        }
-        keys = keys as Dictionary<Number, String>;
-        var storedKeys = keys.keys();
-        for(var i = 0; i < storedKeys.size(); i++){
-            var id = storedKeys[i] as Number;
-            if (validAccountIDs.indexOf(id) == -1){
-                keys.remove(id);
+function loadAccounts(full as Boolean) as Array<Account> {
+    var accounts = [];
+    var keyIds = [];
+    var keys = new KeyStorage(Storage.getValue("keys"));
+    for (var i = 1; i < 6; i++){
+        var account = loadAccount(i, keys, keyIds);
+        if (account != null){
+            accounts.add(account);
+            if (!full){
+                break;
             }
         }
-        Storage.setValue("keys", keys as Dictionary<Application.PropertyKeyType, Application.PropertyValueType>);
     }
-
-    static function _walkAccounts(operation as Method(i as Number) as Number or Account) as Array<Account or Number> {
-        var results = [] as Array<Account or Number>;
-        for(var i = 1; i <=5; i++) {
-            if (!_validateAccount(i)) {
-                continue;
-            }
-            results.add(operation.invoke(i));
-        }
-        return results;
+    if (full){
+        keys.cleanup(keyIds);
     }
-
-    static function _validateAccount(index as Number) as Boolean {
-        var indexStr = index.format("%i");
-        var name = Properties.getValue("name" + indexStr) as String;
-        var keyStr = Properties.getValue("key" + indexStr) as String;
-        return !(name.equals("") || keyStr.equals(""));
-    }
-
-    public function numAccounts() as Number {
-        return _accounts.size();
-    }
-
-    public function getAccount(index as Number) as Account {
-        return _accounts[index];
-    }
+    Storage.setValue("keys", keys.getStorage());
+    return accounts;
 }
 
 (:glance)
