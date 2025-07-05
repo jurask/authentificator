@@ -6,6 +6,7 @@
             <param name="offset">5</param>
             <param name="thickness">4</param>
             <param name="color">Graphics.COLOR_RED</param>
+            <param name="radius">0</param>
         </drawable>
     </layout>
     <layout id="HOTPLayout">

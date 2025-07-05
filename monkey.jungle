@@ -292,6 +292,10 @@ venusq2.resourcePath = $(venusq2.resourcePath);gui/base;gui/venusq2;icons/40_655
 venusq2m.excludeAnnotations = nolive;bitmap;bitmapfr;white;lower;circularscreen
 venusq2m.resourcePath = $(venusq2m.resourcePath);gui/base;gui/venusq2;icons/40_65536HC
 
+# venux1
+venux1.excludeAnnotations = nolive;simple;bitmapfr;white;red;lower;circularscreen
+venux1.resourcePath = $(venux1.resourcePath);gui/base;gui/venux1;icons/65_65536HC
+
 # vivoactive5
 vivoactive5.excludeAnnotations = nolive;simple;bitmapfr;white;red;upper;rectangularscreen
 vivoactive5.resourcePath = $(vivoactive5.resourcePath);gui/base;gui/venu2;icons/56_65536HC

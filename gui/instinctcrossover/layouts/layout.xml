@@ -7,6 +7,7 @@
             <param name="offset">6</param>
             <param name="thickness">6</param>
             <param name="color">Graphics.COLOR_WHITE</param>
+            <param name="radius">0</param>
         </drawable>
     </layout>
     <layout id="AuthentificatorLayout">
