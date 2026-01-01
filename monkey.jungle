@@ -124,6 +124,10 @@ fenix843mm.resourcePath = $(fenix843mm.resourcePath);gui/base;gui/epix2;icons/60
 fenix847mm.excludeAnnotations = nolive;bitmap;bitmapfr;white;lower;rectangularscreen
 fenix847mm.resourcePath = $(fenix847mm.resourcePath);gui/base;gui/epix2;icons/65_65536A
 
+# fenix8pro47mm
+fenix8pro47mm.excludeAnnotations = nolive;bitmap;bitmapfr;white;lower;rectangularscreen
+fenix8pro47mm.resourcePath = $(fenix8pro47mm.resourcePath);gui/base;gui/epix2;icons/65_65536A
+
 # fenix8solar47mm
 fenix8solar47mm.excludeAnnotations = nolive;bitmap;bitmapfr;white;lower;rectangularscreen
 fenix8solar47mm.resourcePath = $(fenix8solar47mm.resourcePath);gui/base;icons/40_64
