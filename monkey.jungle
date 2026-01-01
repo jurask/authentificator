@@ -184,6 +184,10 @@ fr57042mm.resourcePath = $(fr57042mm.resourcePath);gui/base;gui/froled;icons/54_
 fr57047mm.excludeAnnotations = nolive;simple;bitmap;white;red;upper;rectangularscreen
 fr57047mm.resourcePath = $(fr57047mm.resourcePath);gui/base;gui/froled;icons/65_65536HC
 
+# fr945lte
+fr945lte.excludeAnnotations = nolive;bitmap;bitmapfr;white;lower;rectangularscreen
+fr945lte.resourcePath = $(fr945lte.resourcePath);gui/base;icons/40_64
+
 # fr955
 fr955.excludeAnnotations = live;bitmap;simple;bitmapfr;white;red;lower;rectangularscreen
 fr955.resourcePath = $(fr955.resourcePath);gui/base;icons/40_64
