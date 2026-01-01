@@ -224,6 +224,10 @@ instinct3solar45mm.resourcePath = $(instinct3solar45mm.resourcePath);gui/base;gu
 instinctcrossover.excludeAnnotations = live;bitmap;simple;bitmapfr;white;red;lower;rectangularscreen
 instinctcrossover.resourcePath = $(instinctcrossover.resourcePath);gui/base;gui/instinctcrossover;icons/26_1
 
+# instinctcrossoveramoled
+instinctcrossoveramoled.excludeAnnotations = nolive;bitmap;bitmapfr;white;lower;rectangularscreen
+instinctcrossoveramoled.resourcePath = $(instinctcrossoveramoled.resourcePath);gui/base;gui/instinctcrossoveramoled;icons/38_2A
+
 # instincte40mm
 instincte40mm.excludeAnnotations = nolive;bitmap;bitmapfr;red;lower;rectangularscreen
 instincte40mm.resourcePath = $(instincte40mm.resourcePath);gui/base;gui/instinct2s;icons/52_1

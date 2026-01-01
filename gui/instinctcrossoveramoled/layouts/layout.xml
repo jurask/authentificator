@@ -1,0 +1,16 @@
+<layouts>
+    <layout id="TOTPLayout">
+        <drawable id="innerCircle" class="CircleProgress">
+            <param name="start">90.1</param>
+            <param name="end">90</param>
+            <param name="offset">6</param>
+            <param name="thickness">6</param>
+            <param name="color">Graphics.COLOR_RED</param>
+            <param name="radius">0</param>
+        </drawable>
+    </layout>
+    <layout id="AuthentificatorLayout">
+        <label id="code" text="" font="Graphics.FONT_NUMBER_MEDIUM" x="center" y="30" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+        <label id="name" text="" font="Graphics.FONT_MEDIUM" x="center" y="70%" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    </layout>
+</layouts>

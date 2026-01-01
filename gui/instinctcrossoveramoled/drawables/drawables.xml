@@ -1,0 +1,5 @@
+<drawables>
+    <drawable-list id="outerCircle" background="Graphics.COLOR_TRANSPARENT">
+        <shape type="circle" x="center" y="center" radius="49%" color="Graphics.COLOR_TRANSPARENT" border_width="1" border_color="Graphics.COLOR_WHITE"/>
+    </drawable-list>
+</drawables>
