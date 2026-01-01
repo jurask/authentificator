@@ -20,6 +20,10 @@ d2airx10.resourcePath = $(d2airx10.resourcePath);gui/base;gui/venu2;icons/70_655
 d2mach1.excludeAnnotations = nolive;bitmap;bitmapfr;white;lower;rectangularscreen
 d2mach1.resourcePath = $(d2mach1.resourcePath);gui/base;gui/epix2;icons/60_65536
 
+# d2mach2
+d2mach2.excludeAnnotations = nolive;bitmap;bitmapfr;white;lower;rectangularscreen
+d2mach2.resourcePath = $(d2mach2.resourcePath);gui/base;gui/epix2;icons/65_65536A
+
 # descentg1
 descentg1.excludeAnnotations = live;bitmap;simple;bitmapfr;white;red;lower;rectangularscreen
 descentg1.resourcePath = $(descentg1.resourcePath);gui/base;gui/instinct2;icons/62_1
