@@ -292,6 +292,14 @@ venu3.resourcePath = $(venu3.resourcePath);gui/base;gui/venu2;icons/70_65536HC
 venu3s.excludeAnnotations = nolive;simple;bitmapfr;white;red;upper;rectangularscreen
 venu3s.resourcePath = $(venu3s.resourcePath);gui/base;gui/venu2;icons/70_65536HC
 
+# venu441mm
+venu441mm.excludeAnnotations = nolive;simple;bitmapfr;white;red;upper;rectangularscreen
+venu441mm.resourcePath = $(venu441mm.resourcePath);gui/base;gui/venu2;gui/vivoactive6;icons/54_65536HC
+
+# venu445mm
+venu445mm.excludeAnnotations = nolive;simple;bitmapfr;white;red;upper;rectangularscreen
+venu445mm.resourcePath = $(venu445mm.resourcePath);gui/base;gui/venu2;gui/vivoactive6;icons/65_65536HC
+
 # venusq2
 venusq2.excludeAnnotations = nolive;bitmap;bitmapfr;white;lower;circularscreen
 venusq2.resourcePath = $(venusq2.resourcePath);gui/base;gui/venusq2;icons/40_65536HC
