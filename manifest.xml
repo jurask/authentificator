@@ -19,6 +19,7 @@
             <iq:product id="approachs7047mm"/>
             <iq:product id="d2airx10"/>
             <iq:product id="d2mach1"/>
+            <iq:product id="d2mach2"/>
             <iq:product id="descentg1"/>
             <iq:product id="descentg2"/>
             <iq:product id="descentmk343mm"/>
@@ -44,6 +45,7 @@
             <iq:product id="fenix7xpronowifi"/>
             <iq:product id="fenix843mm"/>
             <iq:product id="fenix847mm"/>
+            <iq:product id="fenix8pro47mm"/>
             <iq:product id="fenix8solar47mm"/>
             <iq:product id="fenix8solar51mm"/>
             <iq:product id="fenixe"/>
@@ -58,6 +60,7 @@
             <iq:product id="fr55"/>
             <iq:product id="fr57042mm"/>
             <iq:product id="fr57047mm"/>
+            <iq:product id="fr945lte"/>
             <iq:product id="fr955"/>
             <iq:product id="fr965"/>
             <iq:product id="fr970"/>
@@ -68,6 +71,7 @@
             <iq:product id="instinct3amoled50mm"/>
             <iq:product id="instinct3solar45mm"/>
             <iq:product id="instinctcrossover"/>
+            <iq:product id="instinctcrossoveramoled"/>
             <iq:product id="instincte40mm"/>
             <iq:product id="instincte45mm"/>
             <iq:product id="marq2"/>
@@ -85,6 +89,8 @@
             <iq:product id="venu2s"/>
             <iq:product id="venu3"/>
             <iq:product id="venu3s"/>
+            <iq:product id="venu441mm"/>
+            <iq:product id="venu445mm"/>
             <iq:product id="venusq2"/>
             <iq:product id="venusq2m"/>
             <iq:product id="venux1"/>
