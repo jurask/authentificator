@@ -99,7 +99,7 @@ class AuthentificatorApp extends Application.AppBase {
 
     public function onSettingsChanged() as Void {
         var view = WatchUi.getCurrentView();
-        var glance = view[0] instanceof Glance;
+        var glance = view[0] instanceof Glance || view[0] == null;
         _accounts = loadAccounts(!glance);
         if (!glance) {
             var factory = new ViewFactory(_accounts as Array<Account>);
